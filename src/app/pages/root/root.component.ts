@@ -12,12 +12,6 @@ import { Component,OnInit,HostListener } from '@angular/core';
 })
 
 export class RootComponent implements OnInit {
-  env = process.env
-
-  ngOnInit(){
-    console.log(this.env)
-  }
-
   // constructor(private store:Store<{auth:Session,user:User}>){}
 
   // @HostListener('window:beforeunload',['$event']) onBeforeUnload(e:Event){
