@@ -3,7 +3,7 @@ import { Store } from '@ngrx/store'
 import { environment } from '../../../environments/environment.development'
 import { Session } from '../../ngrx/auth/auth.reducer'
 import { User,Profile } from '../../ngrx/user/user.reducer'
-import { Component,HostListener } from '@angular/core';
+import { Component,OnInit,HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -11,10 +11,12 @@ import { Component,HostListener } from '@angular/core';
   styleUrls: ['./root.component.css']
 })
 
-export class RootComponent {
+export class RootComponent implements OnInit {
   env = process.env
 
-  console.log(env)
+  ngOnInit(){
+    console.log(this.env)
+  }
 
   // constructor(private store:Store<{auth:Session,user:User}>){}
 
