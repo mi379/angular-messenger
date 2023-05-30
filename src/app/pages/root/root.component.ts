@@ -14,6 +14,8 @@ import { Component,HostListener } from '@angular/core';
 export class RootComponent {
   env = process.env
 
+  console.log(env)
+
   // constructor(private store:Store<{auth:Session,user:User}>){}
 
   // @HostListener('window:beforeunload',['$event']) onBeforeUnload(e:Event){
