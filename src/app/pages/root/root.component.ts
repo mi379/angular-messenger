@@ -11,7 +11,7 @@ import { Component,OnInit,HostListener } from '@angular/core';
   styleUrls: ['./root.component.css']
 })
 
-export class RootComponent implements OnInit {
+export class RootComponent {
   // constructor(private store:Store<{auth:Session,user:User}>){}
 
   // @HostListener('window:beforeunload',['$event']) onBeforeUnload(e:Event){
