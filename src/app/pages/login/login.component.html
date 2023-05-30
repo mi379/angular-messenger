@@ -1,0 +1,12 @@
+<div class="fullscreen v-center">
+  <div class="m-auto">
+    <button class="p-4 bg-black text-white rounded-full" (click)="login(fakeLoginInfo.value)">
+      x
+    </button>
+  </div>
+</div>
+
+<div class="fullscreen bg-white v-center" *ngIf="(loginState | async)?.running">
+  <div class="red-rounded-pulse">
+  </div>
+</div>

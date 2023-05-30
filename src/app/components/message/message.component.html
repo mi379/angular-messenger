@@ -1,0 +1,17 @@
+<a routerLink="/messages"  class="flex-1 p-4 flex flex-row">
+  <div class="flex flex-col justify-center">
+    <img 
+      class="rounded-full h-12 w-12" 
+      [src]="detail?.profileImage"
+    />
+  </div>
+
+  <div class="flex-1 px-4 h-14 flex flex-col justify-between">
+    <span class="font-black">
+      {{detail?.firstName}} {{detail?.surname}}
+    </span>
+    <ng-content [select]="value">
+    	<!-- message value -->
+    </ng-content>
+  </div>
+</a>

@@ -1,0 +1,44 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+@layer utilities {
+  .fullscreen {
+    @apply absolute;
+    @apply min-h-full;
+    @apply max-h-fit;
+    @apply w-full;
+  }
+
+  .v-center {
+    @apply flex flex-col;
+    @apply justify-center
+  }
+}
+
+@layer components {
+  .navbar {
+    @apply bg-blue-900;
+    @apply flex flex-row;
+    @apply p-4 w-full;
+    @apply fixed z-20;
+  }
+
+  .content-container{
+    @apply flex-1 mt-16;
+    @apply v-center
+  }
+
+  .red-rounded-pulse{
+    @apply bg-red-600;
+    @apply m-auto p-4;
+    @apply rounded-full;
+    @apply animate-pulse
+  }
+
+  .black-rounded{
+    @apply bg-black;
+    @apply rounded-full;
+    @apply text-white
+  }
+}

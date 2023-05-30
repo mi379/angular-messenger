@@ -1,0 +1,22 @@
+<app-navbar [profile]="(currentUser | async)?.profile" class="navbar"/>
+
+<div class="fullscreen flex flex-col">
+
+  <app-fetch-error class="flex-1 v-center" *ngIf="fetchErrorMessage as error" (retry)="fetchRetry()">
+    <p message>{{error}}</p>
+  </app-fetch-error>
+
+  <div class="flex-1 v-center text-center" *ngIf="(fetchState | async)?.running">
+    Loading...
+  </div>
+
+  <app-recently-messages 
+    *ngIf="recentlyMessages as content"
+    class="mt-[80px] p-4 border-2 border-black"
+    [_id]="(currentUser | async)?._id"
+    [content]="content"  
+  />
+
+
+ 
+</div>

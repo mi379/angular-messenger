@@ -1,0 +1,38 @@
+<div class="m-auto p-4 text-center">
+  <div class="flex flex-row justify-center mb-8">
+    <button class="black-rounded p-4" (click)="retry()">
+      <app-arrow-path/>
+    </button>
+  </div>
+  <ng-content [select]="fetchRetryBtn"/>
+</div>
+
+<!-- <div class="flex-1 v-center text-center">
+  <ng-content [select]="message"/>
+</div> -->
+
+<!-- <div class="m-auto p-4 text-center">
+  <div class="flex flex-row justify-center mb-8">
+    <ng-content [select]="retryBtn">
+    </ng-content>
+  </div>
+
+  <div>
+    <ng-content [select]="errorMessage">
+    </ng-content>
+  </div>
+    
+</div>
+ -->
+<!-- <div class="mt-16 flex-1 v-center">
+  <div class="m-auto p-4 text-center">
+    <div class="flex flex-row justify-center mb-2">
+    	<button class="retry-fetch-btn">
+        <app-arrow-path/>
+      </button>
+    </div>
+    <ng-content>
+    	
+    </ng-content>
+  </div>
+</div> -->
