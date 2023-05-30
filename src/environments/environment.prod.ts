@@ -1,4 +1,4 @@
 export const environment = {
   production:true,
-  server:"${SERVER}"
+  server:process.env.SERVER
 };
