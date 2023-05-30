@@ -12,7 +12,7 @@ import { Component,HostListener } from '@angular/core';
 })
 
 export class RootComponent {
-  server : string = environment.server as string
+  env = process.env
 
   // constructor(private store:Store<{auth:Session,user:User}>){}
 
