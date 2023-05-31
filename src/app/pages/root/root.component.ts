@@ -1,6 +1,5 @@
 import { take } from 'rxjs/operators'
 import { Store } from '@ngrx/store'
-import { environment } from '../../../environments/environment.development'
 import { Session } from '../../ngrx/auth/auth.reducer'
 import { User,Profile } from '../../ngrx/user/user.reducer'
 import { Component,OnInit,HostListener } from '@angular/core';
@@ -12,6 +11,8 @@ import { Component,OnInit,HostListener } from '@angular/core';
 })
 
 export class RootComponent {
+  server = process.env['NG_APP_SERVER']
+
   // constructor(private store:Store<{auth:Session,user:User}>){}
 
   // @HostListener('window:beforeunload',['$event']) onBeforeUnload(e:Event){
