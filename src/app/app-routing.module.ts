@@ -18,7 +18,7 @@ const routes:Routes = [
     canActivate:[AuthenticationGuard]
   },
   {
-    path:'messages',
+    path:'messages/:_id',
     component:MessagesComponent,
     canActivate:[AuthenticationGuard]
   },
