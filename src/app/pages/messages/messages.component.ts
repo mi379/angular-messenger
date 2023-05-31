@@ -14,7 +14,7 @@ export class MessagesComponent implements OnInit {
   params:Params = this.route.snapshot.params
 
   goBack(){
-    this.router.navigate(
+    this.router.navigateByUrl(
       '/'
     )
   }
