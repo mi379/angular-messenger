@@ -1,4 +1,8 @@
-<app-navbar [profile]="(currentUser | async)?.profile" class="navbar"/>
+<app-navbar [profile]="(currentUser | async)?.profile" class="navbar">
+  <button class="text-white md-hidden" navbar-btn>
+    <app-bar/>
+  </button>
+</app-navbar>
 
 <div class="fullscreen flex flex-col">
 
