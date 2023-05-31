@@ -1,4 +1,4 @@
-import { ActivatedRoute } from '@angular/router'
+import { ActivatedRoute,Params } from '@angular/router'
 import { Profile } from '../../ngrx/user/user.reducer'
 import { Component,OnInit } from '@angular/core';
 
@@ -11,14 +11,18 @@ import { Component,OnInit } from '@angular/core';
 export class MessagesComponent implements OnInit {
   state:State = window.history.state
   profile:Profile = this.state.profile
-  params = this.route.snapshot.params
+  params:Params = this.route.snapshot.params
 
   constructor(private route:ActivatedRoute){}
 
   ngOnInit(){
-  	
+  	console.log(this.params['_id'])
   }
 }
+
+// interface Params {
+//   _id: string
+// }
 
 interface State{
   profile:Profile

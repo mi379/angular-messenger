@@ -1,1 +1,17 @@
-{{params | json}}
+<div class="navbar">
+  <div class="w-20 flex flex flex-row justify-between md:w-auto">
+    <button>
+    	<app-bar/>
+    </button>
+    <img 
+      [src]="profile.profileImage" 
+      class="rounded-full h-12 w-12"
+    />
+  </div>
+
+  <div class="flex-1 v-center text-white px-2"> <!-- div name -->
+    <p class="font-sans font-bold">
+      {{profile.firstName}}
+    </p>
+  </div>
+</div> 
