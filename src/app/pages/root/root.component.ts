@@ -11,6 +11,8 @@ import { Component,OnInit,HostListener } from '@angular/core';
 })
 
 export class RootComponent {
+
+  constructor(private store:Store<{user:User,auth:Session}>){}
  
   @HostListener('window:beforeunload',['$event']) onBeforeUnload(e:Event){
   	this.store.select(state => state).pipe(take(1)).subscribe(state => {
