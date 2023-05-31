@@ -10,7 +10,7 @@ import { Component,OnInit } from '@angular/core';
 })
 export class MessagesComponent implements OnInit {
   state:State = window.history.state
-  profile:Profile = state.profile
+  profile:Profile = this.state.profile
 
   ngOnInit(){
   	
