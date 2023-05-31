@@ -2,7 +2,6 @@ import { Injectable,OnInit } from '@angular/core';
 import { Subject,Observable,BehaviorSubject,throwError } from 'rxjs'
 import { catchError,timeoutWith } from 'rxjs/operators'
 import { HttpEvent,HttpClient,HttpErrorResponse } from '@angular/common/http';
-import { environment } from '../../../environments/environment.development'
 
 @Injectable({
 	providedIn: 'root'
@@ -11,6 +10,8 @@ import { environment } from '../../../environments/environment.development'
 export class RequestService {
 
 	constructor(private httpClient:HttpClient){}
+
+	server : string = process.env['NG_APP_SERVER']
 
 	get<Result>(config:RequestConfig<Result>) : Get {
 
@@ -77,7 +78,7 @@ export class RequestService {
 
 
 	createPath(path:string | undefined) : string {
-		return `${environment.server}/${path}`
+		return `${this.server}/${path}`
 	}
 
 	createInitialState<Result>() : State<Result> {
