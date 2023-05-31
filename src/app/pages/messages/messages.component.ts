@@ -1,4 +1,4 @@
-import { ActivatedRoute,Params } from '@angular/router'
+import { ActivatedRoute,Router,Params } from '@angular/router'
 import { Profile } from '../../ngrx/user/user.reducer'
 import { Component,OnInit } from '@angular/core';
 
@@ -13,7 +13,16 @@ export class MessagesComponent implements OnInit {
   profile:Profile = this.state.profile
   params:Params = this.route.snapshot.params
 
-  constructor(private route:ActivatedRoute){}
+  goBack(){
+    this.router.navigate(
+      '/'
+    )
+  }
+
+  constructor(
+    private route:ActivatedRoute,
+    private router:Router
+  ){}
 
   ngOnInit(){
   	console.log(this.params['_id'])
