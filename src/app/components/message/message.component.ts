@@ -11,6 +11,6 @@ export class MessageComponent {
   @Input() detail : Detail | undefined
 }
 
-type Detail = Profile & {
+export type Detail = Profile & {
   usersRef:string
 }

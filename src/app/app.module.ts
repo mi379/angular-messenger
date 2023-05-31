@@ -25,6 +25,7 @@ import { RecentlyMessagesComponent } from './components/recently-messages/recent
 import { MessageComponent } from './components/message/message.component';
 import { MessagesComponent } from './pages/messages/messages.component';
 import { ComparePipe } from './pipes/compare/compare.pipe';
+import { ParsePipe } from './pipes/parse/parse.pipe';
 
 
 @NgModule({
@@ -44,6 +45,7 @@ import { ComparePipe } from './pipes/compare/compare.pipe';
     MessageComponent,
     MessagesComponent,
     ComparePipe,
+    ParsePipe,
   ],
   imports: [
     BrowserModule,
