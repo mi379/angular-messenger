@@ -15,7 +15,7 @@
 
   <div  *ngIf="messages as messages" class="mt-[80px] p-4 border-2 border-black v-center text-center">
     <div *ngFor="let message of messages; last as last" [@isLast]="last ? 'last' : ''">
-      {{message}}
+      {{message.value}}
     </div>
   </div>
 
