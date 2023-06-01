@@ -65,7 +65,11 @@ export class MessagesComponent implements OnInit {
   	this.preFetch = this.currentUser.subscribe(state => {
       var jwt:string = `Bearer ${state.authorization}`
       
-      this.fetchAllMessage(this.params['_id'],jwt)
+      this.fetchAllMessage(
+        jwt,this.params[
+          '_id'
+        ]
+      )
     })
 
     this.onFetchStateChange = this.fetchState.subscribe(
