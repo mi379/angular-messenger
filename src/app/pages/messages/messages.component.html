@@ -13,7 +13,7 @@
     Loading....
   </div>
 
-  <div  *ngIf="messages as messages" class="mt-[80px] mb-[32px] p-4 border-2 border-black">
+  <div  *ngIf="messages as messages" class="mt-[80px] mb-[72px] p-4 border-2 border-black">
     <div *ngFor="let message of messages; last as last" [@isLast]="last ? ''  : 'last'">
 			<div *ngIf="message.sender !== params['_id']" class="flex flex-row">
 				<div class="bg-yellow-600 p-4 rounded-md text-white">
