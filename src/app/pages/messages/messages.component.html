@@ -13,7 +13,7 @@
     Loading....
   </div>
 
-  <div  *ngIf="messages as messages" class="mt-[80px] p-4 border-2 border-black v-center text-center">
+  <div  *ngIf="messages as messages" class="mt-[80px] p-4 border-2 border-black">
     <div *ngFor="let message of messages; last as last" [@isLast]="last ? 'last' : ''">
       {{message.value}}
     </div>
