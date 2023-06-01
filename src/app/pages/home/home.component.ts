@@ -1,15 +1,11 @@
 import { Store } from '@ngrx/store'
 import { Observable,Subscription,BehaviorSubject} from 'rxjs'
-import { take } from 'rxjs/operators';
 import { Session } from '../../ngrx/auth/auth.reducer'
 import { User,Profile } from '../../ngrx/user/user.reducer'
-import { resetUser } from '../../ngrx/user/user.actions'
 import { RequestService,State,Get,RequestState } from '../../services/request/request.service'
 import { AuthService } from '../../services/auth/auth.service'
 import { HttpHeaders } from '@angular/common/http';
 import { Component,OnDestroy,OnInit } from '@angular/core';
-import { blurAnimation } from '../../animations/blur.animation'
-
 
 @Component({
   selector: 'app-home',
