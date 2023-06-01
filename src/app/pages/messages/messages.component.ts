@@ -20,11 +20,15 @@ export class MessagesComponent implements OnInit {
   profile:Profile = this.state.profile
   params:Params = this.route.snapshot.params
 
+  messages: any
+
   fetchErrorMessage : string | undefined
 
   preFetch : Subscription | undefined
 
-  fetchState : any = this.request.createInitialState<any>()
+  onFetchStateChange : Subscription | undefined
+
+  fetchState : State<any> = this.request.createInitialState<any>()
 
   fetchFunction : Get = this.request.get<any>({state:this.fetchState})
   
@@ -32,8 +36,8 @@ export class MessagesComponent implements OnInit {
     return state.user
   })
 
-  fetchAllMessage(authorization:string){
-    var path:string = `message/all/${this.params['_id']}`
+  fetchAllMessage(authorization:string,_id:string){
+    var path:string = `message/all/${_id}`
 
     var headers:HttpHeaders = new HttpHeaders({
       authorization
@@ -61,10 +65,15 @@ export class MessagesComponent implements OnInit {
   	this.preFetch = this.currentUser.subscribe(state => {
       var jwt:string = `Bearer ${state.authorization}`
       
-      this.fetchAllMessage(
-        jwt
-      )
+      this.fetchAllMessage(this.params['_id'],jwt)
     })
+
+    this.onFetchStateChange = this.fetchState.subscribe(
+      state => {
+        this.messages = state.result
+        this.fetchErrorMessage  = state.error
+      }
+    )
   }
 }
 
