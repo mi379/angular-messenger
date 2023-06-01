@@ -14,8 +14,10 @@
   </div>
 
   <div  *ngIf="messages as messages" class="mt-[80px] p-4 border-2 border-black">
-    <div *ngFor="let message of messages; last as last" [@isLast]="last ? 'last' : ''">
-      {{message.value}}
+    <div class="flex flex-row" *ngFor="let message of messages; last as last" [@isLast]="last ? 'last' : ''">
+      <div class="self-end">
+				{{message.value}}
+			</div>
     </div>
   </div>
 
