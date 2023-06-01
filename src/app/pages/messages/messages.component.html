@@ -16,11 +16,15 @@
   <div *ngIf="messages as fetchResult" class="mt-[80px] p-4 border-2 border-black v-center text-center">
     <ul>
       <ng-container *ngFor="let message of fetchResult; last as isLast">
-        <li *ngIf="!isLast" class="mb-4 bg-red-900 rounded-md p-4">
-          {{message.value}}
+        <li *ngIf="!isLast" class="mb-4 flex flex-row">
+          <span class="p-4 bg-red-900 rounded self-end">
+             {{message.value}}
+          </span>
         </li>
-        <li *ngIf="isLast" class="bg-yellow-900 rounded-md p-4">
-          {{message.value}}
+        <li *ngIf="isLast" class="flex flex-row">
+          <span class="p-4 bg-red-900 rounded self-end">
+            {{message.value}}
+         </span>
         </li>
       </ng-container>
     </ul>
