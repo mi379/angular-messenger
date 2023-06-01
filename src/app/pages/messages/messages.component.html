@@ -13,7 +13,13 @@
     Loading....
   </div>
 
-  <div *ngIf="messages as fetchResult" class="mt-[80px] p-4 border-2 border-black v-center text-center">
+  <div  *ngIf="messages as messages" class="mt-[80px] p-4 border-2 border-black v-center text-center">
+    <div *ngFor="let message of messages; last as last" [@isLast]="last ? 'last' : ''">
+      {{message}}
+    </div>
+  </div>
+
+  <!-- <div *ngIf="messages as fetchResult" class="mt-[80px] p-4 border-2 border-black v-center text-center">
     <ul>
       <ng-container *ngFor="let message of fetchResult; last as isLast">
         <li *ngIf="!isLast" class="mb-4 h-64 flex flex-row">
@@ -36,5 +42,5 @@
         </li>
       </ng-container>
     </ul>
-  </div>
+  </div> -->
 </div>

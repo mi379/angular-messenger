@@ -7,13 +7,28 @@ import { Component,OnInit } from '@angular/core';
 import { Session } from '../../ngrx/auth/auth.reducer'
 import { RequestService,State,Get,RequestState } from '../../services/request/request.service'
 
-
+import {
+  trigger,
+  state,
+  style,
+  animate,
+  transition,
+} from '@angular/animations';
 
 
 @Component({
   selector: 'app-messages',
   templateUrl: './messages.component.html',
-  styleUrls: ['./messages.component.css']
+  styleUrls: ['./messages.component.css'],
+  animations: [
+    trigger(
+      'isLast',[
+        state('last',style({
+          marginBottom:'16px'
+        }))
+      ]
+    )
+  ]
 })
 export class MessagesComponent implements OnInit {
   state:WHState = window.history.state
