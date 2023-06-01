@@ -5,5 +5,15 @@
 </app-navbar>
 
 <div class="fullscreen flex flex-col">
+  <app-fetch-error class="flex-1 v-center" *ngIf="fetchErrorMessage as error">
+    <p message>{{error}}</p>
+  </app-fetch-error>
 
+  <div class="flex-1 v-center text-center" *ngIf="(fetchState | async)?.running">
+    Loading....
+  </div>
+
+  <div *ngIf="messages as fetchResult" class="mt-[80px] p-4 border-2 border-black v-center text-center">
+    {{fetchResult | json}}
+  </div>
 </div>

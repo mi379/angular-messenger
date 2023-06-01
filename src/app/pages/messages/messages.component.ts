@@ -28,7 +28,7 @@ export class MessagesComponent implements OnInit {
 
   onFetchStateChange : Subscription | undefined
 
-  fetchState : State<Message[]> = this.request.createInitialState<any>()
+  fetchState : State<Message[]> = this.request.createInitialState<Message[]>()
 
   fetchFunction : Get = this.request.get<Message[]>({state:this.fetchState})
   
