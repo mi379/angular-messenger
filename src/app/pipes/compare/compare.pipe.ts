@@ -7,8 +7,9 @@ import { Message } from '../../pages/home/home.component'
 })
 export class ComparePipe implements PipeTransform {
 
-  transform(value:Message,_id: _Id): Result {
+  transform(value:Message,_id:_Id): Result {
     var ref:string = value.sender.usersRef
+    
 
     return ref === _id as string
       ? value.accept
@@ -16,6 +17,8 @@ export class ComparePipe implements PipeTransform {
   }
 
 }
+
+type Params = [_Id,string]
 
 type _Id = string | undefined
 
