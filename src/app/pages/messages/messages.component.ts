@@ -20,7 +20,7 @@ export class MessagesComponent implements OnInit {
   profile:Profile = this.state.profile
   params:Params = this.route.snapshot.params
 
-  messages: any
+  messages: Message[] | undefined
 
   fetchErrorMessage : string | undefined
 
@@ -28,9 +28,9 @@ export class MessagesComponent implements OnInit {
 
   onFetchStateChange : Subscription | undefined
 
-  fetchState : State<any> = this.request.createInitialState<any>()
+  fetchState : State<Message[]> = this.request.createInitialState<any>()
 
-  fetchFunction : Get = this.request.get<any>({state:this.fetchState})
+  fetchFunction : Get = this.request.get<Message[]>({state:this.fetchState})
   
   currentUser : Observable<User> = this.store.select((state:Reducers) => {
     return state.user
@@ -79,6 +79,13 @@ export class MessagesComponent implements OnInit {
       }
     )
   }
+}
+
+interface Message {
+  _id:string,
+  sender:string,
+  accept:string,
+  value:string
 }
 
 interface Reducers {
