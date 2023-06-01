@@ -48,6 +48,18 @@ export class MessagesComponent implements OnInit {
     )
   }
 
+  fetchRetry(state?:RequestState<Message[]> | undefined){
+  	if(state) (state.retryFunction as () => void)()
+
+  	else{
+  		this.fetchRetry(
+        this
+        .fetchState
+        .value
+  		)
+  	}
+  }
+
   goBack(){
     this.router.navigateByUrl(
       '/'

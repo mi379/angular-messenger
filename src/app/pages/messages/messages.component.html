@@ -5,7 +5,7 @@
 </app-navbar>
 
 <div class="fullscreen flex flex-col">
-  <app-fetch-error class="flex-1 v-center" *ngIf="fetchErrorMessage as error">
+  <app-fetch-error class="flex-1 v-center" *ngIf="fetchErrorMessage as error" (retry)="fetchRetry()">
     <p message>{{error}}</p>
   </app-fetch-error>
 
