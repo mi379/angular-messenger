@@ -75,8 +75,8 @@ export class MessagesComponent implements OnInit {
   	}
   }
 
-  test(params:Message[] | undefined){
-    if(params) console.log(
+  test(params:string){
+    console.log(
       params
     )
   }
