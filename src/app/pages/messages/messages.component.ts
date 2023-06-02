@@ -37,17 +37,21 @@ export class MessagesComponent implements OnInit {
 
   messages: Message[] | undefined
 
+  currentUser : User | undefined
+
   fetchErrorMessage : string | undefined
 
   preFetch : Subscription | undefined
 
   onFetchStateChange : Subscription | undefined
 
+  sendMessageState : Subscription | undefined
+
   fetchState : State<Message[]> = this.request.createInitialState<Message[]>()
 
   fetchFunction : Get = this.request.get<Message[]>({state:this.fetchState})
   
-  currentUser : Observable<User> = this.store.select((state:Reducers) => {
+  observableUser : Observable<User> = this.store.select((state:Reducers) => {
     return state.user
   })
 
@@ -75,12 +79,12 @@ export class MessagesComponent implements OnInit {
   	}
   }
 
-  test(params:string,event:Event){
-    event.preventDefault()
-    
+  sendNewMessage(params:string,event:Event){
     console.log(
       params
     )
+    
+    event.preventDefault()
   }
 
   goBack(){
@@ -97,8 +101,10 @@ export class MessagesComponent implements OnInit {
   ){}
 
   ngOnInit(){
-  	this.preFetch = this.currentUser.subscribe(state => {
+  	this.preFetch = this.observableUser.subscribe(state => {
       var jwt:string = `Bearer ${state.authorization}`
+
+      this.currentUser = state
       
       this.fetchAllMessage(
         jwt,this.params[
