@@ -75,7 +75,9 @@ export class MessagesComponent implements OnInit {
   	}
   }
 
-  test(params:string){
+  test(params:string,event:Event){
+    event.preventDefault()
+    
     console.log(
       params
     )
