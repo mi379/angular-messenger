@@ -104,7 +104,8 @@ export interface Message{
   _id:string,
   sender:Sender,
   value:string,
-  accept:Accept
+  accept:Accept,
+  groupId:string
 }
 
 export type Sender = Profile & {

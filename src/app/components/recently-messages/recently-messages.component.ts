@@ -1,7 +1,5 @@
 import { Component,Input } from '@angular/core';
 import { Message } from '../../pages/home/home.component'
-import { User } from '../../ngrx/user/user.reducer'
-
 
 @Component({
   selector: 'app-recently-messages',

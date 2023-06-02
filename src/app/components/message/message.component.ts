@@ -9,6 +9,7 @@ import { Sender } from '../../pages/home/home.component'
 })
 export class MessageComponent {
   @Input() detail : Detail | undefined
+  @Input() groupId : string | undefined
 }
 
 export type Detail = Profile & {
