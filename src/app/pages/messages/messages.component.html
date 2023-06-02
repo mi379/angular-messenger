@@ -30,12 +30,12 @@
   </div>
 </div>
 
-<div class="fixed bottom-0 bg-red-900 p-4 w-full flex flex-row">
+<form class="fixed bottom-0 bg-red-900 p-4 w-full flex flex-row" (ngSubmit)="test(message.value)">
   <input type="text" placeholder="new message" class="flex-1 p-2 rounded-md" #message/>
   <div class="w-14 flex flex-row justify-end">
-    <button (click)="test(message.value)" class="bg-black rounded-full p-2 text-white">
+    <button type="submit" class="bg-black rounded-full p-2 text-white">
       <app-power/>
     </button>
   </div>
-</div>
+</form>
 
