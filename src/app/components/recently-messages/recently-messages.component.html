@@ -6,7 +6,7 @@
       </app-message>
     </li>
     <li *ngIf="isLast" class="bg-yellow-900 rounded-md flex flex-row">
-      <app-message [detail]="message | compare:_id" class="flex-1 flex flex-row">
+      <app-message [groupId]  [detail]="message | compare:_id" class="flex-1 flex flex-row">
         <span class="text-white" value> {{message.value}}</span>
       </app-message>
     </li>

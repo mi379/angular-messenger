@@ -130,5 +130,5 @@ interface Reducers {
 
 interface WHState{
   profile:Profile
-  groupId:string|undefined
+  groupId:string
 }
