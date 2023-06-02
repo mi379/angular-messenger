@@ -79,7 +79,7 @@ export class MessagesComponent implements OnInit {
   	}
   }
 
-  sendNewMessage(params:string,event:Event){
+  sendMessage(params:string,event:Event){
     console.log(
       params
     )
