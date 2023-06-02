@@ -75,6 +75,12 @@ export class MessagesComponent implements OnInit {
   	}
   }
 
+  test(params:Message[] | undefined){
+    if(params) console.log(
+      params
+    )
+  }
+
   goBack(){
     this.router.navigateByUrl(
       '/'
