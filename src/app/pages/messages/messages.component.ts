@@ -130,7 +130,7 @@ export class MessagesComponent implements OnInit {
       }
     })
 
-   
+    console.log(this.messages as Message[])
   }
 
   addToMessageList(newMessage : Message){
