@@ -1,3 +1,4 @@
+import ObjectID from 'bson-objectid';
 import { Observable,Subscription } from 'rxjs'
 import { Store } from '@ngrx/store'
 import { trigger,state,style } from '@angular/animations';
@@ -79,6 +80,10 @@ export class MessagesComponent implements OnInit {
   }
 
   sendNewMessage(value:string,authorization:string){
+    var _id = ObjectID().toHexString()
+
+    
+    
     var headers:HttpHeaders = new HttpHeaders({
       authorization
     })
@@ -147,7 +152,9 @@ export class MessagesComponent implements OnInit {
 }
 
 type New = Send & {
-  sender:string
+  _id:string
+  sender:string,
+  __v:number
 }
 
 interface Send{
