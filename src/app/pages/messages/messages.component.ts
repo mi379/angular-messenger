@@ -119,13 +119,18 @@ export class MessagesComponent implements OnInit {
   }
 
   updateSendStatus(_id:string){
-    var messages:Message[] = (this.messages as Message[]).filter(
-      message => message._id === _id
-    )
 
-    messages.forEach(message => {
-      message.send = true
+    var filter:Message[] = (this.messages as Message[]).filter(
+      message => message._id === _id
+    );
+    
+    (this.messages as Message[]).forEach(message => {
+      if(filter.includes(message)){
+        message.send = true
+      }
     })
+
+   
   }
 
   addToMessageList(newMessage : Message){
