@@ -50,8 +50,10 @@ export class MessagesComponent implements OnInit {
   })
 
   sendFunction : Post<Send> = this.request.post<New,Send>({
-    cb: result => this.updateSendStatus(
-      result._id
+    cb: ({_id}) => this.updateSendStatus(
+      (this.messages as Message[]).filter(
+        message => message._id === _id
+      )
     ),
     state:this.sendState,
     path:"message/new",
@@ -118,23 +120,10 @@ export class MessagesComponent implements OnInit {
     )
   }
 
-  updateSendStatus(_id:string){
-
-    var filter:Message[] = (this.messages as Message[]).filter(
-      message => message._id === _id
-    );
-    
-    (this.messages as Message[]).forEach(message => {
-      if(filter.includes(message)){
-        console.log("include")
-        message.send = true
-      }
-      else{
-        console.log("notfound")
-      }
-    })
-
-    console.log(this.messages as Message[])
+  updateSendStatus(filter:Message[]){
+    (this.messages as Message[]).forEach(
+      message => console.log(message)
+    )
   }
 
   addToMessageList(newMessage : Message){
