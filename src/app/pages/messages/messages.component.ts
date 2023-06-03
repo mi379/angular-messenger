@@ -92,11 +92,9 @@ export class MessagesComponent implements OnInit {
       value
     }
 
-    this.sendFunction(
-      sendParam,{
-        headers
-      }
-    )
+    console.log({
+      sendParam
+    })
   }
 
   onSubmit(newMessageValue:string,event:Event){
