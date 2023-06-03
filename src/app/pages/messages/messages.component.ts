@@ -126,7 +126,11 @@ export class MessagesComponent implements OnInit {
     
     (this.messages as Message[]).forEach(message => {
       if(filter.includes(message)){
+        console.log("include")
         message.send = true
+      }
+      else{
+        console.log("notfound")
       }
     })
 
