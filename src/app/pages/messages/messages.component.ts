@@ -1,4 +1,4 @@
-import ObjectID from 'bson-objectid';
+import ObjectId from 'bson-objectid'
 import { Observable,Subscription } from 'rxjs'
 import { Store } from '@ngrx/store'
 import { trigger,state,style } from '@angular/animations';
@@ -79,17 +79,26 @@ export class MessagesComponent implements OnInit {
   	}
   }
 
-  sendNewMessage(value:string,authorization:string){
-    var _id = ObjectID().toHexString()
-
-    
+  sendNewMessage(value:string,sender:string,authorization:string){
     
     var headers:HttpHeaders = new HttpHeaders({
       authorization
     })
 
+    
     var groupId:string = this.state['groupId']
     var accept:string = this.params['_id']
+
+    var _id = ObjectId().toHexString()
+
+    (this.messages as Message[]).push({
+      _id,
+      sender,
+      accept,
+      value,
+      send:false
+    })
+
 
     var sendParam:Send = {
       groupId,
@@ -109,7 +118,9 @@ export class MessagesComponent implements OnInit {
     var jwt = `Bearer ${user.authorization}`
 
     this.sendNewMessage(
+
       newMessageValue,
+      user._id,
       jwt
     )
     
