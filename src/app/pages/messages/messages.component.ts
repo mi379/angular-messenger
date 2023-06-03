@@ -125,7 +125,7 @@ export class MessagesComponent implements OnInit {
     (this.messages as Message[]).forEach(
       message => {
         if(filter.includes(message)){
-          console.log(true)
+          message.value = "xxx"
         }
         else{
           console.log(
