@@ -79,6 +79,7 @@ export class MessagesComponent implements OnInit {
   	}
   }
 
+
   sendNewMessage(value:string,sender:string,authorization:string){
     
     
@@ -91,14 +92,6 @@ export class MessagesComponent implements OnInit {
     var groupId:string = this.state['groupId']
     
     var accept:string = this.params['_id']
-
-    (this.messages as Message[]).push({
-      accept:this.params['_id'],
-      send:Boolean,
-      _id:__id,
-      sender,
-      value,
-    })
 
     var sendParam:Send = {
       groupId,
