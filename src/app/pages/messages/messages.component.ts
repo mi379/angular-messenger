@@ -110,7 +110,8 @@ export class MessagesComponent implements OnInit {
     var sendParam:Send = {
       groupId,
       accept,
-      value
+      value,
+      _id
     }
 
     this.sendFunction(
@@ -192,7 +193,6 @@ export class MessagesComponent implements OnInit {
 
 
 type New = Send & {
-  _id:string
   sender:string,
   __v:number
 }
@@ -200,7 +200,8 @@ type New = Send & {
 interface Send{
   accept:string,
   value:string,
-  groupId:string
+  groupId:string,
+  _id:string
 }
 
 interface Message {
