@@ -81,8 +81,8 @@ export class MessagesComponent implements OnInit {
 
   sendMessage(params:string,event:Event){
     console.log(
-      params
-    )
+      this.currentUser as User
+    ) 
     
     event.preventDefault()
   }
