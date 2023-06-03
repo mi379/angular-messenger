@@ -101,7 +101,10 @@ export class MessagesComponent implements OnInit {
   onSubmit(newMessageValue:string,event:Event){
     var user:User = this.currentUser as User
 
-   
+    this.sendMessage(
+      user.authorization,
+      newMessageValue
+    )
     
     event.preventDefault()
   }
