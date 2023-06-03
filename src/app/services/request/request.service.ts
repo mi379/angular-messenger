@@ -160,7 +160,7 @@ export class RequestService {
 }
 
 
-type Post<Body> = (body:Body,options?:any) => void
+export type Post<Body> = (body:Body,options?:any) => void
 
 export type State<Result> = BehaviorSubject<RequestState<Result>>
 

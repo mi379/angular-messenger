@@ -1,19 +1,12 @@
 import { Observable,Subscription } from 'rxjs'
 import { Store } from '@ngrx/store'
+import { trigger,state,style } from '@angular/animations';
 import { HttpHeaders } from '@angular/common/http';
 import { ActivatedRoute,Router,Params } from '@angular/router'
 import { User,Profile } from '../../ngrx/user/user.reducer'
 import { Component,OnInit } from '@angular/core';
 import { Session } from '../../ngrx/auth/auth.reducer'
-import { RequestService,State,Get,RequestState } from '../../services/request/request.service'
-
-import {
-  trigger,
-  state,
-  style,
-  animate,
-  transition,
-} from '@angular/animations';
+import { RequestService,State,Get,RequestState,Post } from '../../services/request/request.service'
 
 
 @Component({
@@ -45,7 +38,7 @@ export class MessagesComponent implements OnInit {
 
   onFetchStateChange : Subscription | undefined
 
-  sendMessageState : Subscription | undefined
+  sendState : State<New> = this.request.createInitialState<New>()
 
   fetchState : State<Message[]> = this.request.createInitialState<Message[]>()
 
@@ -53,6 +46,12 @@ export class MessagesComponent implements OnInit {
   
   observableUser : Observable<User> = this.store.select((state:Reducers) => {
     return state.user
+  })
+
+  sendFunction : Post<Send> = this.request.post<New,Send>({
+    cb: result => console.log(result),
+    state:this.sendState,
+    path:"message/new",
   })
 
   fetchAllMessage(authorization:string,_id:string){
@@ -79,10 +78,30 @@ export class MessagesComponent implements OnInit {
   	}
   }
 
-  sendMessage(params:string,event:Event){
-    console.log(
-      this.currentUser as User
-    ) 
+  sendMessage(authorization:string,value:string){
+    var headers:HttpHeaders = new HttpHeaders({
+      authorization
+    })
+
+    var groupId:string = this.state['groupId']
+    var accept:string = this.params['_id']
+
+    var sendParam:Send = {
+      groupId,
+      accept,
+      value
+    }
+
+    this.sendFunction(
+      sendParam,
+      headers
+    )
+  }
+
+  onSubmit(newMessageValue:string,event:Event){
+    var user:User = this.currentUser as User
+
+   
     
     event.preventDefault()
   }
@@ -122,6 +141,16 @@ export class MessagesComponent implements OnInit {
   }
 }
 
+type New = Send & {
+  sender:string
+}
+
+interface Send{
+  accept:string,
+  value:string,
+  groupId:string
+}
+
 interface Message {
   _id:string,
   sender:string,
@@ -139,3 +168,4 @@ interface WHState{
   profile:Profile
   groupId:string
 }
+
