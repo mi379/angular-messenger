@@ -122,7 +122,16 @@ export class MessagesComponent implements OnInit {
 
   updateSendStatus(filter:Message[]){
     (this.messages as Message[]).forEach(
-      message => console.log(message)
+      message => {
+        if(filter.includes(message)){
+          console.log(true)
+        }
+        else{
+          console.log(
+            false
+          )
+        }
+      }
     )
   }
 
