@@ -27,6 +27,7 @@ import { MessagesComponent } from './pages/messages/messages.component';
 import { ComparePipe } from './pipes/compare/compare.pipe';
 import { ParsePipe } from './pipes/parse/parse.pipe';
 import { ArrowLeftComponent } from './components/icons/arrow-left/arrow-left.component';
+import { CheckComponent } from './components/icons/check/check.component';
 
 
 @NgModule({
@@ -48,6 +49,7 @@ import { ArrowLeftComponent } from './components/icons/arrow-left/arrow-left.com
     ComparePipe,
     ParsePipe,
     ArrowLeftComponent,
+    CheckComponent,
   ],
   imports: [
     BrowserModule,

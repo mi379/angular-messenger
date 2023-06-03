@@ -127,6 +127,7 @@ interface Message {
   sender:string,
   accept:string,
   value:string
+  send:boolean,
 }
 
 interface Reducers {

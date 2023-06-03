@@ -18,6 +18,16 @@
 			<div *ngIf="message.sender !== params['_id']" class="flex flex-row">
 				<div class="bg-yellow-600 p-4 rounded-md text-white">
           {{message.value}}
+          <span *ngIf="message.send">
+            <app-check
+              class="text-blue-900"
+            />
+          </span>
+          <span *ngIf="!message.send">
+            <app-check
+              class="text-gray-900"
+            />
+          </span>
 				</div>
 			</div>
 			
