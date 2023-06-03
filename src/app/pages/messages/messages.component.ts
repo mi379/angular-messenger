@@ -81,24 +81,24 @@ export class MessagesComponent implements OnInit {
 
   sendNewMessage(value:string,sender:string,authorization:string){
     
+    
     var headers:HttpHeaders = new HttpHeaders({
       authorization
     })
 
+    var __id:string = ObjectId().toHexString()
     
     var groupId:string = this.state['groupId']
+    
     var accept:string = this.params['_id']
 
-    var _id = ObjectId().toHexString()
-
     (this.messages as Message[]).push({
-      _id,
+      accept:this.params['_id'],
+      send:Boolean,
+      _id:__id,
       sender,
-      accept,
       value,
-      send:false
     })
-
 
     var sendParam:Send = {
       groupId,
