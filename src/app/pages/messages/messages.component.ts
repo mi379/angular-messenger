@@ -78,7 +78,7 @@ export class MessagesComponent implements OnInit {
   	}
   }
 
-  sendMessage(authorization:string,value:string){
+  sendNewMessage(value:string,authorization:string){
     var headers:HttpHeaders = new HttpHeaders({
       authorization
     })
@@ -101,10 +101,11 @@ export class MessagesComponent implements OnInit {
 
   onSubmit(newMessageValue:string,event:Event){
     var user:User = this.currentUser as User
+    var jwt = `Bearer ${user.authorization}`
 
-    this.sendMessage(
-      user.authorization,
-      newMessageValue
+    this.sendNewMessage(
+      newMessageValue,
+      jwt
     )
     
     event.preventDefault()
