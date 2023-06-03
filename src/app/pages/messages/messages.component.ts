@@ -93,8 +93,9 @@ export class MessagesComponent implements OnInit {
     }
 
     this.sendFunction(
-      sendParam,
-      headers
+      sendParam,{
+        headers
+      }
     )
   }
 
