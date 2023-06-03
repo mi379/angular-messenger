@@ -87,11 +87,21 @@ export class MessagesComponent implements OnInit {
       authorization
     })
 
-    var __id:string = ObjectId().toHexString()
     
     var groupId:string = this.state['groupId']
+
+    var _id:string = ObjectId().toHexString()
     
     var accept:string = this.params['_id']
+
+
+    this.addToMessageList({
+      send:false,
+      sender,
+      accept,
+      value,
+      _id,
+    })
 
     var sendParam:Send = {
       groupId,
@@ -104,6 +114,12 @@ export class MessagesComponent implements OnInit {
         headers
       }
     )
+  }
+
+  addToMessageList(newMessage:Message){
+   (this.messages as Message[]).push(
+     newMessage
+   )
   }
 
   onSubmit(newMessageValue:string,event:Event){
@@ -154,6 +170,7 @@ export class MessagesComponent implements OnInit {
     )
   }
 }
+
 
 type New = Send & {
   _id:string
