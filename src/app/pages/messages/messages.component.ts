@@ -50,7 +50,9 @@ export class MessagesComponent implements OnInit {
   })
 
   sendFunction : Post<Send> = this.request.post<New,Send>({
-    cb: result => console.log(result),
+    cb: result => this.updateSendStatus(
+      result._id
+    ),
     state:this.sendState,
     path:"message/new",
   })
@@ -116,10 +118,20 @@ export class MessagesComponent implements OnInit {
     )
   }
 
-  addToMessageList(newMessage:Message){
-   (this.messages as Message[]).push(
-     newMessage
-   )
+  updateSendStatus(_id:string){
+    var messages:Message[] = (this.messages as Message[]).filter(
+      message => message._id === _id
+    )
+
+    messages.forEach(message => {
+      message.send = true
+    })
+  }
+
+  addToMessageList(newMessage : Message){
+    (this.messages as Message[]).push(
+      newMessage
+    )
   }
 
   onSubmit(newMessageValue:string,event:Event){
