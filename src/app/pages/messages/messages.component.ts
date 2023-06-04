@@ -57,10 +57,8 @@ export class MessagesComponent implements OnInit {
         message => message._id === _id
       )
     ),
-    failedCb: body => console.log(
-      this.failedSendList.push(
-        (body as Send)._id
-      )
+    failedCb: body => this.failedSendList.push(
+      (body as Send)._id
     ),
     state:this.sendState,
     path:"message/new",
