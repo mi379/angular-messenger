@@ -176,7 +176,7 @@ export type Get = (path?:string,options?:any) => void
 
 interface RequestConfig<Result>{
 	cb?:(result:Result) => void,
-	failedCb:(params:any)=>void,
+	failedCb?:(params:any)=>void,
 	state:State<Result>,
 	path?:string
 }
