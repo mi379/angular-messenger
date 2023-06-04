@@ -33,6 +33,8 @@ export class MessagesComponent implements OnInit {
 
   currentUser : User | undefined
 
+  failedSendList: string[] = []
+
   fetchErrorMessage : string | undefined
 
   preFetch : Subscription | undefined
@@ -54,6 +56,9 @@ export class MessagesComponent implements OnInit {
       (this.messages as Message[]).filter(
         message => message._id === _id
       )
+    ),
+    failedCb: body => this.failedSendList.push(
+      (body as Send)._id
     ),
     state:this.sendState,
     path:"message/new",

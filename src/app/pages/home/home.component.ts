@@ -19,6 +19,8 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   preFetch : Subscription | undefined
 
+  failedSendList : string[] = []
+
   onFetchStateChange: Subscription | undefined
 
   recentlyMessages : Message[] | undefined

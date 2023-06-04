@@ -94,10 +94,16 @@ export class RequestService {
 
     var retryFunction = () => { /* run retry */ }
 
+		var getBody : (() => Body) | undefined = undefined
+
     var timeout = new Error("error timeout.....")
 
     var error = (response:HttpErrorResponse) => {
       var message = response.message
+
+			if(config.failedCb) config.failedCb(
+				(getBody as () => Body)()
+			)
 			
 			config.state.next({
 				running:false,
@@ -124,6 +130,7 @@ export class RequestService {
     	config.state.next({
     		running:true
     	})
+			
 
       retryFunction = () => recursive(
         config
@@ -133,6 +140,7 @@ export class RequestService {
         options
 			)
 
+			getBody = () => body
       
 			this.httpClient.post<Result>(
         this.createPath(
@@ -168,6 +176,7 @@ export type Get = (path?:string,options?:any) => void
 
 interface RequestConfig<Result>{
 	cb?:(result:Result) => void,
+	failedCb?:(params:any)=>void,
 	state:State<Result>,
 	path?:string
 }
