@@ -28,6 +28,12 @@
               class="text-gray-900"
             />
           </span>
+
+          <span *ngIf="message._id | isFailedSend:failedSendList">
+            <app-exclamation-circle
+              class="text-red-900"
+            />
+          </span>
 				</div>
 			</div>
 			
