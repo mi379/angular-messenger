@@ -29,7 +29,7 @@
             />
           </span>
 
-          <span *ngIf="message._id | isFailedSend:failedSendList">
+          <span *ngIf="failedSendList.includes(message._id)">
             <app-exclamation-circle
               class="text-red-900"
             />
