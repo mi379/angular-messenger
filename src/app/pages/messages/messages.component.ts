@@ -55,6 +55,9 @@ export class MessagesComponent implements OnInit {
         message => message._id === _id
       )
     ),
+    failedCb: body => console.log(
+      body as Send
+    ),
     state:this.sendState,
     path:"message/new",
   })
