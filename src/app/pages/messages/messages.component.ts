@@ -5,7 +5,7 @@ import { trigger,state,style } from '@angular/animations';
 import { HttpHeaders } from '@angular/common/http';
 import { ActivatedRoute,Router,Params } from '@angular/router'
 import { User,Profile } from '../../ngrx/user/user.reducer'
-import { Component,OnInit } from '@angular/core';
+import { Component,OnInit,HostListener } from '@angular/core';
 import { Session } from '../../ngrx/auth/auth.reducer'
 import { RequestService,State,Get,RequestState,Post } from '../../services/request/request.service'
 
@@ -52,6 +52,40 @@ export class MessagesComponent implements OnInit {
   observableUser : Observable<User> = this.store.select((state:Reducers) => {
     return state.user
   })
+
+  @HostListener('window:online',['$event']) onOnline(event:Event){
+
+    (this.failedSendListDetail as Message[]).forEach(
+      message => this.retrySend([
+        message.accept,
+        message.value,
+        message._id
+      ])
+    )
+  }
+
+  retrySend([accept,value,_id]:[string,string,string]){
+    var user:User = this.currentUser as User
+    var groupId:string = this.state['groupId']
+    var jwt:string = `Bearer ${user.authorization}`
+
+    var headers:HttpHeaders = new HttpHeaders({
+      authorization:jwt
+    })
+
+    var sendParam:Send = {
+      groupId,
+      accept,
+      value,
+      _id
+    }
+
+    this.sendFunction(
+      sendParam,{
+        headers
+      }
+    )
+  }
 
   sendFunction : Post<Send> = this.request.post<New,Send>({
     cb: ({_id}) => this.updateSendStatus(
