@@ -23,13 +23,13 @@
               class="text-blue-900"
             />
           </span>
-          <span *ngIf="!message.send && !failedSendList.includes(message._id)">
+          <span *ngIf="!message.send && !failedSendListId.includes(message._id)">
             <app-check
               class="text-gray-900"
             />
           </span>
 
-          <span *ngIf="failedSendList.includes(message._id)">
+          <span *ngIf="failedSendListId.includes(message._id)">
             <app-exclamation-circle
               class="text-red-900"
             />

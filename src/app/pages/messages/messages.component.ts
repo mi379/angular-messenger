@@ -33,7 +33,9 @@ export class MessagesComponent implements OnInit {
 
   currentUser : User | undefined
 
-  failedSendList: string[] = []
+  failedSendListId: string[] = []
+
+  failedSendListDetail : Message[] = []
 
   fetchErrorMessage : string | undefined
 
@@ -57,12 +59,21 @@ export class MessagesComponent implements OnInit {
         message => message._id === _id
       )
     ),
-    failedCb: body => this.failedSendList.push(
-      (body as Send)._id
+    failedCb: body => this.onFailedSend(
+      body as Message
     ),
     state:this.sendState,
     path:"message/new",
   })
+
+  onFailedSend(message:Message){
+    this.failedSendListDetail.push(
+      message
+    )
+    this.failedSendListId.push(
+      message._id
+    )
+  }
 
   fetchAllMessage(authorization:string,_id:string){
     var path:string = `message/all/${_id}`
