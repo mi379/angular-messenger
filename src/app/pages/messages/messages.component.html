@@ -29,8 +29,8 @@
             />
           </span>
 				</div>
-        <app-exclamation-circle
-          class="text-xs text-red-900 ml-1"
+        <app-exclamation-circle *ngIf="failedSendList.includes(message._id)"
+          class="text-xs text-red-900"
         />
 			</div>
 			
