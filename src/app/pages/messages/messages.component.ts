@@ -172,6 +172,7 @@ export class MessagesComponent implements OnInit {
   }
 
   updateSendStatus(filter:Message[]){
+    
     (this.messages as Message[]).forEach(
       message => {
         if(filter.includes(message)){
@@ -179,6 +180,17 @@ export class MessagesComponent implements OnInit {
         }
       }
     )
+    
+    var [message]:Message[] = filter
+
+    this.failedSendListId = this.failedSendListId.filter(
+      _id => _id !== message._id
+    )
+
+    this.failedSendListDetail = this.failedSendListDetail.filter(
+      failed => failed._id !== message._id
+    )
+    
   }
 
   addToMessageList(newMessage : Message){
