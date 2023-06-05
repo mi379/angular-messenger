@@ -1,5 +1,5 @@
 import ObjectId from 'bson-objectid'
-import { Observable,Subscription } from 'rxjs'
+import { BehaviorSubject, Observable,Subscription } from 'rxjs'
 import { Store } from '@ngrx/store'
 import { trigger,state,style } from '@angular/animations';
 import { HttpHeaders } from '@angular/common/http';
@@ -34,6 +34,7 @@ export class MessagesComponent implements OnInit {
   currentUser : User | undefined
 
   failedSendListId: string[] = []
+  
 
   failedSendListDetail : Message[] = []
 
@@ -43,6 +44,8 @@ export class MessagesComponent implements OnInit {
 
   onFetchStateChange : Subscription | undefined
 
+  justSuccessResend:BehaviorSubject<string> = new BehaviorSubject<string>('')
+  
   sendState : State<New> = this.request.createInitialState<New>()
 
   fetchState : State<Message[]> = this.request.createInitialState<Message[]>()
@@ -55,13 +58,21 @@ export class MessagesComponent implements OnInit {
 
   @HostListener('window:online',['$event']) onOnline(event:Event){
 
-    (this.failedSendListDetail as Message[]).forEach(
-      message => this.retrySend([
-        message.accept,
-        message.value,
-        message._id
-      ])
-    )
+    var {accept,value,_id}:Message = this.failedSendListDetail[0]
+
+    this.retrySend([
+      accept,
+      value,
+      _id
+    ])
+    
+    // (this.failedSendListDetail as Message[]).forEach(
+    //   message => this.retrySend([
+    //     message.accept,
+    //     message.value,
+    //     message._id
+    //   ])
+    // )
   }
 
   retrySend([accept,value,_id]:[string,string,string]){
@@ -180,9 +191,13 @@ export class MessagesComponent implements OnInit {
         }
       }
     )
-    
-    var [message]:Message[] = filter
 
+    this.checkOnFailedList(
+      filter[0]
+    )
+  }
+
+  checkOnFailedList(message:Message){
     this.failedSendListId = this.failedSendListId.filter(
       _id => _id !== message._id
     )
@@ -190,7 +205,12 @@ export class MessagesComponent implements OnInit {
     this.failedSendListDetail = this.failedSendListDetail.filter(
       failed => failed._id !== message._id
     )
-    
+
+    if(this.failedSendListId.includes(message._id)){
+      this.justSuccessResend.next(
+        message._id
+      )
+    }
   }
 
   addToMessageList(newMessage : Message){
@@ -245,6 +265,18 @@ export class MessagesComponent implements OnInit {
         this.fetchErrorMessage  = state.error
       }
     )
+
+    this.justSuccessResend.subscribe(state => {
+      if(state != '' && this.failedSendListDetail.length > 0){
+        var {accept,value,_id}:Message = this.failedSendListDetail[0]
+
+        this.retrySend([
+          accept,
+          value,
+          _id
+        ])
+      }
+    })
   }
 }
 
