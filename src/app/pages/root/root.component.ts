@@ -19,6 +19,14 @@ export class RootComponent {
   	  localStorage.setItem("ngrxLocalStorage",JSON.stringify(state))
   	})
   }
+
+  @HostListener('window:online',['$event']) onOnline(event:Event){
+    console.log('connected')
+  }
+
+  @HostListener('window:offline',['$event']) onOffline(event:Event){
+    console.log('disconnected')
+  }
   
 }
 
