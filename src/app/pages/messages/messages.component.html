@@ -29,9 +29,9 @@
             />
           </span>
 				</div>
-        <span class="text-xs text-red text-underline hover:cursor-pointer" *ngIf="failedSendList.includes(message._id)">
-          failed send, click to retry
-        </span>
+        <app-exclamation-circle
+          class="text-xs text-red-900 ml-1"
+        />
 			</div>
 			
 			<div *ngIf="message.sender === params['_id']" class="flex flex-row justify-end">
