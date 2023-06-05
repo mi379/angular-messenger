@@ -88,6 +88,30 @@ export class MessagesComponent implements OnInit {
     )
   }
 
+  retrySend({accept,value,_id}:Message){
+    var user:User = this.currentUser as User
+    var jwt:string = `Bearer ${user.authorization}`
+   
+    var headers:HttpHeaders = new HttpHeaders({
+      authorization:jwt
+    })
+    
+    var groupId:string = this.state['groupId']
+
+    var sendParam:Send = {
+      accept,
+      value,
+      _id,
+      groupId
+    }
+
+    this.sendFunction(
+      sendParam,{
+        headers
+      }
+    )
+  }
+
   fetchAllMessage(authorization:string,_id:string){
     var path:string = `message/all/${_id}`
 
@@ -236,7 +260,11 @@ export class MessagesComponent implements OnInit {
 
     this.resendQueue.subscribe(resendList => {
       if(resendList.length > 0 ){
-        // send
+        this.retrySend(
+          resendList[
+            0
+          ]
+        )
       }
     })
   }
