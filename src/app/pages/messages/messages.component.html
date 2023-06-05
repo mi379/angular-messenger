@@ -23,18 +23,15 @@
               class="text-blue-900"
             />
           </span>
-          <span *ngIf="!message.send && !failedSendListId.includes(message._id)">
+          <span *ngIf="!message.send && !failedSendList.includes(message._id)">
             <app-check
               class="text-gray-900"
             />
           </span>
-
-          <span *ngIf="failedSendListId.includes(message._id)">
-            <app-exclamation-circle
-              class="text-red-900"
-            />
-          </span>
 				</div>
+        <span class="text-xs text-red text-underline" *ngIf="failedSendList.includes(message._id)">
+          failed send, click to retry
+        </span>
 			</div>
 			
 			<div *ngIf="message.sender === params['_id']" class="flex flex-row justify-end">

@@ -33,7 +33,7 @@ export class MessagesComponent implements OnInit {
 
   currentUser : User | undefined
 
-  failedSendListId: string[] = []
+  failedSendList: string[] = []
 
   failedSendListDetail:Message[] = []
   
@@ -42,8 +42,6 @@ export class MessagesComponent implements OnInit {
   preFetch : Subscription | undefined
 
   onFetchStateChange : Subscription | undefined
-
-  resendQueue : BehaviorSubject<Message[]> = new BehaviorSubject<Message[]>([])
   
   sendState : State<New> = this.request.createInitialState<New>()
 
@@ -55,14 +53,7 @@ export class MessagesComponent implements OnInit {
     return state.user
   })
 
-  @HostListener('window:online',['$event']) onOnline(event:Event){
-    if(this.failedSendListDetail.length > 0){
-      this.resendQueue.next([
-        this.failedSendListDetail[0]
-      ])
-    }
-    
-  }
+ 
 
   
 
@@ -83,7 +74,7 @@ export class MessagesComponent implements OnInit {
     this.failedSendListDetail.push(
       message
     )
-    this.failedSendListId.push(
+    this.failedSendList.push(
       message._id
     )
   }
@@ -183,25 +174,6 @@ export class MessagesComponent implements OnInit {
         }
       }
     )
-
-    var [message]:Message[] = filter
-
-    if(this.failedSendListId.includes(message._id)){
-      this.failedSendListId = this.failedSendListId.filter(
-        _id => _id != message._id
-      )
-      this.failedSendListDetail = this.failedSendListDetail.filter(
-        failed => failed._id != message._id
-      )
-
-      this.resendQueue.next([])
-
-      if(this.failedSendListDetail.length > 0){
-        this.resendQueue.next([
-          this.failedSendListDetail[0]
-        ])
-      }
-    }
   }
 
 
@@ -258,15 +230,6 @@ export class MessagesComponent implements OnInit {
       }
     )
 
-    this.resendQueue.subscribe(resendList => {
-      if(resendList.length > 0 ){
-        this.retrySend(
-          resendList[
-            0
-          ]
-        )
-      }
-    })
   }
 }
 
