@@ -18,12 +18,12 @@
 			<div *ngIf="message.sender !== params['_id']">
 				<div class="bg-yellow-600 p-4 rounded-md text-white w-1/2 flex flex-col">
           <span>{{message.value}}</span>
-          <span *ngIf="message.send" class="self-end">
+          <span *ngIf="message.send" class="self-end -mt-1">
             <app-check
               class="text-blue-900"
             />
           </span>
-          <span class="self-end" *ngIf="!message.send && !failedSendList.includes(message._id)">
+          <span class="self-end -mt-1" *ngIf="!message.send && !failedSendList.includes(message._id)">
             <app-check
               class="text-gray-900"
             />
