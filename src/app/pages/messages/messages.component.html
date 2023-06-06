@@ -14,7 +14,7 @@
   </div>
 
   <div  *ngIf="messages as messages" class="mt-[80px] mb-[72px] p-4 border-2 border-black">
-    <div *ngFor="let message of messages; last as last" class="text-right" [@isLast]="last ? ''  : 'last'">
+    <div *ngFor="let message of messages; last as last" [@isLast]="last ? ''  : 'last'">
 			<div *ngIf="message.sender !== params['_id']">
 				<div class="bg-yellow-600 p-4 rounded-md text-white w-1/2">
           {{message.value}}
@@ -28,10 +28,12 @@
               class="text-gray-900"
             />
           </span>
-				</div>
-        <span class="text-red-900 text-xs hover:cursor-pointer" *ngIf="failedSendList.includes(message._id)">
-          failed to send, click to retry...
-        </span>
+        </div>
+        <div class="w-1/2 text-right" *ngIf="failedSendList.includes(message._id)">
+          <span class="text-red-900 text-xs text-underline hover:cursor-pointer">
+            failed to send, click to retry
+          </span>
+        </div>
 			</div>
 			
 			<div *ngIf="message.sender === params['_id']" class="flex flex-row justify-end">
