@@ -16,14 +16,14 @@
   <div  *ngIf="messages as messages" class="mt-[80px] mb-[72px] p-4 border-2 border-black">
     <div *ngFor="let message of messages; last as last" [@isLast]="last ? ''  : 'last'">
 			<div *ngIf="message.sender !== params['_id']">
-				<div class="bg-yellow-600 p-4 rounded-md text-white w-1/2">
+				<div class="bg-yellow-600 p-4 rounded-md text-white w-1/2 flex flex-col">
           {{message.value}}
-          <span *ngIf="message.send">
+          <span *ngIf="message.send" class="self-end">
             <app-check
               class="text-blue-900"
             />
           </span>
-          <span *ngIf="!message.send && !failedSendList.includes(message._id)">
+          <span class="self-end" *ngIf="!message.send && !failedSendList.includes(message._id)">
             <app-check
               class="text-gray-900"
             />
