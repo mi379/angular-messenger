@@ -34,8 +34,6 @@ export class MessagesComponent implements OnInit {
   currentUser : User | undefined
 
   failedSendList: string[] = []
-
-  failedSendListDetail:Message[] = []
   
   fetchErrorMessage : string | undefined
   
@@ -53,10 +51,6 @@ export class MessagesComponent implements OnInit {
     return state.user
   })
 
- 
-
-  
-
   sendFunction : Post<Send> = this.request.post<New,Send>({
     cb: ({_id}) => this.updateSendStatus(
       (this.messages as Message[]).filter(
@@ -71,29 +65,25 @@ export class MessagesComponent implements OnInit {
   })
 
   onFailedSend(message:Message){
-    this.failedSendListDetail.push(
-      message
-    )
     this.failedSendList.push(
       message._id
     )
   }
 
-  retrySend({accept,value,_id}:Message){
+  resend({accept,value,_id}:Message){
+    var groupId:string = this.state['groupId']
     var user:User = this.currentUser as User
     var jwt:string = `Bearer ${user.authorization}`
-   
+
     var headers:HttpHeaders = new HttpHeaders({
       authorization:jwt
     })
-    
-    var groupId:string = this.state['groupId']
 
     var sendParam:Send = {
-      accept,
-      value,
       _id,
-      groupId
+      groupId,
+      accept,
+      value
     }
 
     this.sendFunction(
@@ -102,6 +92,7 @@ export class MessagesComponent implements OnInit {
       }
     )
   }
+
 
   fetchAllMessage(authorization:string,_id:string){
     var path:string = `message/all/${_id}`
@@ -173,6 +164,12 @@ export class MessagesComponent implements OnInit {
           message.send = true
         }
       }
+    )
+
+    var [message]: Message[] = filter
+
+    this.failedSendList = this.failedSendList.filter(
+      failed => failed != message._id
     )
   }
 
