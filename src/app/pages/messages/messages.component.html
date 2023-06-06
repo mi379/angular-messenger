@@ -17,7 +17,7 @@
     <div *ngFor="let message of messages; last as last" [@isLast]="last ? ''  : 'last'">
 			<div *ngIf="message.sender !== params['_id']">
 				<div class="bg-yellow-600 p-4 rounded-md text-white w-1/2 flex flex-col">
-          {{message.value}}
+          <span>{{message.value}}</span>
           <span *ngIf="message.send" class="self-end">
             <app-check
               class="text-blue-900"
