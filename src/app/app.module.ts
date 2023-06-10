@@ -29,6 +29,7 @@ import { ParsePipe } from './pipes/parse/parse.pipe';
 import { ArrowLeftComponent } from './components/icons/arrow-left/arrow-left.component';
 import { CheckComponent } from './components/icons/check/check.component';
 import { ExclamationCircleComponent } from './components/icons/exclamation-circle/exclamation-circle.component';
+import { MomentPipe } from './pipes/moment/moment.pipe';
 
 
 @NgModule({
@@ -52,6 +53,7 @@ import { ExclamationCircleComponent } from './components/icons/exclamation-circl
     ArrowLeftComponent,
     CheckComponent,
     ExclamationCircleComponent,
+    MomentPipe,
   ],
   imports: [
     BrowserModule,

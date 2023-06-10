@@ -21,6 +21,7 @@
     "@ngrx/store": "^15.4.0",
     "@ngrx/store-devtools": "^15.4.0",
     "bson-objectid": "^2.0.4",
+    "moment": "^2.29.4",
     "ng-process-env": "^16.0.6",
     "ngrx-store-localstorage": "^15.0.0",
     "rxjs": "~7.8.0",

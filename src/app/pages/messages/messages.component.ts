@@ -1,11 +1,10 @@
-import ObjectId from 'bson-objectid'
-import { BehaviorSubject, Observable,Subscription } from 'rxjs'
+import { Observable,Subscription } from 'rxjs'
 import { Store } from '@ngrx/store'
 import { trigger,state,style } from '@angular/animations';
 import { HttpHeaders } from '@angular/common/http';
 import { ActivatedRoute,Router,Params } from '@angular/router'
 import { User,Profile } from '../../ngrx/user/user.reducer'
-import { Component,OnInit,HostListener } from '@angular/core';
+import { Component,OnInit } from '@angular/core';
 import { Session } from '../../ngrx/auth/auth.reducer'
 import { RequestService,State,Get,RequestState,Post } from '../../services/request/request.service'
 
@@ -25,74 +24,6 @@ import { RequestService,State,Get,RequestState,Post } from '../../services/reque
   ]
 })
 export class MessagesComponent implements OnInit {
-  state:WHState = window.history.state
-  profile:Profile = this.state.profile
-  params:Params = this.route.snapshot.params
-
-  messages: Message[] | undefined
-
-  currentUser : User | undefined
-
-  failedSendList: string[] = []
-  
-  fetchErrorMessage : string | undefined
-  
-  preFetch : Subscription | undefined
-
-  onFetchStateChange : Subscription | undefined
-  
-  sendState : State<New> = this.request.createInitialState<New>()
-
-  fetchState : State<Message[]> = this.request.createInitialState<Message[]>()
-
-  fetchFunction : Get = this.request.get<Message[]>({state:this.fetchState})
-  
-  observableUser : Observable<User> = this.store.select((state:Reducers) => {
-    return state.user
-  })
-
-  sendFunction : Post<Send> = this.request.post<New,Send>({
-    cb: ({_id}) => this.updateSendStatus(
-      (this.messages as Message[]).filter(
-        message => message._id === _id
-      )
-    ),
-    failedCb: body => this.onFailedSend(
-      body as Message
-    ),
-    state:this.sendState,
-    path:"message/new",
-  })
-
-  onFailedSend(message:Message){
-    this.failedSendList.push(
-      message._id
-    )
-  }
-
-  resend({accept,value,_id}:Message){
-    var groupId:string = this.state['groupId']
-    var user:User = this.currentUser as User
-    var jwt:string = `Bearer ${user.authorization}`
-
-    var headers:HttpHeaders = new HttpHeaders({
-      authorization:jwt
-    })
-
-    var sendParam:Send = {
-      _id,
-      groupId,
-      accept,
-      value
-    }
-
-    this.sendFunction(
-      sendParam,{
-        headers
-      }
-    )
-  }
-
 
   fetchAllMessage(authorization:string,_id:string){
     var path:string = `message/all/${_id}`
@@ -104,6 +35,21 @@ export class MessagesComponent implements OnInit {
     this.fetchFunction(
       path,{headers}
     )
+  }
+
+  ngOnInit(){
+    this.preFetch = this.observableUser.subscribe(state => {
+      var jwt:string = `Bearer ${state.authorization}`
+
+      this.currentUser = state
+      
+      this.fetchAllMessage(
+        jwt,this.params[
+          '_id'
+        ]
+      )
+    })
+    
   }
 
   fetchRetry(state?:RequestState<Message[]> | undefined){
@@ -118,35 +64,29 @@ export class MessagesComponent implements OnInit {
   	}
   }
 
+  onSubmit(value:string){
+    var {authorization,_id}:User = this.currentUser as User
+    var authorizationString = `Bearer ${authorization}`
 
-  sendNewMessage(value:string,sender:string,authorization:string){
-    
-    
+    var current:(Message&Status)[] = this.messages as (
+      Message & Status
+    )[]
+
     var headers:HttpHeaders = new HttpHeaders({
-      authorization
+      authorization:authorizationString
     })
 
-    
-    var groupId:string = this.state['groupId']
+    var groupId:string = this.state.groupId
 
-    var _id:string = ObjectId().toHexString()
-    
     var accept:string = this.params['_id']
 
-
-    this.addToMessageList({
-      send:false,
-      sender,
-      accept,
-      value,
-      _id,
-    })
+    var sendAt:number = Date.now()
 
     var sendParam:Send = {
-      groupId,
       accept,
-      value,
-      _id
+      groupId,
+      sendAt,
+      value
     }
 
     this.sendFunction(
@@ -154,44 +94,18 @@ export class MessagesComponent implements OnInit {
         headers
       }
     )
-  }
 
-  updateSendStatus(filter:Message[]){
-    
-    (this.messages as Message[]).forEach(
-      message => {
-        if(filter.includes(message)){
-          message.send = true
-        }
+    this.messages = [
+      ...current,{
+        sender:_id,
+        send:false,
+        accept,
+        groupId,
+        sendAt,
+        value,
       }
-    )
-
-    var [message]: Message[] = filter
-
-    this.failedSendList = this.failedSendList.filter(
-      failed => failed != message._id
-    )
-  }
-
-
-  addToMessageList(newMessage : Message){
-    (this.messages as Message[]).push(
-      newMessage
-    )
-  }
-
-  onSubmit(newMessageValue:string,event:Event){
-    var user:User = this.currentUser as User
-    var jwt = `Bearer ${user.authorization}`
-
-    this.sendNewMessage(
-
-      newMessageValue,
-      user._id,
-      jwt
-    )
-    
-    event.preventDefault()
+    ]
+   
   }
 
   goBack (){
@@ -207,48 +121,93 @@ export class MessagesComponent implements OnInit {
     private router:Router
   ){}
 
-  ngOnInit(){
-  	this.preFetch = this.observableUser.subscribe(state => {
-      var jwt:string = `Bearer ${state.authorization}`
+  state:WHState = window.history.state
+  profile:Profile = this.state.profile
+  params:Params = this.route.snapshot.params
 
-      this.currentUser = state
-      
-      this.fetchAllMessage(
-        jwt,this.params[
-          '_id'
-        ]
-      )
-    })
+  messages: (Message & Status)[] | undefined
 
-    this.onFetchStateChange = this.fetchState.subscribe(
-      state => {
-        this.messages = state.result
-        this.fetchErrorMessage  = state.error
+  currentUser : User | undefined
+
+  fetchErrorMessage : string | undefined
+  
+  preFetch : Subscription | undefined
+
+  sendState : State<Message> = this.request.createInitialState<Message>()
+    
+  fetchState : State<Message[]> = this.request.createInitialState<Message[]>()
+
+  sendFunction : Post<Send> = this.request.post<Message,Send>({
+    state:this.sendState,
+    path:"message/new",
+    cb:result => this.onSuccessSend(
+      (this.messages as (Message & Status)[]).filter(
+        message => message.sendAt = result.sendAt
+      ),
+      result._id as string
+    )
+  })
+
+  onSuccessSend([filter]:(Message & Status)[],_id:string){
+    var current:(Message & Status)[] = this.messages as (Message & Status)[]
+
+    var updatedList:(Message & Status)[] = current.map(
+      message => {
+        return current.includes(filter)
+          ? {
+            ...message,
+            send:true,
+            _id:_id
+          }
+          : message
       }
     )
 
+    this.messages = updatedList
   }
-}
 
+  fetchFunction : Get = this.request.get<Message[]>({
+    state:this.fetchState,
+    
+    failedCb : message => {
+      this.fetchErrorMessage = message as string
+    },
 
-type New = Send & {
-  sender:string,
-  __v:number
-}
+    cb: result =>  {
+      this.fetchErrorMessage = undefined
+      this.messages = result.map(message => {
+        return {
+          ...message,
+          send:true
+        }
+      })
+    } 
+  })
+  
+  observableUser : Observable<User> = this.store.select((state:Reducers) => {
+    return state.user
+  })
 
-interface Send{
-  accept:string,
-  value:string,
-  groupId:string,
-  _id:string
 }
 
 interface Message {
-  _id:string,
+  _id?:string,
   sender:string,
   accept:string,
   value:string
-  send:boolean,
+  sendAt:number,
+  groupId:string
+}
+
+interface Send{
+  groupId:string,
+  accept:string,
+  value:string,
+  sendAt:number
+}
+
+interface Status{
+  send:boolean
 }
 
 interface Reducers {

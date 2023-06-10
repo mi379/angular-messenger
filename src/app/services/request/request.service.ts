@@ -22,7 +22,11 @@ export class RequestService {
 		var timeout = new Error("error timeout.....")
  
     var error = (response:HttpErrorResponse) => {
-      var message = response.message
+			var message:string = response.message
+			
+			if(config.failedCb) config.failedCb(
+        message
+			)
 			
 			config.state.next({
 				running:false,
