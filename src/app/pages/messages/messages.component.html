@@ -1,49 +1,67 @@
-<app-navbar [profile]="profile" class="navbar">
+<app-navbar [profile]="state.profile" class="navbar">
   <button (click)="goBack()" class="text-white md-hidden" navbar-btn>
     <app-arrow-left/>
   </button>
 </app-navbar>
 
 <div class="fullscreen flex flex-col">
-  <app-fetch-error class="flex-1 v-center" *ngIf="fetchErrorMessage as error" (retry)="fetchRetry()">
-    <p message>{{error}}</p>
+  <app-fetch-error class="flex-1 v-center" *ngIf="fetchErrorMessage as message" (retry)="fetchRetry()">
+    <p message>{{message}}</p>
   </app-fetch-error>
 
-  <div class="flex-1 v-center text-center" *ngIf="(fetchState | async)?.running">
+  <div class="flex-1 v-center text-center" *ngIf="!fetchErrorMessage && !messages">
     Loading....
   </div>
 
   <div  *ngIf="messages as messages" class="mt-[80px] mb-[72px] p-4 border-2 border-black">
     <div *ngFor="let message of messages; last as last" [@isLast]="last ? ''  : 'last'">
-			<div *ngIf="message.sender !== params['_id']" class="bg-yellow-600 p-4 rounded-md w-1/2 flex flex-row">
+			<div *ngIf="message.sender !== _id" class="bg-yellow-600 p-4 rounded-md w-1/2 flex flex-row">
         <div class="flex-1">
           <span>
             {{message.value}}
           </span>
         </div>
 
-        <div class="flex flex-col justify-end" *ngIf="!message.send">
+        <div class="flex flex-col justify-end" *ngIf="!message.send && !failedSendList.includes(message.sendAt)">
           <app-check class="text-gray-900"/>
         </div>
+
+        <div class="flex flex-col justify-end" *ngIf="failedSendList.includes(message.sendAt)">
+          <app-exclamation-circle class="text-red-900"/>
+        </div> 
         
         <div class="flex flex-col justify-end" *ngIf="message.send">
           <app-check class="text-blue-900"/>
         </div>
       </div>
 			
-			<div *ngIf="message.sender === params['_id']" class="flex flex-row justify-end">
+			<div *ngIf="message.sender === _id" class="flex flex-row justify-end">
 				<div class="bg-red-600 p-4 rounded-md text-white w-1/2">
           {{message.value}}
 				</div>
-			</div>
+      </div>
+      
+      <div class="w-1/2 flex flex-row justify-end hover:cursor-pointer" *ngIf="message.sender !== _id && failedSendList.includes(message.sendAt)">
+        <span class="text-xs text-red-900 text-underline" (click)="resend(message.sendAt)">
+          failed to send, click to retry
+        </span>
+      </div>
+
+
     </div>
   </div>
 </div>
 
 <form class="fixed bottom-0 bg-red-900 p-4 w-full flex flex-row" (submit)="onSubmit(message.value); false">
-  <input type="text" placeholder="new message" class="flex-1 p-2 rounded-md" #message/>
+  <input 
+    type="text" placeholder="new message" 
+    class="flex-1 p-2 rounded-md" 
+    [disabled]="!internetConnected" 
+    [placeholder]="internetConnected ? 'new message' : 'disconnected from internet'"
+    #message
+  />
   <div class="w-14 flex flex-row justify-end">
-    <button type="submit" class="bg-black rounded-full p-2 text-white">
+    <button type="submit" class="bg-black rounded-full p-2 text-white" [disabled]="!internetConnected">
       <app-power/>
     </button> 
   </div>

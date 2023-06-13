@@ -31,7 +31,6 @@ import { CheckComponent } from './components/icons/check/check.component';
 import { ExclamationCircleComponent } from './components/icons/exclamation-circle/exclamation-circle.component';
 import { MomentPipe } from './pipes/moment/moment.pipe';
 
-
 @NgModule({
   declarations: [
     LoginComponent,

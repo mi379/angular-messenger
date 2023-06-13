@@ -2,7 +2,7 @@ import { take } from 'rxjs/operators'
 import { Store } from '@ngrx/store'
 import { Session } from '../../ngrx/auth/auth.reducer'
 import { User,Profile } from '../../ngrx/user/user.reducer'
-import { Component,OnInit,HostListener } from '@angular/core';
+import { Component,HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-root',
