@@ -1,5 +1,6 @@
-import { Observable,timeoutWith,throwError } from 'rxjs'
 import { Store } from '@ngrx/store'
+import { io,Socket } from 'socket.io-client'
+import { Observable,timeoutWith,throwError } from 'rxjs'
 import { trigger,state,style } from '@angular/animations';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { ActivatedRoute,Router,Params } from '@angular/router'
@@ -47,6 +48,24 @@ export class MessagesComponent implements OnInit{
   failedSendList:number[] = []
 
   internetConnected:boolean = true
+
+  socket:Socket = io(
+    this.server
+  )
+  .on(
+    'connect',
+    this.onConnect.bind(
+      this
+    )
+  )
+  .on(
+    'newMessage',
+    this.onNewMessage.bind(
+      this
+    )
+  )
+  
+  
 
   constructor(
     private httpClient:HttpClient,
@@ -237,7 +256,9 @@ export class MessagesComponent implements OnInit{
         sender:_id,
         send:false
       }
-    ]
+    ];
+
+    //(document.getElementById("target") as HTMLElement).scrollIntoView()
 
     this.sendNewMessage(
       jwtString,
@@ -255,7 +276,7 @@ export class MessagesComponent implements OnInit{
   }
   
   ngOnInit(){
-    
+
     (this.currentUser as Observable<User>).subscribe(state => {
       this.currentUser = state
 
@@ -265,6 +286,36 @@ export class MessagesComponent implements OnInit{
       )
     })
 
+    // this.socket.on(
+    //   'connect',
+    //   this.onConnect.bind(
+    //     this
+    //   )
+    // )
+
+  }
+
+  onConnect(){
+
+    console.log('connected.....');
+    
+  }
+
+  onNewMessage(message:Message){
+    var currentUserId:string = (this.currentUser as User)._id
+    var currentList = (this.messages as (Message & Status)[])
+
+    if(message.sender === this._id && message.accept === currentUserId){
+      this.messages = [
+        ...currentList,{
+          ...message,
+          send:true
+        }
+      ];
+
+      //(document.getElementById("target") as HTMLElement).scrollIntoView()
+    }
+    
   }
 
   @HostListener('window:online',['$event']) onConnected(event:Event){
