@@ -1,11 +1,40 @@
-import { Injectable,OnInit } from '@angular/core';
-import { BehaviorSubject,throwError } from 'rxjs'
+import { Injectable } from '@angular/core';
+import { BehaviorSubject,Observable,throwError } from 'rxjs'
 import { timeoutWith } from 'rxjs/operators'
 import { HttpEvent,HttpClient,HttpErrorResponse } from '@angular/common/http';
 
 @Injectable({
 	providedIn: 'root'
 })
+
+
+// export class RequestService{
+// 	constructor(private httpClient:HttpClient){}
+
+// 	server : string = process.env['NG_APP_SERVER']
+	
+
+// 	get<Result>(config:RequestConfig<Result>):{run:Get<Result>,retry:Retry<Result>} {
+//     var retry : Retry<Result> = undefined
+
+// 		var run = (path:string,options?:any):Run<Result> => {
+// 			retry = () => (this.get<Result>)(config).run(
+//         path,options
+// 			)
+			
+// 			return this.httpClient.get<Result>(
+// 				`${this.server}/${path}`,
+// 				options
+// 			)
+// 		}
+		
+// 		return {
+// 			run,
+// 			retry
+// 		}
+// 	}
+// }
+
 
 export class RequestService {
 
@@ -22,7 +51,11 @@ export class RequestService {
 		var timeout = new Error("error timeout.....")
  
     var error = (response:HttpErrorResponse) => {
-      var message = response.message
+			var message:string = response.message
+			
+			if(config.failedCb) config.failedCb(
+        message
+			)
 			
 			config.state.next({
 				running:false,
@@ -45,7 +78,7 @@ export class RequestService {
     }
 
 	
-		return (path?:string,options?:any) => {
+		return (path:string,options?:any) => {
 
 			config.state.next({running:true})
 
@@ -172,7 +205,11 @@ export type Post<Body> = (body:Body,options?:any) => void
 
 export type State<Result> = BehaviorSubject<RequestState<Result>>
 
-export type Get = (path?:string,options?:any) => void
+export type Get = (path:string,options?:any) => void
+
+type Retry<Result> = (() => Run<Result>) | undefined
+
+type Run<Result> = Observable<HttpEvent<Result>>
 
 interface RequestConfig<Result>{
 	cb?:(result:Result) => void,
