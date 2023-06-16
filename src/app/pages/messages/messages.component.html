@@ -22,16 +22,27 @@
           </span>
         </div>
 
+        <!-- loading send (send:false,read:false)-->
         <div class="flex flex-col justify-end" *ngIf="!message.send && !failedSendList.includes(message.sendAt)">
           <app-check class="text-gray-900"/>
         </div>
-
+        
+       <!-- failed to send -->
         <div class="flex flex-col justify-end" *ngIf="failedSendList.includes(message.sendAt)">
           <app-exclamation-circle class="text-red-900"/>
         </div> 
-        
-        <div class="flex flex-col justify-end" *ngIf="message.send">
+
+
+        <!-- success send (not read) -->
+        <div class="flex flex-col justify-end" *ngIf="message.send && !message.read">
           <app-check class="text-blue-900"/>
+        </div>
+
+        <div class="flex flex-col justify-end" *ngIf="message.read">
+          <div class="flex flex-row">
+            <app-check class="text-blue-900"/>
+            <app-check class="text-blue-900"/>
+          </div>
         </div>
       </div>
 			
