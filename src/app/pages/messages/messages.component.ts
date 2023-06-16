@@ -64,6 +64,12 @@ export class MessagesComponent implements OnInit{
       this
     )
   )
+  .on(
+    'read',
+    this.onReadByOther.bind(
+      this
+    )
+  )
   
   
 
@@ -143,11 +149,11 @@ export class MessagesComponent implements OnInit{
 
   }
 
-  onSuccessSend(message:Message){
+  onSuccessSend(sendObj:Message){
     var current = this.messages as (Message & Status)[]
 
     var filter:(Message & Status)[] = current.filter(
-      _filter => _filter.sendAt === message.sendAt
+      _filter => _filter.sendAt === sendObj.sendAt
     )
 
     var updatedList:(Message&Status)[] = current.map(
@@ -155,7 +161,8 @@ export class MessagesComponent implements OnInit{
         return filter.includes(message)
           ? {
             ...message,
-            send:true
+            send:true,
+            _id:sendObj._id
           }
           :message
       }
@@ -192,7 +199,7 @@ export class MessagesComponent implements OnInit{
     )
     .pipe(
       timeoutWith(
-        5000,
+        25000,
         timeout
       )
     )
@@ -245,6 +252,7 @@ export class MessagesComponent implements OnInit{
     
     var sendParameter:Send = {
       accept:this._id,
+      read:false,
       groupId,
       value,
       sendAt
@@ -254,7 +262,7 @@ export class MessagesComponent implements OnInit{
       ...current,{
         ...sendParameter,
         sender:_id,
-        send:false
+        send:false,
       }
     ];
 
@@ -286,12 +294,6 @@ export class MessagesComponent implements OnInit{
       )
     })
 
-    // this.socket.on(
-    //   'connect',
-    //   this.onConnect.bind(
-    //     this
-    //   )
-    // )
 
   }
 
@@ -302,20 +304,68 @@ export class MessagesComponent implements OnInit{
   }
 
   onNewMessage(message:Message){
+    
     var currentUserId:string = (this.currentUser as User)._id
-    var currentList = (this.messages as (Message & Status)[])
+    var currentList:(Message & Status)[] = (this.messages as (Message & Status)[])
 
     if(message.sender === this._id && message.accept === currentUserId){
+
+      var {authorization}:User = this.currentUser as User
+
+      var path:string = `${this.server}/message/new`
+
+      var headers:HttpHeaders = new HttpHeaders({
+        authorization:`Bearer ${authorization}`
+      })
+
+      var _id:string = message._id as string
+
+      var updateParameter:Read = {
+        _id,
+        read:true
+      }
+
+      this.httpClient.put<Read>(
+        path,updateParameter,{
+          headers
+        }
+      )
+      .subscribe({
+        next:r => console.log(
+          r
+        ),
+        error:e => console.log(
+          e
+        )
+      })
+      
       this.messages = [
         ...currentList,{
           ...message,
+          read:true,
           send:true
         }
       ];
 
-      //(document.getElementById("target") as HTMLElement).scrollIntoView()
     }
     
+  }
+
+  onReadByOther(_id:string){
+    var current:(Message & Status)[] = this.messages as (Message & Status)[]
+
+    var updatedList:(Message & Status)[] = current.map(
+      message => {
+        return message._id as string === _id
+          ? {
+            ...message,
+            read:true
+          }
+          :message
+      }
+    )
+
+    this.messages = updatedList
   }
 
   @HostListener('window:online',['$event']) onConnected(event:Event){
@@ -549,14 +599,16 @@ interface Message {
   accept:string,
   value:string
   sendAt:number,
-  groupId:string
+  groupId:string,
+  read:boolean
 }
 
 interface Send{
   groupId:string,
   accept:string,
   value:string,
-  sendAt:number
+  sendAt:number,
+  read:boolean
 }
 
 interface Status{
@@ -566,4 +618,9 @@ interface Status{
 interface Reducers {
   auth:Session,
   user:User
+}
+
+interface Read{
+  _id:string,
+  read:boolean
 }
