@@ -10,8 +10,9 @@ this is an application to do realtime communication between two registered user
 
 - send new message to an other user
 
-- auto update read by the other user status
-
-- accept new message from the other user without reload
-
 - resend failed send message
+
+- auto update on page : read by the other user status
+
+- auto update on page : new message from the other user
+
