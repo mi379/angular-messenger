@@ -1,27 +1,24 @@
 # AngularMessenger
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.4.
+this is an application to do realtime communication between two registered user
 
-## Development server
+## Current added feature
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- view last message between active user and every other user on homepage
 
-## Code scaffolding
+- view all current message between active user and an other user
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- send new message to an other user
 
-## Build
+- auto update success send mark
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- auto update read by the other user mark
 
-## Running unit tests
+- accept new message from the user without reload
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- retry to fetch all last message on homepage if failed
 
-## Running end-to-end tests
+- retry to send failed send message 
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+- disable send message on disconnected internet
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
