@@ -71,8 +71,6 @@ export class MessagesComponent implements OnInit{
     )
   )
   
-  
-
   constructor(
     private httpClient:HttpClient,
     private route:ActivatedRoute,
@@ -80,7 +78,6 @@ export class MessagesComponent implements OnInit{
     private router:Router,
   ){}
 
-  
   fetchAllMessage(authorization:string){
 
     if(this.fetchErrorMessage){
@@ -131,6 +128,16 @@ export class MessagesComponent implements OnInit{
   }
 
   onSuccessFetch(result:Message[]){
+
+    var filter1:Message[] = result.filter(
+      message => message.sender === this._id
+    )
+
+    var filter2:Message[] = filter1.filter(
+      message => message.read === false
+    )
+
+    filter2.forEach(this.update.bind(this))
     
     this.messages = result.map(message => {
       return {
@@ -139,6 +146,37 @@ export class MessagesComponent implements OnInit{
       }
     })
 
+  }
+
+  update(message:Message){
+    var {authorization}:User = this.currentUser as User
+    
+    var headers:HttpHeaders = new HttpHeaders({
+      authorization:`Bearer ${authorization}`
+    })
+
+    var path:string = `${this.server}/message/new`
+
+    var _id:string = message._id as string
+
+    var updateParameter:Read = {
+      _id,
+      read:true
+    }
+    
+    this.httpClient.put<Read>(
+      path,updateParameter,{
+        headers
+      }
+    )
+    .subscribe({
+      next:r => console.log(
+        r
+      ),
+      error:e => console.log(
+        e
+      )
+    })
   }
 
   goBack(){
