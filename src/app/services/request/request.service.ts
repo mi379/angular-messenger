@@ -40,7 +40,7 @@ export class RequestService {
 
 	constructor(private httpClient:HttpClient){}
 
-	server : string = process.env['NG_APP_SERVER']
+	server : string = process.env['NG_APP_SERVER_PROD']
 
 	get<Result>(config:RequestConfig<Result>) : Get {
 

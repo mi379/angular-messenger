@@ -25,7 +25,7 @@ import { Session } from '../../ngrx/auth/auth.reducer'
 })
 export class MessagesComponent implements OnInit{
 
-  server:string = process.env['NG_APP_SERVER']
+  server:string = process.env['NG_APP_SERVER_PROD']
 
   _id:string = this.route.snapshot.params['_id']
   
@@ -138,14 +138,22 @@ export class MessagesComponent implements OnInit{
     )
 
     filter2.forEach(this.update.bind(this))
-    
-    this.messages = result.map(message => {
+
+    // sorted by send time (first to last)
+
+    var sorted:Message[] = result.sort((prev,next) => {
+      return prev.sendAt > next.sendAt ? 1 : -1
+    })
+
+    this.messages = sorted.map(message => {
       return {
         ...message,
         send:true
       }
     })
 
+
+    
   }
 
   update(message:Message){
