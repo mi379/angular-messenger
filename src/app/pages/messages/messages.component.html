@@ -71,9 +71,20 @@
     [placeholder]="internetConnected ? 'new message' : 'disconnected from internet'"
     #message
   />
+  <div class="w-14 flex flex-row justify-end relative overflow-hidden">
+    <button class="bg-black rounded-full p-2 text-white">
+      <app-camera/>
+    </button> 
+
+    <input
+      type="file"
+      (change)="onChange($event)"
+      class="absolute h-full left-3 opacity-0 hover:cursor-pointer"
+    />
+  </div>
   <div class="w-14 flex flex-row justify-end">
     <button type="submit" class="bg-black rounded-full p-2 text-white" [disabled]="!internetConnected">
-      <app-power/>
+      <app-paper-airplane/>
     </button> 
   </div>
 </form>

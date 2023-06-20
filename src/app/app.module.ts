@@ -30,6 +30,8 @@ import { ArrowLeftComponent } from './components/icons/arrow-left/arrow-left.com
 import { CheckComponent } from './components/icons/check/check.component';
 import { ExclamationCircleComponent } from './components/icons/exclamation-circle/exclamation-circle.component';
 import { MomentPipe } from './pipes/moment/moment.pipe';
+import { CameraComponent } from './components/icons/camera/camera.component';
+import { PaperAirplaneComponent } from './components/icons/paper-airplane/paper-airplane.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +55,8 @@ import { MomentPipe } from './pipes/moment/moment.pipe';
     CheckComponent,
     ExclamationCircleComponent,
     MomentPipe,
+    CameraComponent,
+    PaperAirplaneComponent,
   ],
   imports: [
     BrowserModule,

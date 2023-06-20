@@ -25,7 +25,7 @@ import { Session } from '../../ngrx/auth/auth.reducer'
 })
 export class MessagesComponent implements OnInit{
 
-  server:string = process.env['NG_APP_SERVER_PROD']
+  server:string = process.env['NG_APP_SERVER']
 
   _id:string = this.route.snapshot.params['_id']
   
@@ -421,6 +421,24 @@ export class MessagesComponent implements OnInit{
   @HostListener('window:offline',['$event']) onOffline(event:Event){
   	this.internetConnected = false
   }
+
+  onChange(event:Event){
+    var target:HTMLInputElement = event.target as HTMLInputElement
+    var files:FileList = target.files as FileList
+    var reader:FileReader = new FileReader()
+
+    reader.onload = (e:ProgressEvent<FileReader>) => {
+      var r:FileReader = e.target as FileReader
+      var result:string = r.result as string
+      
+      console.log(result)
+    }
+
+    reader.readAsDataURL(
+      files[0]
+    )
+  }
+
 }
 
 
