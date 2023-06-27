@@ -1,6 +1,7 @@
 import { Store } from '@ngrx/store'
 import { io,Socket } from 'socket.io-client'
 import { storage } from '../../firebase/storage.firebase'
+import { ref,StorageReference } from 'firebase/storage'
 import { Observable,timeoutWith,throwError } from 'rxjs'
 import { trigger,state,style } from '@angular/animations';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
@@ -26,7 +27,7 @@ import { Session } from '../../ngrx/auth/auth.reducer'
 })
 export class MessagesComponent implements OnInit{
 
-  server:string = process.env['NG_APP_SERVER']
+  server:string = process.env['NG_APP_SERVER'] as string
 
   _id:string = this.route.snapshot.params['_id']
   
@@ -55,6 +56,7 @@ export class MessagesComponent implements OnInit{
   
   file:File|undefined = undefined
 
+  uploadRef:StorageReference = ref(storage,'images')
 
   socket:Socket = io(
     this.server
