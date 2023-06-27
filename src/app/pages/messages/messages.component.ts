@@ -664,7 +664,9 @@ interface Message {
   value:string
   sendAt:number,
   groupId:string,
-  read:boolean
+  read:boolean,
+  description:string,
+  contentType:string
 }
 
 interface Send{
@@ -672,7 +674,9 @@ interface Send{
   accept:string,
   value:string,
   sendAt:number,
-  read:boolean
+  read:boolean,
+  description:string,
+  contentType:string
 }
 
 interface Status{
