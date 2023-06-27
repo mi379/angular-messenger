@@ -1,5 +1,6 @@
 import { Store } from '@ngrx/store'
 import { io,Socket } from 'socket.io-client'
+import { storage } from '../../firebase/storage.firebase'
 import { Observable,timeoutWith,throwError } from 'rxjs'
 import { trigger,state,style } from '@angular/animations';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
@@ -53,6 +54,7 @@ export class MessagesComponent implements OnInit{
   uploadPreviewImage:string = ''
   
   file:File|undefined = undefined
+
 
   socket:Socket = io(
     this.server
@@ -457,6 +459,10 @@ export class MessagesComponent implements OnInit{
     this.uploadPreview = false
   }
 
+  async uploadAndSend(sendParameter:Send){
+
+  }
+
   async submitImage(description:string){
     var current:(Message & Status)[] = this.messages as (Message & Status)[]
 
@@ -485,6 +491,8 @@ export class MessagesComponent implements OnInit{
         send:false,
       }
     ];
+
+    this.uploadAndSend(sendParameter)
 
     this.uploadPreview = false
   }
