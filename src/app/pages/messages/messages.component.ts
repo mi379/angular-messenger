@@ -297,6 +297,8 @@ export class MessagesComponent implements OnInit{
     var sendAt:number = Date.now()
     
     var sendParameter:Send = {
+      description:'',
+      contentType:'text',
       accept:this._id,
       read:false,
       groupId,
@@ -328,6 +330,7 @@ export class MessagesComponent implements OnInit{
     // ]
 
   }
+  
   
   ngOnInit(){
 
