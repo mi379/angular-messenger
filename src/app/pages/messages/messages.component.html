@@ -89,3 +89,21 @@
   </div>
 </form>
 
+<div *ngIf="uploadPreview" class="fullscreen bg-white z-20 flex flex-col justify-center">
+  <div class="absolute h-4/5 xs:w-5/6 sm:w-fit p-2 self-center flex flex-col justify-center">
+    <div class="max-h-full w-fit xs:self-center overflow-auto p-2 flex flex-col relative">
+      <img 
+        [src]="uploadPreviewImage"
+        class="rounded-md"
+      />
+    </div>
+  </div>
+  <form class="border-2 blue-900 fixed bottom-0 left-0 right-0  bg-blue-900 p-4 flex flex-row" (submit)="submitImage(description.value); false">
+    <input type="text" class="flex-1 p-4 rounded-md" placeholder="description text" #description/>
+    <div class="w-16 flex flex-col justify-center">
+      <button class="self-center bg-black rounded-full text-white p-2">
+        <app-paper-airplane/>
+      </button>
+    </div>
+  </form>
+</div>
