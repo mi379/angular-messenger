@@ -49,6 +49,11 @@ export class MessagesComponent implements OnInit{
 
   internetConnected:boolean = true
 
+  uploadPreview:boolean = false
+  uploadPreviewImage:string = ''
+  
+  file:File|undefined = undefined
+
   socket:Socket = io(
     this.server
   )
@@ -434,12 +439,54 @@ export class MessagesComponent implements OnInit{
       var r:FileReader = e.target as FileReader
       var result:string = r.result as string
       
-      console.log(result)
+      this.uploadPreviewImage = result
+      this.uploadPreview = true
+
     }
+
+    this.file = files[0]
 
     reader.readAsDataURL(
       files[0]
     )
+
+
+  }
+
+  closePreview(){
+    this.uploadPreview = false
+  }
+
+  async submitImage(description:string){
+    var current:(Message & Status)[] = this.messages as (Message & Status)[]
+
+    
+    var _id:string = (this.currentUser as User)._id
+
+    var groupId:string = this.state.groupId
+
+    var sendAt:number = Date.now()
+    
+    var sendParameter:Send = {
+      value:this.uploadPreviewImage,
+      description:'',
+      contentType:'image',
+      accept:this._id,
+      read:false,
+      groupId,
+      sendAt
+    }
+
+    
+    this.messages = [
+      ...current,{
+        ...sendParameter,
+        sender:_id,
+        send:false,
+      }
+    ];
+
+    this.uploadPreview = false
   }
 
 }
