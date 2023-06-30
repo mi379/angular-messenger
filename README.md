@@ -11,5 +11,7 @@ this is an application to do realtime communication between two registered user
 - auto update on page : has been read mark
 - auto update on page : new message from an other user
 
+test koneksi ssh
+
 
 
