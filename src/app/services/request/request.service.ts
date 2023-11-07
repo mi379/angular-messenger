@@ -11,7 +11,7 @@ import { HttpEvent,HttpClient,HttpErrorResponse } from '@angular/common/http';
 // export class RequestService{
 // 	constructor(private httpClient:HttpClient){}
 
-// 	server : string = process.env['NG_APP_SERVER']
+// 	server : string = "https://nestjs-api-production-f720.up.railway.app"
 	
 
 // 	get<Result>(config:RequestConfig<Result>):{run:Get<Result>,retry:Retry<Result>} {
@@ -40,7 +40,7 @@ export class RequestService {
 
 	constructor(private httpClient:HttpClient){}
 
-	server  = process.env['NG_APP_SERVER'] as string
+	server  = "https://nestjs-api-production-f720.up.railway.app"
 
 	get<Result>(config:RequestConfig<Result>) : Get {
 
