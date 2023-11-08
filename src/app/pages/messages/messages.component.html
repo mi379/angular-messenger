@@ -107,7 +107,8 @@
 <form class="fixed bottom-0 bg-blue-900 p-4 w-full flex flex-row" (submit)="onSubmit(message.value); false">
   <input 
     type="text" placeholder="new message" 
-    class="flex-1 p-2 rounded-md" 
+    class="flex-1 p-2 rounded-md"
+    [(ngModel)]="messageText"
     placeholder="new message"
     #message
   />
