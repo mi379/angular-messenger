@@ -123,7 +123,7 @@
       class="absolute h-full left-3 opacity-0 hover:cursor-pointer"
     />
   </div>
-  <div [hidden]="messageText.length < 1" class="w-14 flex flex-row justify-end">
+  <div *ngIf="messageText.length > 0" class="w-14 flex flex-row justify-end">
     <button type="submit" class="bg-black rounded-full p-2 text-white">
       <app-paper-airplane/>
     </button> 
