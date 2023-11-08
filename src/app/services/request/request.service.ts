@@ -40,8 +40,9 @@ export class RequestService {
 
 	constructor(private httpClient:HttpClient){}
 
-	server  = "https://nestjs-api-production-f720.up.railway.app"
+	//server  = "https://nestjs-api-production-f720.up.railway.app"
 
+  server = process.env['NG_APP_SERVER']
 	get<Result>(config:RequestConfig<Result>) : Get {
 
 		var recursive = (this.get<Result>).bind(this)
