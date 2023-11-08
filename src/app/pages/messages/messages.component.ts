@@ -26,6 +26,7 @@ import { uploadBytes,ref,StorageReference,getDownloadURL,UploadResult } from 'fi
   ]
 })
 export class MessagesComponent implements OnInit{
+  messageText:string = ''
 
   server:string = process.env['NG_APP_SERVER'] as string
 
