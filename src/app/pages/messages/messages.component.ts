@@ -6,7 +6,7 @@ import { trigger,state,style } from '@angular/animations';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { ActivatedRoute,Router,Params } from '@angular/router'
 import { User,Profile } from '../../ngrx/user/user.reducer'
-import { Component,HostListener,OnInit } from '@angular/core';
+import { Component,HostListener,OnInit,OnDestroy} from '@angular/core';
 import { Session } from '../../ngrx/auth/auth.reducer'
 import { uploadBytes,ref,StorageReference,getDownloadURL,UploadResult } from 'firebase/storage'
 
@@ -25,7 +25,7 @@ import { uploadBytes,ref,StorageReference,getDownloadURL,UploadResult } from 'fi
     )
   ]
 })
-export class MessagesComponent implements OnInit{
+export class MessagesComponent implements OnInit,OnDestroy{
   messageText:string = ''
 
   server:string = process.env['NG_APP_SERVER'] as string
@@ -357,8 +357,10 @@ export class MessagesComponent implements OnInit{
         .authorization,
       )
     })
+  }
 
-
+  ngOnDestroy(){
+    console.log('leave...') 
   }
 
   onConnect(){
