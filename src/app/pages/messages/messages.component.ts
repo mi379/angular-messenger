@@ -90,10 +90,6 @@ export class MessagesComponent implements OnInit{
     private router:Router,
   ){}
 
-  @HostListener('window:unload',['$event']) onBeforeUnload(e:Event){
-    alert('test') 
-  }
-
 
   fetchAllMessage(authorization:string){
 
@@ -372,6 +368,7 @@ export class MessagesComponent implements OnInit{
   }
 
   onNewMessage(message:Message){
+    console.log('event ini berjalan saat ada pesan baru') 
     
     var currentUserId:string = (this.currentUser as User)._id
     var currentList:(Message & Status)[] = (this.messages as (Message & Status)[])
