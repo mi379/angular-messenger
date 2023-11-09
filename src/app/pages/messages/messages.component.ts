@@ -90,8 +90,8 @@ export class MessagesComponent implements OnInit{
     private router:Router,
   ){}
 
-  @HostListener('window:beforeunload',['$event']) onBeforeUnload(e:Event){
-    this.socket.off('newMessage', this.onNewMessage.bind(this));
+  @HostListener('window:unload',['$event']) onBeforeUnload(e:Event){
+    alert('test') 
   }
 
 
