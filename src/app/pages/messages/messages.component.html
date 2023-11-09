@@ -105,13 +105,13 @@
 </div>
 
 <form class="fixed bottom-0 bg-blue-900 p-4 w-full flex flex-row" (submit)="onSubmit(message.value); false">
-  <input 
-    type="text" placeholder="new message" 
+  <textarea 
+    placeholder="new message" 
     class="flex-1 p-2 rounded-md"
     [(ngModel)]="messageText"
-    placeholder="new message"
     #message
-  />
+  >
+  </textarea>
   <div class="w-14 flex flex-row justify-end relative overflow-hidden">
     <button class="bg-black rounded-full p-2 text-white">
       <app-camera/>
