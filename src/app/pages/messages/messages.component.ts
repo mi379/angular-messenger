@@ -361,6 +361,7 @@ export class MessagesComponent implements OnInit,OnDestroy{
 
   ngOnDestroy(){
     console.log('leave...') 
+    this.socket.disconnect() 
   }
 
   onConnect(){
