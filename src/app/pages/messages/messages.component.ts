@@ -90,9 +90,8 @@ export class MessagesComponent implements OnInit{
     private router:Router,
   ){}
 
-   @HostListener('window:beforeunload',['$event']) onBeforeUnload(e:Event){
-  	this.socket.disconnect() 
-    alert('disconnected...') 
+  @HostListener('window:beforeunload',['$event']) onBeforeUnload(e:Event){
+    this.socket.off('newMessage', this.onNewMessage.bind(this));
   }
 
 
