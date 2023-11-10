@@ -6,11 +6,9 @@ module.exports = {
     "./src/**/*.{html,ts}",
   ],
   theme: {
-    extend: {
-      maxHeight: {
-      	'fit-plus-20': `calc(auto + 50px)`
-      }
-    },
+    screens:{
+      'xs':'360px'
+    }
   },
   plugins: [
    
