@@ -17,7 +17,7 @@
     <div *ngFor="let message of messages; last as last" [@isLast]="last ? ''  : 'last'" [id]="last ? 'target' : ''">
 			<div *ngIf="message.sender !== _id && message.contentType === 'text'" class="bg-yellow-600 p-4 break-words rounded-md  w-1/2 xs:w-fit flex flex-row">
         <div class="flex-1">
-          <span>
+          <span class="break-all">
             {{message.value}}
           </span>
         </div>
