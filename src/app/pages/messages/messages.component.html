@@ -4,7 +4,7 @@
   </button>
 </app-navbar>
 
-<div class="fullscreen bg-slate-100 flex flex-col">
+<div class="fullscreen bg-slate-200 flex flex-col">
   <app-fetch-error class="flex-1 v-center" *ngIf="fetchErrorMessage as message" (retry)="fetchRetry()">
     <p message>{{message}}</p>
   </app-fetch-error>
