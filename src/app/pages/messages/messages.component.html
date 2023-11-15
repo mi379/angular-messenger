@@ -107,7 +107,7 @@
 <form class="fixed bottom-0 bg-blue-900 p-4 w-full flex flex-row" (submit)="onSubmit(message.value); false">
   <textarea 
     placeholder="new message" 
-    class="flex-1 p-2 rounded-md"
+    class="flex-1 p-2 rounded-md lg:hidden"
     [(ngModel)]="messageText"
     rows="1"
     cols="4"
