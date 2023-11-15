@@ -331,6 +331,8 @@ export class MessagesComponent implements OnInit,OnDestroy{
 
     //(document.getElementById("target") as HTMLElement).scrollIntoView()
 
+    this.messageText = ''
+    
     this.sendNewMessage(
       jwtString,
       sendParameter
