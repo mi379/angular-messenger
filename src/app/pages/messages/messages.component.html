@@ -15,31 +15,28 @@
 
   <div  *ngIf="!uploadPreview && messages as messages" class="mt-[80px] mb-[72px] p-4 border-2 border-black">
     <div *ngFor="let message of messages; last as last" [@isLast]="last ? ''  : 'last'" [id]="last ? 'target' : ''">
-			<div *ngIf="message.sender !== _id && message.contentType === 'text'" class="bg-purple-900 p-4 rounded-md  w-1/2 xs:w-fit flex flex-row">
+			<div *ngIf="message.sender !== _id && message.contentType === 'text'" class="bg-green-500 p-4 rounded-md  w-1/2 xs:w-fit flex flex-row">
         <div class="flex-1">
           <span class="text-white">
             {{message.value}}
           </span>
         </div>
 
-        <!-- loading send (send:false,read:false)-->
+        <!-- belum terkirim -->
         <div class="flex flex-col justify-end" *ngIf="!message.send && !failedSendList.includes(message.sendAt)">
-          <app-check class="text-red-900"/>
-        </div>
-        
-        <!-- failed to send -->
-        <div class="flex flex-col justify-end" *ngIf="failedSendList.includes(message.sendAt)">
-          <app-exclamation-circle class="text-red-900"/>
+          <app-check/>
         </div>
 
+        <!-- terkirim, belum dibaca -->
+
         <div class="flex flex-col justify-end" *ngIf="message.send && !message.read">
-          <app-check class="text-white-900"/>
+          <app-check class="text-white"/>
         </div>
 
         <div class="flex flex-col justify-end" *ngIf="message.read">
           <div class="flex flex-row">
-            <app-check class="text-white-900"/>
-            <app-check class="text-white-900"/>
+            <app-check class="text-white"/>
+            <app-check class="text-white"/>
           </div>
         </div>
 
