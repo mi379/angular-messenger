@@ -563,6 +563,13 @@ export class MessagesComponent implements OnInit,OnDestroy{
     }
   }
 
+  isValid(message:string){
+    var regex = /^\s*$/;
+    return !regex.test(
+      message
+    ) 
+  }
+
 }
 
 interface Message {
