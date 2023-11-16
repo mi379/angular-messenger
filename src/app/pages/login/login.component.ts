@@ -18,6 +18,9 @@ export class LoginComponent {
   loginMarin = {username:"marin",password:"12345"}
   loginGojo = {username:"gojo",password:"12345"}
 
+  username:string = ''
+  password:string = ''
+
   loginFunction = this.request.post<any,any>({
     cb: user => this.auth.login(true,user),
     state: this.loginState,
