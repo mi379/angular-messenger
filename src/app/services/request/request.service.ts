@@ -58,7 +58,7 @@ export class RequestService {
         message
 			)
 
-      alert(response) 
+      console.log(response) 
 			
 			config.state.next({
 				running:false,
