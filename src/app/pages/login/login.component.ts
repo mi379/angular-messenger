@@ -15,14 +15,8 @@ import { RequestService } from '../../services/request/request.service'
 export class LoginComponent {
   loginState = this.request.createInitialState<any>()
 
-  loginMarin = {username:"marin",password:"12345"}
-  loginGojo = {username:"gojo",password:"12345"}
-
   loginInfo:FakeUser = {username:'',password:''}
-
-  username:string = ''
-  password:string = ''
-
+  
   loginFunction = this.request.post<any,any>({
     cb: user => this.auth.login(true,user),
     state: this.loginState,
