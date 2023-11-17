@@ -57,8 +57,9 @@ export class RequestService {
 			if(config.failedCb) config.failedCb(
         message
 			)
-
-      console.log(response.statusCode) 
+      
+      console.log("test..") 
+      console.log(response) 
 			
 			config.state.next({
 				running:false,
