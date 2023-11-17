@@ -136,7 +136,7 @@ export class RequestService {
     var timeout = new Error("error timeout.....")
 
     var error = (response:HttpErrorResponse) => {
-      var message = response.message
+      var err:ErrResponse = response.error
 
 			if(config.failedCb) config.failedCb(
 				(getBody as () => Body)()
@@ -146,7 +146,7 @@ export class RequestService {
       
 			config.state.next({
 				running:false,
-				error:message,
+				error:err.message,
 				retryFunction
 			})  
     }
@@ -229,4 +229,9 @@ export interface RequestState<Result>{
 	running:boolean,
 	error?:string,
 	result?:Result
+}
+
+interface ErrResponse{
+  statusCode:number, 
+  message:string
 }
