@@ -18,6 +18,8 @@ export class LoginComponent {
   loginMarin = {username:"marin",password:"12345"}
   loginGojo = {username:"gojo",password:"12345"}
 
+  loginInfo:fakeUser = {username:'',password:''}
+
   username:string = ''
   password:string = ''
 
