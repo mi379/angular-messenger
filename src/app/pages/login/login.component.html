@@ -23,7 +23,7 @@
         </div>
       </div>
       <div class="mt-3 p-1">
-        <button type="submit" class="text-white w-full p-4 rounded">
+        <button [class.bg-gray-500]="loginState.value.running" [disabled]="loginState.value.running"type="submit" class="text-white w-full p-4 rounded">
           Log In
         </button>
       </div>
