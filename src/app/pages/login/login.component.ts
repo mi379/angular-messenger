@@ -1,4 +1,4 @@
-oimport { BehaviorSubject } from 'rxjs'
+import { BehaviorSubject } from 'rxjs'
 import { Component } from '@angular/core';
 import { User } from '../../ngrx/user/user.reducer'
 import { Session } from '../../ngrx/auth/auth.reducer'
