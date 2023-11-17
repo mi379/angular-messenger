@@ -18,7 +18,7 @@ export class LoginComponent {
   loginInfo:FakeUser = {username:'',password:''}
   
   loginFunction = this.request.post<any,any>({
-    cb: user => this.auth.login(true,user),
+    //cb: user => this.auth.login(true,user),
     state: this.loginState,
     path: "user/login"
   })
