@@ -13,7 +13,7 @@ import { RequestService } from '../../services/request/request.service'
 })
 
 export class LoginComponent {
-  loginState = this.request.createInitialState<any>()
+  loginState = this.request.createInitialState<User>()
 
   loginInfo:FakeUser = {username:'',password:''}
   
