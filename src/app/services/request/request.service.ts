@@ -57,6 +57,8 @@ export class RequestService {
 			if(config.failedCb) config.failedCb(
         message
 			)
+
+      alert(response) 
 			
 			config.state.next({
 				running:false,
