@@ -1,4 +1,4 @@
-import { BehaviorSubject } from 'rxjs'
+oimport { BehaviorSubject } from 'rxjs'
 import { Component } from '@angular/core';
 import { User } from '../../ngrx/user/user.reducer'
 import { Session } from '../../ngrx/auth/auth.reducer'
@@ -18,7 +18,7 @@ export class LoginComponent {
   loginMarin = {username:"marin",password:"12345"}
   loginGojo = {username:"gojo",password:"12345"}
 
-  loginInfo:fakeUser = {username:'',password:''}
+  loginInfo:FakeUser = {username:'',password:''}
 
   username:string = ''
   password:string = ''
