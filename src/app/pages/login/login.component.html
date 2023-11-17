@@ -1,5 +1,5 @@
 <div class="fullscreen bg-slate-100 v-center">
-  <div *ngIf="loginState.value?.message" class="flex flex-row justify-center">
+  <div *ngIf="loginState.value.error" class="flex flex-row justify-center">
     <div class="rounded mb-2 bg-red-900 p-2 text-white flex flex-row justify-center text-rounded w-3/5">
       User not found
     </div>
