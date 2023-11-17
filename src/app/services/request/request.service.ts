@@ -141,7 +141,9 @@ export class RequestService {
 			if(config.failedCb) config.failedCb(
 				(getBody as () => Body)()
 			)
-			
+
+      console.log(response) 
+      
 			config.state.next({
 				running:false,
 				error:message,
