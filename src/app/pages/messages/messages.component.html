@@ -106,8 +106,8 @@
     placeholder="new message" 
     class="flex-1 p-2 rounded-md md:hidden"
     [(ngModel)]="messageText"
-    (keyDown)="onKeyDown()"
-    (keyUp)="onKeyUp()"
+    (keydown)="onKeyDown()"
+    (keyup)="onKeyUp()"
     rows="1"
     cols="4"
     #message
