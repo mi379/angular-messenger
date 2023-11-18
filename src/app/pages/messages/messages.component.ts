@@ -600,15 +600,17 @@ export class MessagesComponent implements OnInit,OnDestroy{
   }
 
   onTypingTrue(_id:string){
-    console.log({
-      _id
-    })
+    if(_id === this._id){
+      this.typing = true
+      console.log('typing is true') 
+    }
   }
 
   onTypingFalse(_id:string){
-    console.log({
-      _id
-    })
+    if(_id === this._id){
+      this.typing = false
+      console.log('typing is false') 
+    }
   }
 
 }
