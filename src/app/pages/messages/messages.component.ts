@@ -92,6 +92,9 @@ export class MessagesComponent implements OnInit,OnDestroy{
     private router:Router,
   ){}
 
+  typing.subscribe(typingState => {
+    console.log(typingState) 
+  })
 
   fetchAllMessage(authorization:string){
 
