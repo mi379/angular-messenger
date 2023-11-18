@@ -1,7 +1,7 @@
 import { Store } from '@ngrx/store'
 import { io,Socket } from 'socket.io-client'
 import { storage } from '../../firebase/storage.firebase'
-import { Observable,of,timeoutWith,throwError } from 'rxjs'
+import { Observable,Subscription,of,timeoutWith,throwError } from 'rxjs'
 import { trigger,state,style } from '@angular/animations';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { ActivatedRoute,Router,Params } from '@angular/router'
@@ -85,7 +85,7 @@ export class MessagesComponent implements OnInit,OnDestroy{
     )
   )
 
-  this.typing.subscribe(state => {
+  typingState:Subscription = this.typing.subscribe(state => {
     console.log(state) 
   }) 
   
