@@ -74,7 +74,7 @@
       
 			
 			<div *ngIf="message.sender === _id && message.contentType === 'text'" class="flex flex-row justify-end">
-				<div class="bg-white xs:w-fit p-4 rounded-md w-1/2">
+				<div class="bg-white min-w-[50%] xs:max-w-fit p-4 rounded-md w-1/2">
           {{message.value}}
 				</div>
       </div>
