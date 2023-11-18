@@ -1,7 +1,7 @@
 import { Store } from '@ngrx/store'
 import { io,Socket } from 'socket.io-client'
 import { storage } from '../../firebase/storage.firebase'
-import { Observable,Subscription,of,timeoutWith,throwError } from 'rxjs'
+import { Observable,timeoutWith,throwError } from 'rxjs'
 import { trigger,state,style } from '@angular/animations';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { ActivatedRoute,Router,Params } from '@angular/router'
@@ -28,7 +28,7 @@ import { uploadBytes,ref,StorageReference,getDownloadURL,UploadResult } from 'fi
 export class MessagesComponent implements OnInit,OnDestroy{
   messageText:string = ''
 
-  typing:Observable<boolean> = new Observable<boolean>(false)
+  typing:boolean = false
 
   server:string = process.env['NG_APP_SERVER'] as string
 
@@ -84,10 +84,7 @@ export class MessagesComponent implements OnInit,OnDestroy{
       this
     )
   )
-
-  typingState:Subscription = this.typing.subscribe(state => {
-    console.log(state) 
-  }) 
+q
   
   constructor(
     private httpClient:HttpClient,
@@ -95,10 +92,6 @@ export class MessagesComponent implements OnInit,OnDestroy{
     private store:Store<Reducers>,
     private router:Router,
   ){}
-
-  /*typing.subscribe(typingState => {
-    console.log(typingState) 
-  })*/
 
   fetchAllMessage(authorization:string){
 
@@ -579,12 +572,12 @@ export class MessagesComponent implements OnInit,OnDestroy{
     ) 
   }
 
-  typingTrue(){
-    this.typing.next(true)
-  }
-
-  typingFalse(){
-    this.typing.next(false) 
+  onKeyDown(){
+    var _id:string = (this.currentUser as User)._id
+    this.socket.emit(typing,{
+      state:true, 
+      from:_id
+    })
   }
 
 }
