@@ -573,10 +573,18 @@ export class MessagesComponent implements OnInit,OnDestroy{
 
   onKeyDown(){
     var _id:string = (this.currentUser as User)._id
-    this.socket.emit(typing,{
-      state:true, 
-      from:_id
-    })
+    this.socket.emit(
+      'typingTrue', 
+      _id
+    )
+  }
+
+  onKeyUp(){
+    var _id:string = (this.currentUser as User)._id
+    this.socket.emit(
+      'typingFalse',
+      _id
+    )
   }
 
 }
