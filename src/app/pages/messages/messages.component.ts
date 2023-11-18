@@ -579,6 +579,14 @@ export class MessagesComponent implements OnInit,OnDestroy{
     ) 
   }
 
+  typingTrue(){
+    this.typing.next(true)
+  }
+
+  typingFalse(){
+    this.typing.next(false) 
+  }
+
 }
 
 interface Message {
