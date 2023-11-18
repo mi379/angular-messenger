@@ -84,6 +84,10 @@ export class MessagesComponent implements OnInit,OnDestroy{
       this
     )
   )
+
+  typingSubscribe = this.typing.subscribe(state => {
+    console.log(state) 
+  }) 
   
   constructor(
     private httpClient:HttpClient,
@@ -92,9 +96,9 @@ export class MessagesComponent implements OnInit,OnDestroy{
     private router:Router,
   ){}
 
-  typing.subscribe(typingState => {
+  /*typing.subscribe(typingState => {
     console.log(typingState) 
-  })
+  })*/
 
   fetchAllMessage(authorization:string){
 
