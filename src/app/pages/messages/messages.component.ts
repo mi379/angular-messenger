@@ -84,7 +84,6 @@ export class MessagesComponent implements OnInit,OnDestroy{
       this
     )
   )
-q
   
   constructor(
     private httpClient:HttpClient,
