@@ -84,6 +84,18 @@ export class MessagesComponent implements OnInit,OnDestroy{
       this
     )
   )
+  .on(
+    'typingTrue', 
+    this.onTypingTrue.bind(
+      this
+    ) 
+  ) 
+  .on(
+    'typingFalse', 
+    this.onTypingFalse.bind(
+      this
+    ) 
+  ) 
   
   constructor(
     private httpClient:HttpClient,
@@ -585,6 +597,18 @@ export class MessagesComponent implements OnInit,OnDestroy{
       'typingFalse',
       _id
     )
+  }
+
+  onTypingTrue(_id:string){
+    console.log({
+      _id
+    })
+  }
+
+  onTypingFalse(_id:string){
+    console.log({
+      _id
+    })
   }
 
 }
