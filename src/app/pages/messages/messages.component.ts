@@ -28,7 +28,7 @@ import { uploadBytes,ref,StorageReference,getDownloadURL,UploadResult } from 'fi
 export class MessagesComponent implements OnInit,OnDestroy{
   messageText:string = ''
 
-  typing:Observable<boolean> = of(false) 
+  typing:Observable<boolean> = new Observable(false)
 
   server:string = process.env['NG_APP_SERVER'] as string
 
