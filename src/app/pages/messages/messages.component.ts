@@ -85,7 +85,7 @@ export class MessagesComponent implements OnInit,OnDestroy{
     )
   )
 
-  typingSubscribe = this.typing.subscribe(state => {
+  this.typing.subscribe(state => {
     console.log(state) 
   }) 
   
