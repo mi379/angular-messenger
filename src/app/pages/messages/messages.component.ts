@@ -1,7 +1,7 @@
 import { Store } from '@ngrx/store'
 import { io,Socket } from 'socket.io-client'
 import { storage } from '../../firebase/storage.firebase'
-import { Observable,timeoutWith,throwError } from 'rxjs'
+import { Observable,of,timeoutWith,throwError } from 'rxjs'
 import { trigger,state,style } from '@angular/animations';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { ActivatedRoute,Router,Params } from '@angular/router'
@@ -27,6 +27,8 @@ import { uploadBytes,ref,StorageReference,getDownloadURL,UploadResult } from 'fi
 })
 export class MessagesComponent implements OnInit,OnDestroy{
   messageText:string = ''
+
+  typing:Observable<boolean> = of(false) 
 
   server:string = process.env['NG_APP_SERVER'] as string
 
