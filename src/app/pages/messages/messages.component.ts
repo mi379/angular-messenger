@@ -584,7 +584,6 @@ export class MessagesComponent implements OnInit,OnDestroy{
   }
 
   onKeyDown(){
-    alert('typing true') 
     var _id:string = (this.currentUser as User)._id
     this.socket.emit(
       'typingTrue', 
@@ -592,8 +591,7 @@ export class MessagesComponent implements OnInit,OnDestroy{
     )
   }
 
-  onKeyUp(){
-    alert('typing false') 
+  onKeyUp(){ 
     var _id:string = (this.currentUser as User)._id
     this.socket.emit(
       'typingFalse',
@@ -604,14 +602,12 @@ export class MessagesComponent implements OnInit,OnDestroy{
   onTypingTrue(_id:string){
     if(_id === this._id){
       this.typing = true
-      console.log('typing is true') 
     }
   }
 
   onTypingFalse(_id:string){
     if(_id === this._id){
       this.typing = false
-      console.log('typing is false') 
     }
   }
 
