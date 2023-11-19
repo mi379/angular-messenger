@@ -1,6 +1,5 @@
 <div class="w-20 flex flex-row justify-between md:w-auto">
   <ng-content [select]="navbar-btn"/>
-  <ng-content [select]="typing-state"/>
   <img 
     [src]="profile?.profileImage" 
     class="rounded-full h-12 w-12"
@@ -14,3 +13,7 @@
   </p>
 </div>
 
+
+<ng-content
+  [select]="typing-state"
+/>
