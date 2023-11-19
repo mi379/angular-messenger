@@ -4,9 +4,6 @@
     [src]="profile?.profileImage" 
     class="rounded-full h-12 w-12"
   />
-  <ng-content
-    [select]="typing-state"
-  />
 </div>
 
 
@@ -14,6 +11,9 @@
  <p class="font-sans font-bold">
    {{profile?.firstName}}
  </p>
+ <ng-content
+    [select]="typing-state"
+  />
 </div>
 
 
