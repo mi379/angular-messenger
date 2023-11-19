@@ -7,18 +7,23 @@
 </div>
 
 
-<div class="flex-1 v-center text-white px-2"> <!-- div name -->
+<ng-content
+  [select]="name"
+/>
+
+<!--<div class="flex-1 v-center text-white px-2"> <!-- div name -->
   
    <ng-content
      [select]="profileName"
    />
   
-  <!--
+  
   <p class="font-sans font-bold">
     {{profile?.firstName}}
   </p>
-  -->
+  
 </div>
+-->
 
 
 
