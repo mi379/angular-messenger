@@ -3,7 +3,7 @@
     <app-arrow-left/>
   </button>
 
-  <span class="absolute text-white" typing-state>
+  <span *ngIf="typing" class="absolute text-white" typing-state>
     typing...
   </span>
 </app-navbar>
