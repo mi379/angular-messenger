@@ -11,10 +11,10 @@
 <div class="flex-1 v-center text-white px-2">    
   <p class="font-sans font-bold">
     {{profile?.firstName}}
+    <span *ngIf="typing">
+      (typing) 
+    </span>
   </p>
-  <span *ngIf="typing">
-    (typing) 
-  </span>
 </div>
 
 
