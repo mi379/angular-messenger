@@ -15,7 +15,7 @@
   </div>
   <app-recently-messages 
     *ngIf="recentlyMessages as content"
-    class="truncate mt-[80px] p-4 border-2 border-black"
+    class="mt-[80px] p-4 border-2 border-black"
     [_id]="(currentUser | async)?._id"
     [content]="content"  
   />
