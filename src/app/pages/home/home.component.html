@@ -15,7 +15,7 @@
   </div>
 
   <div class="mt-[80px]" *ngIf="recentlyMessages as recently">
-    <div *ngFor"let message of recently">
+    <div *ngFor="let message of recently">
       {{message | json}}
     </div>
   </div>
