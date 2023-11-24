@@ -10,8 +10,10 @@
     <span class="font-black">
       {{detail?.firstName}} {{detail?.surname}}
     </span>
-    <ng-content [select]="value">
-    	<!-- message value -->
-    </ng-content>
+    <div class="truncate">
+      <ng-content [select]="value">
+    	  <!-- message value -->
+      </ng-content>
+    </div>
   </div>
 </a>
