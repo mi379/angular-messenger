@@ -14,7 +14,7 @@
     Loading....
   </div>
 
-  <div *ngFor="recentlyMessages as recently">
+  <div *ngIf="recentlyMessages" *ngFor="recentlyMessages as recently">
     {{ recently | json}}
   </div>
   
