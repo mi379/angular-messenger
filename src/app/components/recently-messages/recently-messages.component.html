@@ -1,4 +1,6 @@
+<!--
 <ul>
+
   <ng-container *ngFor="let message of content; last as isLast">
     <li *ngIf="!isLast" class="overflow-hidden bg-red-900 rounded-md flex flex-row">
       <app-message [groupId]="message.groupId" [detail]="message | compare:_id" class="flex-1 flex flex-row">
@@ -12,3 +14,17 @@
     </li>
   </ng-container>
 </ul>
+-->
+
+
+<div class="flex flex-row" *ngFor="let message of content; last as isLast">
+  <app-message class="flex flex-row" [groupId]="message.groupId" [detail]="message | compare:_id">
+   
+     <span class="truncate text-white" value>
+       {{ message.value }}
+     </span>
+
+  </app-message>
+     
+
+</div>
