@@ -2,12 +2,12 @@
   <ng-container *ngFor="let message of content; last as isLast">
     <li *ngIf="!isLast" class="overflow-hidden bg-red-900 rounded-md flex flex-row">
       <app-message [groupId]="message.groupId" [detail]="message | compare:_id" class="flex-1 flex flex-row">
-        <span class="text-white" value> {{message.value}}</span>
+        <span class="truncate text-white" value> {{message.value}}</span>
       </app-message>
     </li>
     <li *ngIf="isLast" class="oveflow-hidden bg-yellow-900 rounded-md flex flex-row">
       <app-message [groupId]="message.groupId"  [detail]="message | compare:_id" class="flex-1 flex flex-row">
-        <span class="text-white" value> {{message.value}}</span>
+        <span class="truncate text-white" value> {{message.value}}</span>
       </app-message>
     </li>
   </ng-container>
