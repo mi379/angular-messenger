@@ -17,8 +17,10 @@
   
   
   <div class="mt-[80px] p-4 border-2 border-black" *ngIf="recentlyMessages as recently">
-    <div #content [attr.data-id]="(currentUser | async)?._id"  class="flex flex-row" *ngFor="let message of recently">  
-      <div #img  class="flex flex-col justify-center">
+    <div  class="flex flex-row" *ngFor="let message of recently">  
+      <ng-container *ngFor="let user [message | compare:'12345']">
+      </ng-container>
+      <div class="flex flex-col justify-center">
         <img 
           class=" h-12 w-12 rounded-full"
           src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAdS5a8K2RcO1nZGi_Qpi0D58YFSL_PIpDiQ&usqp=CAU"
@@ -26,7 +28,7 @@
       </div>
       <div class="overflow-hidden p-2 flex flex-col justify-center flex-1">
         <span>
-	  Id : {{dataId}}
+	  Id
         </span>      
         <span class="truncate">
           Lorem ipsum dolor sit amet, 

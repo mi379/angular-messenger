@@ -21,11 +21,6 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   failedSendList : string[] = []
 
-  @ViewChild('content') content!: ElementRef
-
-  dataId : string = this.content.nativeElement.getAttribute(
-    'data-id'
-  )
 
   onFetchStateChange: Subscription | undefined
 
