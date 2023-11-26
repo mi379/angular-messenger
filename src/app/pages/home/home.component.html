@@ -18,7 +18,7 @@
   
   <div class="mt-[80px] p-4 border-2 border-black" *ngIf="recentlyMessages as recently">
     <div #content [attr.data-id]="(currentUser | async)?._id"  class="flex flex-row" *ngFor="let message of recently">  
-      <div #img [attr.data-user]="message | content.getAtribute('data-id')"  class="flex flex-col justify-center">
+      <div #img [attr.data-user]="message | compare: content.getAtribute('data-id')"  class="flex flex-col justify-center">
         <img 
           class=" h-12 w-12 rounded-full"
           src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAdS5a8K2RcO1nZGi_Qpi0D58YFSL_PIpDiQ&usqp=CAU"
