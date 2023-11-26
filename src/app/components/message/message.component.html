@@ -29,4 +29,8 @@
   <span class="font-black">
     {{detail?.firstName}} {{detail?.surname}}
   </span>
+
+  <ng-content
+    [select]="value"
+  />
 </div>
