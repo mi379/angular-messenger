@@ -15,6 +15,8 @@ import { ViewChild,ElementRef,Component,OnDestroy,OnInit } from '@angular/core';
 
 export class HomeComponent implements OnInit, OnDestroy {
 
+  _id : string = ''
+
   fetchErrorMessage : string | undefined
 
   preFetch : Subscription | undefined
@@ -31,8 +33,11 @@ export class HomeComponent implements OnInit, OnDestroy {
   fetchFunction : Get = this.request.get<Message[]>({state:this.fetchState})
 
   currentUser : Observable<User> = this.store.select((state:Reducers) => {
+    this._id = state.user._id
     return state.user
   })
+  
+
 
   fetchRecentlyMessages(authorization:string){      
     var path:string = "message/recently"
@@ -90,7 +95,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(){
-  	this.unsubscribe([
+    this.unsubscribe([
       this.preFetch,
       this.onFetchStateChange
     ])
