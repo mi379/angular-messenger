@@ -23,7 +23,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   @ViewChild('content') content!: ElementRef
 
-  dataId : string = this.content.nativeElemnt.getAttribute(
+  dataId : string = this.content.nativeElement.getAttribute(
     'data-id'
   )
 
