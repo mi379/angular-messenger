@@ -21,7 +21,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   failedSendList : string[] = []
 
-  @viewChild('content') content!: ElementRef
+  @ViewChild('content') content!: ElementRef
 
   dataId : string = this.content.getAttribute(
     'data-id'
