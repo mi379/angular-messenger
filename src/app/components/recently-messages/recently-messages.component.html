@@ -20,7 +20,7 @@
 <div class="flex flex-row" *ngFor="let message of content; last as isLast">
   <app-message class="flex flex-row" [groupId]="message.groupId" [detail]="message | compare:_id">
    
-     <span class="truncate text-white" value>
+     <span class="truncate" value>
        {{ message.value }}
      </span>
 
