@@ -5,7 +5,7 @@ import { User,Profile } from '../../ngrx/user/user.reducer'
 import { RequestService,State,Get,RequestState } from '../../services/request/request.service'
 import { AuthService } from '../../services/auth/auth.service'
 import { HttpHeaders } from '@angular/common/http';
-import { Component,OnDestroy,OnInit } from '@angular/core';
+import { ViewChild,ElementRef,Component,OnDestroy,OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-home',
@@ -20,6 +20,12 @@ export class HomeComponent implements OnInit, OnDestroy {
   preFetch : Subscription | undefined
 
   failedSendList : string[] = []
+
+  @viewChild('content') content!: ElementRef
+
+  dataId : string = this.content.getAttribute(
+    'data-id'
+  )
 
   onFetchStateChange: Subscription | undefined
 
