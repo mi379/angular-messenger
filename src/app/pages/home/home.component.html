@@ -18,7 +18,7 @@
   
   <div class="mt-[80px] p-4 border-2 border-black" *ngIf="recentlyMessages as recently">
     <div  class="flex flex-row" *ngFor="let message of recently">  
-      <a state="{groupId:message.groupId}" class="flex flex-row overflow-hidden" *ngFor="let user of [message | compare:_id]" routerLink="messages/{{user.usersRef}}">
+      <a [state]="{groupId:message.groupId}" class="flex flex-row overflow-hidden" *ngFor="let user of [message | compare:_id]" routerLink="messages/{{user.usersRef}}">
 	<div class="flex flex-col justify-center">
           <img 
             class=" h-12 w-12 rounded-full"
