@@ -1,5 +1,5 @@
 import { Component,Input} from '@angular/core';
-import { User } from '../../ngrx/user/user.reducer'
+import { Profile } from '../../ngrx/user/user.reducer'
 
 @Component({
   selector: 'app-card',
@@ -8,5 +8,9 @@ import { User } from '../../ngrx/user/user.reducer'
 })
 export class CardComponent {
   @Input() user: User | undefined
-  @Input() message: string | undefined
+  @Input() message: Compare | undefined
+}
+
+type Compare = Profile & {
+  usersRef:string
 }
