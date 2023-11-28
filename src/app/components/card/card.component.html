@@ -1,8 +1,7 @@
 <a [state]="{profile:user| parse, groupId:message?.groupId}" routerLink="messages/{{user?.usersRef}}" class="flex flex-row">
-  <!--
   <div class="flex flex-col justify-center">
     <img
-      src="user?.profileImage"
+      [src]="user?.profileImage"
       class="h-12 w-12 rounded-full"
     />
   </div>
