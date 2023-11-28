@@ -8,7 +8,6 @@ import { Profile } from '../../ngrx/user/user.reducer'
 })
 export class CardComponent {
   @Input() user: Compare | undefined
-  @Input() message: string | undefined
 }
 
 type Compare = Profile & {
