@@ -9,6 +9,7 @@ import { authReducer } from './ngrx/auth/auth.reducer'
 import { userReducer } from './ngrx/user/user.reducer'
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
+import { CardComponent } from './components/card/card.component';
 import { LoginComponent } from './pages/login/login.component';
 import { HomeComponent } from './pages/home/home.component';
 import { RootComponent } from './pages/root/root.component';  
@@ -36,6 +37,7 @@ import { PaperAirplaneComponent } from './components/icons/paper-airplane/paper-
 
 @NgModule({
   declarations: [
+    CardComponent, 
     LoginComponent,
     HomeComponent,
     RootComponent,
