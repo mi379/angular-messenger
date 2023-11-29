@@ -20,6 +20,7 @@
       *ngFor="let message of recently" 
       [user]="message | compare : _id"
       [message]="message"
+      [_id]="_id"
     />
   </div>
   
