@@ -10,8 +10,10 @@
       <span class="font-bold">
         {{user?.firstName}} {{user?.surname}}
       </span>
-      <div class="w-6 h-6 rounded-full bg-red-900 text-white ml-1">
-        {{message?.unreadCounter}}
+      <div class="flex-none w-6 h-6 rounded-full bg-red-900 text-white ml-1">
+        <span class="text-center">
+          {{message?.unreadCounter}}
+         </span>
       </div>
     </div>
     <span class="truncate">
