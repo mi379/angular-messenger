@@ -116,7 +116,8 @@ export interface Message{
   sendAt:number, 
   read:boolean, 
   contentType:string, 
-  description?:string
+  description?:string, 
+  unreadCounter:number, 
 }
 
 export type Sender = Profile & {
