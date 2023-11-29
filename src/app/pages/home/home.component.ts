@@ -109,11 +109,14 @@ export class HomeComponent implements OnInit, OnDestroy {
 }
 
 export interface Message{
-  _id:string,
   sender:Sender,
   value:string,
   accept:Accept,
-  groupId:string
+  groupId:string,
+  sendAt:number, 
+  read:boolean, 
+  contentType:string, 
+  description?:string
 }
 
 export type Sender = Profile & {
