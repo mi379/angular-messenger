@@ -7,7 +7,10 @@
   </div>
   <div class="overflow-hidden p-2 flex-1 flex flex-col justify-center">
     <span class="font-bold">
-      {{user?.firstName}} {{user?.surname}} {{message?.unreadCounter}}
+      {{user?.firstName}} {{user?.surname}} 
+        <span class="bg-red-900 p-1 rounded-full">
+          {{message?.unreadCounter}}
+        </span>
     </span>
     <span class="truncate">
       {{message?.value}}
