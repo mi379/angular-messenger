@@ -51,11 +51,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   ) 
   
   onNewMessage(message:Message){
-    alert(
-      JSON.stringify
-        message
-      )
-    ) 
+    alert(JSON.stringify(message))
   }
   
   fetchRecentlyMessages(authorization:string){      
