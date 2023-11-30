@@ -14,6 +14,7 @@ export class CardComponent {
   
   unreadCounter():boolean{
     var message:Message = this.message as Message
+    var {unreadCounter,sender}:Message = message
 
     return false
   }
