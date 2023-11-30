@@ -13,7 +13,12 @@ export class CardComponent {
   @Input() _id : string | undefined
   
   unreadCounter(message:Message|undefined):boolean{
-    return false
+    var counter = message?.unreadCounter
+    var ref = message?.sender.usersRef
+
+    return counter > 0 && ref !== this._id
+      ? true
+      : false
   }
 }
 
