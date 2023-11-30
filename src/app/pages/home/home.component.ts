@@ -51,7 +51,11 @@ export class HomeComponent implements OnInit, OnDestroy {
   ) 
   
   onNewMessage(message:Message){
-    alert(message) 
+    alert(
+      JSON.stringify
+        message
+      )
+    ) 
   }
   
   fetchRecentlyMessages(authorization:string){      
@@ -110,6 +114,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(){
+    this.socket.disconnected() 
+  
     this.unsubscribe([
       this.preFetch,
       this.onFetchStateChange
