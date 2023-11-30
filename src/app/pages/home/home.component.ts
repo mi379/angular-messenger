@@ -1,4 +1,5 @@
 import { Store } from '@ngrx/store'
+import { Router } from '@angular/router'
 import { io,Socket } from 'socket.io-client'
 import { Observable,Subscription } from 'rxjs'
 import { Session } from '../../ngrx/auth/auth.reducer'
@@ -166,8 +167,15 @@ export class HomeComponent implements OnInit, OnDestroy {
       this.onFetchStateChange
     ])
   }
+  
+  toSearch(){
+    this.router.navigateByUrl(
+      '/search'
+    )
+  }
 
   constructor(
+    private router:Router, 
     private store:Store<Reducers>,
     private request:RequestService,
     private auth:AuthService<Reducers>
