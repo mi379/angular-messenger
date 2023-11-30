@@ -60,17 +60,8 @@ export class HomeComponent implements OnInit, OnDestroy {
         filter
       )
 
-      var _filter:Message = filter as Message
-
-      if(String(message.sender) !== _filter.sender.usersRef){
-        (this.recentlyMessages as Message[])[index].sender = _filter.accept
-        (this.recentlyMessages as Message[])[index].accept = _filter.sender
+      if(String(message.sender) !== filter.sender.usersRef){
         (this.recentlyMessages as Message[])[index].value = message.value
-        (this.recentlyMessages as Message[])[index].sendAt = message.sendAt
-        (this.recentlyMessages as Message[])[index].read = message.read
-        (this.recentlyMessages as Message[])[index].contentType = message.contentType
-        (this.recentlyMessages as Message[])[index].description = message.description
-        (this.recentlyMessages as Message[])[index].unreadCounter = filter.unreadCounter + 1
       }
     }
   }
