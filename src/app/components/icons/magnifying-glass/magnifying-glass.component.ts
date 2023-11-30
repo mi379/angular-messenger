@@ -5,5 +5,5 @@ import { Component } from '@angular/core';
   templateUrl: './magnifying-glass.component.html',
   styleUrls: ['./magnifying-glass.component.css']
 })
-export class MagnifyingGlassComponent {
+export class MagnifyingGlassComponent {}
 
