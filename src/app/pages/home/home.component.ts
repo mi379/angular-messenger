@@ -79,7 +79,8 @@ export class HomeComponent implements OnInit, OnDestroy {
           unreadCounter
         } as Message
         
-        alert(JSON.stringify(updated))
+        messages[index] = updated
+        this.recentlyMessages = messages
       }
     }
   }
