@@ -13,7 +13,7 @@ export class CardComponent {
   @Input() _id : string | undefined
   
   unreadCounter():boolean{
-    
+    return false
   }
 }
 
