@@ -51,7 +51,27 @@ export class HomeComponent implements OnInit, OnDestroy {
   ) 
   
   onNewMessage(message:Message){
-    alert(JSON.stringify(message)) 
+    var [filter] = (this.recentlyMessages as Message[]).filter(
+      message => message.sender.usersRef === message.sender
+      || message.accept.usersRef === message.sender
+    )
+
+    if(filter){
+      var index = (this.recentlyMessages as Message[]).indexOf(
+        filter
+      )
+
+      if(message.sender !== filter.sender.usersRef){
+        (this.recentlyMessages as Message[])[index].sender = filter.accept
+        (this.recentlyMessages as Message[])[index].accept = filter.sender
+        (this.recentlyMessages as Message[])[index].value = message.value
+        (this.recentlyMessages as Message[])[index].sendAt = message.sendAt
+        (this.recentlyMessages as Message[])[index].read = message.read
+        (this.recentlyMessages as Message[])[index].contentType = message.contentType
+        (this.recentlyMessages as Message[])[index].description = message.description
+        (this.recentlyMessages as Message[])[index].unreadCounter = filter.unreadCounter + 1
+      }
+    }
   }
   
   fetchRecentlyMessages(authorization:string){      
