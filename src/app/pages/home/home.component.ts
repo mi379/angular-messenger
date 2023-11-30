@@ -61,6 +61,12 @@ export class HomeComponent implements OnInit, OnDestroy {
         === incomingMessage.sender
       )
     })
+    
+    if(filter){
+      if(filter.sender.usersRef === String(incomingMessage.sender)){
+        
+      }
+    }
   }
   
   fetchRecentlyMessages(authorization:string){      
