@@ -4,14 +4,14 @@
     [src]="profile?.profileImage" 
     class="rounded-full h-12 w-12"
   />
-  <div class="flex-1 w-full p-2 border-2 border-black" *ngIf="pages === 'home'">
-    <input 
-      type="search"
-      placeholder="search"
-    />
-  </div>
 </div>
 
+<div class="flex-1 px-2 p-2 border-2 border-black" *ngIf="pages === 'home'">
+  <input 
+    type="search"
+    placeholder="search"
+  />
+</div>
 
 
 <div *ngIf="pages === 'messages'" class="flex-1 v-center text-white px-2">    
@@ -22,6 +22,8 @@
     </span>
   </p>
 </div>
+
+
 
 
 
