@@ -45,15 +45,22 @@ export class HomeComponent implements OnInit, OnDestroy {
   )
   .on(
     'newMessage', 
-    this.onNewMessage.bind(
+    this.onIncomingMessage.bind(
       this
     ) 
   ) 
   
   onIncomingMessage(incomingMessage:IncomingMessage){
-    var messages:Message[] = (
-      this.recentlyMessages as Message[]
-    ) 
+    var messages:Message[] = this.recentlyMessages as Message[]
+    var [filter] = messages.filter(message => {
+      return (
+        message.sender.usersRef
+        === incomingMessage.sender
+      ) || (
+        message.accept.usersRef
+        === incomingMessage.sender
+      )
+    })
   }
   
   fetchRecentlyMessages(authorization:string){      
@@ -140,8 +147,8 @@ export interface Message{
 }
 
 interface IncomingMessage{
-  sender:string, 
-  accept:string, 
+  sender:string | Sender, 
+  accept:string | Accept, 
   groupId:string, 
   value:string, 
   sendAt:number,
