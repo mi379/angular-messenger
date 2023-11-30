@@ -64,6 +64,21 @@ export class HomeComponent implements OnInit, OnDestroy {
     
     if(filter){
       if(filter.sender.usersRef === String(incomingMessage.sender)){
+        var index = messages.indexOf(filter)
+        var unreadCounter = filter.unreadCounter + 1
+        
+        var {_id,...newMessage}:IncomingMessage = {
+          ...incomingMessage,
+          sender:filter.sender, 
+          accept:filter.accept
+        }
+        
+        var updated:Message = {
+          ...newMessage, 
+          unreadCounter
+        }
+        
+        
         
       }
     }
