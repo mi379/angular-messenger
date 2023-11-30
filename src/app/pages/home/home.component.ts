@@ -168,6 +168,7 @@ export interface Message{
 }
 
 interface IncomingMessage{
+  _id:string, 
   sender:string | Sender, 
   accept:string | Accept, 
   groupId:string, 
