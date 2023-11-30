@@ -56,12 +56,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     )
 
     if(filter){
-      var index = (this.recentlyMessages as Message[]).indexOf(
-        filter
-      ) 
-
-      (this.recentlyMessages as Message[])[Number(index)].value = String(message.value) 
-      
+      alert(JSON.stringify(filter)) 
     }
   }
   
