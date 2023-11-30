@@ -54,13 +54,8 @@ export class HomeComponent implements OnInit, OnDestroy {
     var messages = this.recentlyMessages as Message[]
     
     var [filtered] = messages.filter(_message => {
-      return (
-        _message.sender.usersRef 
-        === message.sender
-      ) || (
-        _message.accept.usersRef
-        ==== message.sender
-      )       
+      return _message.sender.usersRef === message.sender
+      || _message.accept.usersRef==== message.sender    
     }) 
   }
   
