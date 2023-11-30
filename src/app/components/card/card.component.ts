@@ -13,7 +13,7 @@ export class CardComponent {
   @Input() _id : string | undefined
   
   unreadCounter(message:Message|undefined):boolean{
-    var message:Message = messsage As Message
+    var message:Message = message As Message
 
     return false
   }
