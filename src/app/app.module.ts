@@ -61,6 +61,7 @@ import { PaperAirplaneComponent } from './components/icons/paper-airplane/paper-
     MomentPipe,
     CameraComponent,
     PaperAirplaneComponent,
+    MagnifyingGlassComponent
   ],
   imports: [
     BrowserModule,
