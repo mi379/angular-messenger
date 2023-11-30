@@ -73,10 +73,13 @@ export class HomeComponent implements OnInit, OnDestroy {
           accept:filter.accept
         }
         
-        var updated:Message = {
-          ...newMessage, 
+        
+        var updated:any = {
+          ...incomingMessage, 
           unreadCounter
         }
+        
+        var result:Message = updated as Message
         
         
         
