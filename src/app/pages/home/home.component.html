@@ -16,6 +16,8 @@
 
   
   <div class="mt-[80px] p-4 border-2 border-black" *ngIf="recentlyMessages as recently">
+    <h1>Recently Messages</h1>
+    
     <app-card 
       *ngFor="let message of recently" 
       [user]="message | compare : _id"
