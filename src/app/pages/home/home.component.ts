@@ -74,14 +74,10 @@ export class HomeComponent implements OnInit, OnDestroy {
         }
         
         
-        var updated:any = {
+        var updated:Message = {
           ...incomingMessage, 
           unreadCounter
-        }
-        
-        var result:Message = updated as Message
-        
-        
+        } as Message
         
       }
     }
