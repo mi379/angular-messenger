@@ -11,7 +11,7 @@
         {{user?.firstName}} {{user?.surname}}
       </span>
       <div class="flex flex-row justify-center flex-none w-6 h-6 rounded-full bg-red-900 text-white ml-1">
-        <span *ngIf="unreadCounter(message)">
+        <span>
           {{message?.unreadCounter}}
          </span>
       </div>
