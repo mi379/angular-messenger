@@ -75,7 +75,7 @@ export class HomeComponent implements OnInit, OnDestroy {
         
         
         var updated:Message = {
-          ...incomingMessage, 
+          ...newMessage, 
           unreadCounter
         } as Message
         
