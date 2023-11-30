@@ -60,9 +60,10 @@ export class HomeComponent implements OnInit, OnDestroy {
         filter
       )
 
-      if(String(message.sender) !== filter.sender.usersRef){
-        (this.recentlyMessages as Message[])[index].value = message.value
-      }
+      alert('test') 
+
+      (this.recentlyMessages as Message[])[index].value = String(message.value) 
+      
     }
   }
   
