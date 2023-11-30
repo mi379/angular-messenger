@@ -12,7 +12,7 @@ export class CardComponent {
   @Input() message : Message | undefined
   @Input() _id : string | undefined
   
-  unreadCounter():boolean{
+  unreadCounter({unreadCounter,sender}:Message):boolean{
     return false
   }
 }
