@@ -1,4 +1,5 @@
 import { Store } from '@ngrx/store'
+import { io,Socket } from 'socket.io-client'
 import { Observable,Subscription } from 'rxjs'
 import { Session } from '../../ngrx/auth/auth.reducer'
 import { User,Profile } from '../../ngrx/user/user.reducer'
@@ -16,6 +17,8 @@ import { ViewChild,ElementRef,Component,OnDestroy,OnInit } from '@angular/core';
 export class HomeComponent implements OnInit, OnDestroy {
 
   _id : string = ''
+
+  server:string = process.env['NG_APP_SERVER'] as string
 
   fetchErrorMessage : string | undefined
 
@@ -36,9 +39,21 @@ export class HomeComponent implements OnInit, OnDestroy {
     this._id = state.user._id
     return state.user
   })
+
+  socket:Socket = io(
+    this.server
+  )
+  .on(
+    'newMessage', 
+    this.onNewMessage.bind(
+      this
+    ) 
+  ) 
   
-
-
+  onNewMessage(message:Message){
+    alert(message) 
+  }
+  
   fetchRecentlyMessages(authorization:string){      
     var path:string = "message/recently"
 
