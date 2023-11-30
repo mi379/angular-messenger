@@ -4,7 +4,12 @@
     [src]="profile?.profileImage" 
     class="rounded-full h-12 w-12"
   />
-  <ng-content [select]="search"/>
+  <div *ngIf="pages === 'home'">
+    <input 
+      type="search"
+      placeholder="search"
+    />
+  <div/>
 </div>
 
 
