@@ -51,7 +51,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   ) 
   
   onNewMessage(message:any){
-    var [filter]:Message = (this.recentlyMessages as Message[]).filter(
+    var [filter] = (this.recentlyMessages as Message[]).filter(
       x => (x.sender.usersRef === String(message.sender)) || (x.accept.usersRef ===  String(message.sender)) 
     )
 
@@ -60,9 +60,11 @@ export class HomeComponent implements OnInit, OnDestroy {
         filter
       )
 
-      if(message.sender !== filter.sender.usersRef){
-        (this.recentlyMessages as Message[])[index].sender = filter.accept
-        (this.recentlyMessages as Message[])[index].accept = filter.sender
+      var _filter:Message = filter as Message
+
+      if(String(message.sender) !== _filter.sender.usersRef){
+        (this.recentlyMessages as Message[])[index].sender = _filter.accept
+        (this.recentlyMessages as Message[])[index].accept = _filter.sender
         (this.recentlyMessages as Message[])[index].value = message.value
         (this.recentlyMessages as Message[])[index].sendAt = message.sendAt
         (this.recentlyMessages as Message[])[index].read = message.read
