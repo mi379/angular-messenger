@@ -1,4 +1,4 @@
-import { Observable } from 'rxjs'
+import { Observable,of} from 'rxjs'
 import { ViewChild,ElementRef,Component, AfterViewInit } from '@angular/core';
 
 @Component({
@@ -10,7 +10,7 @@ import { ViewChild,ElementRef,Component, AfterViewInit } from '@angular/core';
 export class SearchComponent implements AfterViewInit {
   @ViewChild('query') query! : ElementRef
   
-  queryString:Observable<string> = Observable<string>('')
+  queryString:Observable<string> = of('')
   
   ngAfterViewInit(){
     this.query.nativeElement.focus();
