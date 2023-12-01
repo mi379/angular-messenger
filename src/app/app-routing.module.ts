@@ -1,5 +1,6 @@
- import { NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { RouterModule,Routes } from '@angular/router';
+import { SearchComponent } from './pages/search/search.component'
 import { LoginComponent } from './pages/login/login.component';
 import { HomeComponent } from './pages/home/home.component';
 import { MessagesComponent } from './pages/messages/messages.component';
@@ -22,6 +23,11 @@ const routes:Routes = [
     component:MessagesComponent,
     canActivate:[AuthenticationGuard]
   },
+  {
+    path:'/search', 
+    component:SearchComponent, 
+    canActivate:[AuthenticationAuthGuard]
+  }
   {
     path:'**',
     component:InvalidComponent
