@@ -1,11 +1,11 @@
 <div class="fullscreen flex flex-col">
   <div class="p-2">
     <input
+      #query
       type="search"
       class="focus:outline-none rounded p-2 w-full border-2 border-black"
-      placeholder="who are you looking for?"
-      (change)="queryString.next($event.target.value)"
-      #query
+      (change)="queryString.next(($event.target | input).value)"
+      placeholder="who are you looking for"
     />
   </div>
 </div>
