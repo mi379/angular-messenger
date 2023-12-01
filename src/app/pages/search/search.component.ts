@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ViewChild,ElementRef,Component, AfterViewInit } from '@angular/core';
 
 @Component({
   selector: 'app-search',
@@ -6,6 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./search.component.css']
 })
 
-export class SearchComponent {
- 
+export class SearchComponent implements AfterViewInit {
+  @ViewChild('query') query! : ElementRef
+  
+  ngAfterViewInit(){
+    this.query.nativeElement.focus();
+  }
 }
