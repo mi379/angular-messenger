@@ -19,7 +19,7 @@
   </p>
 </div>
 
-<div class="flex flex-col justify-center">
+<div class="flex flex-col justify-center" *ngIf="pages==='home">
   <ng-content [select]="navbar-search"/>
 </div>
 
