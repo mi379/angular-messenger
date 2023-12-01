@@ -11,7 +11,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { MagnifyingGlassComponent } from './components/icons/magnifying-glass/magnifying-glass.component'
 import { CardComponent } from './components/card/card.component';
-import { SearchComponent } from './components/search/search.component'
+import { SearchComponent } from './pages/search/search.component'
 import { LoginComponent } from './pages/login/login.component';
 import { HomeComponent } from './pages/home/home.component';
 import { RootComponent } from './pages/root/root.component';  
