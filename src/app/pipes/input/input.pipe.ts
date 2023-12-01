@@ -1,7 +1,7 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'parse'
+  name: 'input'
 })
 export class InputPipe implements PipeTransform {
 
