@@ -10,5 +10,5 @@ export class NavbarComponent {
   @Input() profile : Profile | undefined
   @Input() typing : boolean | undefined
   @Input() pages : string | undefined
-  @Output() toSearchPage() = new EventEmitter<any>() 
+  @Output() toSearchPage = new EventEmitter<any>() 
 }
