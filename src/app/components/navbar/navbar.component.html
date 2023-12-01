@@ -1,7 +1,7 @@
-<div class="{{pages === 'messages' ? 'justify-between w-20' : ''}} flex flex-row md:w-auto">
-  <ng-content [select]="navbar-btn">
-    <!-- template -->
-  </ng-content>
+<div class="{{pages === 'messages' ? 'justify-between w-20 ' : ''}} flex flex-row md:w-auto">
+  <ng-content 
+    [select]="navbar-btn"
+  />
   <img 
     [src]="profile?.profileImage" 
     class="rounded-full h-12 w-12"
