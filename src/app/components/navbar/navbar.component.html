@@ -20,7 +20,9 @@
 </div>
 
 <div class="flex flex-col justify-center" *ngIf="pages==='home">
-  <ng-content [select]="navbar-search"/>
+  <button (click)="toSearch()" class="text-white md-hidden">
+    <app-magnifying-glass/>
+  </button>
 </div>
 
 
