@@ -1,4 +1,4 @@
-<div class="bg-red-900 {{pages === 'messages' ? 'justify-between w-20 ' : ''}} flex flex-row md:w-auto">
+<div class="{{pages === 'messages' ? 'justify-between w-20 ' : ''}} flex flex-row md:w-auto">
   <ng-content 
     [select]="navbar-btn"
   />
@@ -10,7 +10,7 @@
 
 
 
-<div class="bg-yellow-900 px-2 flex-1 v-center text-white">    
+<div class="px-2 flex-1 v-center text-white">    
   <p class="font-sans font-bold">
     {{profile?.firstName}}
     <span *ngIf="typing">
@@ -19,7 +19,7 @@
   </p>
 </div>
 
-<div *ngIf="pages==='home'"class="bg-green-900 flex flex-col justify-center">
+<div *ngIf="pages==='home'"class="flex flex-col justify-center">
   <button class="text-white">
     <app-magnifying-glass>
     </app-magnifying-glass>
