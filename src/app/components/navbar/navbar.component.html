@@ -10,7 +10,7 @@
 
 
 
-<div class="flex-1 v-center text-white">    
+<div class="{{pages === 'messages' ? 'px-2' : '' }}flex-1 v-center text-white">    
   <p class="font-sans font-bold">
     {{profile?.firstName}}
     <span *ngIf="typing">
