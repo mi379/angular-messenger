@@ -1,11 +1,7 @@
 <app-navbar pages="home" [profile]="(currentUser | async)?.profile" class="navbar">
-  <!--
-  <div class="flex flex-col justify-center" navbar-search>
-    <button (click)="toSearch()" class="text-white md-hidden">
-      <app-magnifying-glass/>
-    </button>
-  </div>
-  -->
+  <button navbar-search (click)="toSearch()" class="text-white md-hidden">
+    <app-magnifying-glass/>
+  </button>
 </app-navbar>
 
 <div class="fullscreen flex flex-col">
