@@ -24,7 +24,7 @@ const routes:Routes = [
     canActivate:[AuthenticationGuard]
   },
   {
-    path:'/search', 
+    path:'search', 
     component:SearchComponent, 
     canActivate:[AuthenticationGuard]
   }, 
