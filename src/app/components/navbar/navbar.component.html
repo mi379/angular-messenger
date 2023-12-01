@@ -20,7 +20,7 @@
 </div>
 
 <div *ngIf="pages==='home'"class="flex flex-col justify-center">
-  <button (click)="toSearch()" class="text-white">
+  <button (click)="toSearchPage.emit()" class="text-white">
     <app-magnifying-glass>
     </app-magnifying-glass>
   </button>
