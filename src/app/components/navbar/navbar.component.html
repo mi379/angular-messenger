@@ -1,5 +1,7 @@
-<div class="w-20 flex flex-row justify-between md:w-auto">
-  <ng-content [select]="navbar-btn"/>
+<div class="w-20 flex flex-row md:w-auto">
+  <ng-content [select]="navbar-btn">
+    <!-- template -->
+  </ng-content>
   <img 
     [src]="profile?.profileImage" 
     class="rounded-full h-12 w-12"
@@ -19,7 +21,6 @@
 
 <ng-content
   [select]="navbar-search"
-  *ngIf="pages === 'home'"
 />
 
 
