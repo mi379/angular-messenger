@@ -10,7 +10,7 @@ import { ViewChild,ElementRef,Component, AfterViewInit } from '@angular/core';
 export class SearchComponent implements AfterViewInit {
   @ViewChild('query') query! : ElementRef
   
-  queryString:Observable<string> = new Observable('')
+  queryString:Observable<string> = new Observable<string>('')
   
   ngAfterViewInit(){
     this.query.nativeElement.focus();
