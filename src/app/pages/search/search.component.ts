@@ -1,4 +1,4 @@
-import { Observable,of} from 'rxjs'
+import { BehaviorSubject } from 'rxjs'
 import { ViewChild,ElementRef,Component, AfterViewInit } from '@angular/core';
 
 @Component({
@@ -10,10 +10,12 @@ import { ViewChild,ElementRef,Component, AfterViewInit } from '@angular/core';
 export class SearchComponent implements AfterViewInit {
   @ViewChild('query') query! : ElementRef
   
-  queryString:Observable<any> = of('')
+  queryString: Query = new BehaviorSubject('')
   
   
   ngAfterViewInit(){
     this.query.nativeElement.focus();
   }
 }
+
+type Query = BehaviorSubject<any>
