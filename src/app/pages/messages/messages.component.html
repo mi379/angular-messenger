@@ -4,7 +4,7 @@
   </button>
 </app-navbar>
 
-<div #target class="fullscreen bg-slate-200 flex flex-col">
+<div class="fullscreen bg-slate-200 flex flex-col">
   <app-fetch-error class="flex-1 v-center" *ngIf="fetchErrorMessage as message" (retry)="fetchRetry()">
     <p message>{{message}}</p>
   </app-fetch-error>
@@ -13,7 +13,7 @@
     Loading....
   </div>
 
-  <div  *ngIf="!uploadPreview && messages as messages" class="mt-[80px] mb-[72px] p-4 border-2 border-black">
+  <div #target *ngIf="!uploadPreview && messages as messages" class="mt-[80px] mb-[72px] p-4 border-2 border-black">
     <div *ngFor="let message of messages; last as last" [@isLast]="last ? ''  : 'last'" [id]="last ? 'target' : ''">
 			<div *ngIf="message.sender !== _id && message.contentType === 'text'" class="min-w-[50%] xs:max-w-[85%] bg-green-500 p-4 rounded-md flex flex-row">
         <div class="flex-1">
