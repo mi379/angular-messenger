@@ -243,7 +243,7 @@ export class MessagesComponent implements OnInit,OnDestroy{
     )
 
     this.messages = updatedList
-    this.target.nativeElement.scrollBottom = this.target.nativeElement.scrollHeight
+    this.target.nativeElement.scrollTop = this.target.nativeElement.scrollHeight
     //alert(this.target.nativeElement.scrollHeight) 
 
   }
