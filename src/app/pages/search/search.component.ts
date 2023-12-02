@@ -26,7 +26,7 @@ export class SearchComponent implements AfterViewInit {
   )
 
   search(keyword:string){
-    alert({keyword}) 
+    alert(keyword) 
   }
   
   ngAfterViewInit(){
