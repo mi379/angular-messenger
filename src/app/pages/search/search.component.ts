@@ -13,7 +13,7 @@ export class SearchComponent implements AfterViewInit {
   queryString: Query = new BehaviorSubject('')
 
   onQueryStringChg: this.queryString.subscribe(
-    target:EventTarget => {
+    target => {
       var {value}:HTMLInputElement = (
         target as HTMLInputElement
       ) 
