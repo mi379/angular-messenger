@@ -14,7 +14,7 @@ export class SearchComponent implements AfterViewInit {
 
   onQueryStringChg: this.queryString.subscribe(
     target => this.search(
-      target as HTMLInputElement.value
+      target as (HTMLInputElement).value
     ) 
   )
 
