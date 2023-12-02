@@ -243,7 +243,10 @@ export class MessagesComponent implements OnInit,OnDestroy{
     )
 
     this.messages = updatedList
-    window.scrollTo(0,document.body.scrollHeight) 
+    window.scrollTo(
+      0,
+      this.target.nativeElement.scrollHeight
+    ) 
     //alert(this.target.nativeElement.scrollHeight) 
 
   }
