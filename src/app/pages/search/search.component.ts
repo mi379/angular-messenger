@@ -10,7 +10,7 @@ import { ViewChild,ElementRef,Component, AfterViewInit } from '@angular/core';
 export class SearchComponent implements AfterViewInit {
   @ViewChild('query') query! : ElementRef
   
-  queryString: Query = new BehaviorSubject('')
+  queryString: Query = new BehaviorSubject<Target>(null)
 
   onQueryStringChg: this.queryString.subscribe(
     target => {
@@ -34,4 +34,5 @@ export class SearchComponent implements AfterViewInit {
   }
 }
 
-type Query = BehaviorSubject<EventTarget>
+type Target = EventTarget | null
+type Query = BehaviorSubject<Target>
