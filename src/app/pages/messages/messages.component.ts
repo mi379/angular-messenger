@@ -6,7 +6,7 @@ import { trigger,state,style } from '@angular/animations';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { ActivatedRoute,Router,Params } from '@angular/router'
 import { User,Profile } from '../../ngrx/user/user.reducer'
-import { Component,HostListener,OnInit,OnDestroy} from '@angular/core';
+import { Component,ViewChild,ElementRef,HostListener,OnInit,OnDestroy} from '@angular/core';
 import { Session } from '../../ngrx/auth/auth.reducer'
 import { uploadBytes,ref,StorageReference,getDownloadURL,UploadResult } from 'firebase/storage'
 
@@ -62,6 +62,8 @@ export class MessagesComponent implements OnInit,OnDestroy{
   uploadRef:StorageReference = ref(storage,'images')
 
   failedToUploadFile:{detail:Send,file:File}[] = []
+
+  @ViewChild('target') target! : ElementRef
 
   socket:Socket = io(
     this.server
