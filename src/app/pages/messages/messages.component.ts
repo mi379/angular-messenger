@@ -437,6 +437,10 @@ export class MessagesComponent implements OnInit,OnDestroy{
         }
       ];
 
+      window.scrollTo(
+        0,
+        this.target.nativeElement.scrollHeight
+      ) 
     }
     
   }
