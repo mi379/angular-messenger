@@ -1,6 +1,6 @@
 import { BehaviorSubject,Subscription } from 'rxjs'
 import { User } from '../../ngrx/user/user.reducer'
-import { IncomingMesage } from '../home/home.component'
+import { IncomingMessage } from '../home/home.component'
 import { ViewChild,ElementRef,Component, AfterViewInit } from '@angular/core';
 
 @Component({
