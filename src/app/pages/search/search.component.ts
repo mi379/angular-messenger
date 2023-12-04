@@ -39,11 +39,8 @@ export class SearchComponent implements AfterViewInit {
 type Target = EventTarget | null
 type Query<T> = BehaviorSubject<T>
 
-type U = Pick<User,"Profile">
-
-type Profile = U & {
+type Profile = Pick<User,"Profile"> & {
   _id:string
 }
-
 
 
