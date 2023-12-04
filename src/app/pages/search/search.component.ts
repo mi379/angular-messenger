@@ -41,10 +41,6 @@ type Query<T> = BehaviorSubject<T>
 
 type U = Pick<User,"Profile">
 
-type Search = Profile & {
-  messages:IncomingMessage[]
-}
-
 type Profile = U & {
   _id:string
 }
