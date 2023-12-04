@@ -17,7 +17,7 @@ export class SearchComponent implements AfterViewInit {
   
   queryString: Query<Target> = new BehaviorSubject<Target>(null)
   
-  state:State<Search[]> = this.request.createInitialState<Result[]>()
+  state:State<Search[]> = this.request.createInitialState<Search[]>()
 
   onQueryStringChg:Subscription = this.queryString.subscribe(
     target => {
