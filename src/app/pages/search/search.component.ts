@@ -43,4 +43,8 @@ type Profile = Pick<User,"profile"> & {
   _id:string
 }
 
+type Search = Profile & {
+  messages:IncomingMessage
+}
+
 
