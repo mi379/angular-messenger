@@ -1,7 +1,10 @@
+
+
 import { BehaviorSubject,Subscription } from 'rxjs'
 import { User } from '../../ngrx/user/user.reducer'
 import { IncomingMessage } from '../home/home.component'
 import { ViewChild,ElementRef,Component, AfterViewInit } from '@angular/core';
+import { State,RequestService } from '../../services/request/request.service'
 
 @Component({
   selector: 'app-search',
@@ -13,6 +16,8 @@ export class SearchComponent implements AfterViewInit {
   @ViewChild('query') query! : ElementRef
   
   queryString: Query<Target> = new BehaviorSubject<Target>(null)
+  
+  state:State<Search[]> = this.request.createInitialState<Result[]>()
 
   onQueryStringChg:Subscription = this.queryString.subscribe(
     target => {
@@ -34,6 +39,12 @@ export class SearchComponent implements AfterViewInit {
   ngAfterViewInit(){
     this.query.nativeElement.focus();
   }
+  
+  constructor(
+    private request:RequestService
+  ){}
+  
+  
 }
 
 type Target = EventTarget | null
