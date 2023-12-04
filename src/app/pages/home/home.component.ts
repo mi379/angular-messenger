@@ -194,7 +194,7 @@ export interface Message{
   unreadCounter:number, 
 }
 
-interface IncomingMessage{
+export interface IncomingMessage{
   _id:string, 
   sender:string | Sender, 
   accept:string | Accept, 

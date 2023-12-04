@@ -1,4 +1,6 @@
 import { BehaviorSubject,Subscription } from 'rxjs'
+import { User } from '../../ngrx/user/user.reducer'
+import { IncomingMesage } from '../home/home.component'
 import { ViewChild,ElementRef,Component, AfterViewInit } from '@angular/core';
 
 @Component({
@@ -36,3 +38,16 @@ export class SearchComponent implements AfterViewInit {
 
 type Target = EventTarget | null
 type Query<T> = BehaviorSubject<T>
+
+type U = Pick<User,"Profile">
+
+type Search = Profile && {
+  messages:IncomingMessage[]
+}
+
+type Profile = U && {
+  _id:string
+}
+
+
+
