@@ -52,10 +52,18 @@ export class SearchComponent implements AfterViewInit {
   }) 
 
   search:Get = this.request.get < Search[] > ({
-    cb: result => alert(result),
+    cb: r => this.onSucessSearch(r),
     failedCb : err => alert("err"), 
     state: this.state,
   })
+  
+  onSucessSearch(result:Search[]){
+    alert(
+      JSON.stringify(
+        result
+      )
+    )
+  }
 
   
   ngAfterViewInit(){
