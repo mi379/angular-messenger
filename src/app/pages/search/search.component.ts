@@ -12,45 +12,49 @@ import { State,Get,RequestService } from '../../services/request/request.service
 })
 
 export class SearchComponent implements OnInit,AfterViewInit {
+ 
+  authorization:string = ''
+ 
   @ViewChild('query') query! : ElementRef
 
-  authorization:string = ''
+  store:Observable<User>= this.store.select((state:Reducers) => {
+    return state.user
+  })
   
   queryString: Query<Target> = new BehaviorSubject<Target>(null)
   
   state:State<Search[]> = this.request.createInitialState<Search[]>()
-  
 
-  _search:Get = this.request.get<Search[]>({
-    cb:result => alert(JSON.stringify(result)), 
-    state:this.state,
-  }) 
-
-  onQueryStringChg:Subscription = this.queryString.subscribe(
+  onQueryStringChange:Subscription = this.queryString.subscribe(
     target => {
       var {value}:HTMLInputElement = (
         target as HTMLInputElement
       ) 
 
-      alert(
-        this.authorization
-      ) 
+      if(value.length > 0){
+        alert(value)
+      }
         
     }
   )
+  
+  search: Get = this.request.get < Search[] > ({
+    cb: result => alert("success"),
+    state: this.state,
+  })
+  
+  user:Subscription | undefined = undefined
 
-  search(keyword:string){
-    alert(keyword) 
-  }
   
   ngOnInit(){
-    this.store.select(state => {
-      alert("test")
+    this.user = this.store.subscribe(u => {
+      this.authorization = u._id
     })
   }
   
   ngAfterViewInit(){
     this.query.nativeElement.focus();
+   
   }
   
   constructor(
