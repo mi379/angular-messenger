@@ -7,6 +7,11 @@
       (keyup)="queryString.next($event.target)"
       placeholder="Who are you looking for?"
     />
+    
+    <div>
+      <app-arrow-left>
+      </app-arrow-left>
+    </div>
   </div>
   
   <div class="flex-1 border-2 border-green-900" *ngIf="result && result.length > 1">
