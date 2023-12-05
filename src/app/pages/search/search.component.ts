@@ -44,9 +44,9 @@ export class SearchComponent implements AfterViewInit {
       : ''
    
     if (value.length > 0) {
-      this.runSearch(
+      this.search(
         search,
-        headers
+        {headers}
       )
     }
   }) 
@@ -56,12 +56,6 @@ export class SearchComponent implements AfterViewInit {
     failedCb : err => alert("err"), 
     state: this.state,
   })
-  
-  runSearch(value,headers){
-    this.search(value,{
-      headers
-    })
-  }
 
   
   ngAfterViewInit(){
