@@ -1,5 +1,5 @@
 <div class="fullscreen flex flex-col">
-  <div class="p-2">
+  <div class="p-2 border-2 border-black">
     <input
       #query
       type="search"
@@ -9,20 +9,22 @@
     />
   </div>
   
-  <div *ngIf="(state | async)?.running" class="fullscreen flex flex-col justify-center">
-    <div class="flex flex-row justify-center">
-      Loading
-    </div>
+  <div class="flex-1 border-2 border-green-900" *ngIf="result && result.length > 1">
+   
   </div>
-  
-  <div class="border-2 border-black v-center" *ngIf="result && result.length < 1">
-    <div class="h-center">
-      No result
-    </div>
-  </div>
-  
-  
-  
-  
-  
 </div>
+
+<div class="fullscreen border-2 border-black v-center" *ngIf="result && result.length < 1">
+  <div class="h-center">
+    No result
+  </div>
+</div>
+
+<div *ngIf="(state | async)?.running" class="fullscreen border-2 border-red-900 v-center">
+  <div class="h-center">
+     Loading
+  </div>
+</div>
+  
+  
+  
