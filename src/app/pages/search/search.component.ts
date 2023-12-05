@@ -1,7 +1,8 @@
+import { Store } from '@ngrx/store'
 import { BehaviorSubject,Subscription } from 'rxjs'
 import { User } from '../../ngrx/user/user.reducer'
-import { IncomingMessage } from '../home/home.component'
-import { ViewChild,ElementRef,Component, AfterViewInit } from '@angular/core';
+import { Reducer,IncomingMessage } from '../home/home.component'
+import { ViewChild,ElementRef,Component,OnInit,AfterViewInit } from '@angular/core';
 import { State,Get,RequestService } from '../../services/request/request.service'
 
 @Component({
@@ -10,12 +11,20 @@ import { State,Get,RequestService } from '../../services/request/request.service
   styleUrls: ['./search.component.css']
 })
 
-export class SearchComponent implements AfterViewInit {
+export class SearchComponent implements OnInit, AfterViewInit {
   @ViewChild('query') query! : ElementRef
+
+  authorization : string | undefined = undefined
   
   queryString: Query<Target> = new BehaviorSubject<Target>(null)
   
   state:State<Search[]> = this.request.createInitialState<Search[]>()
+
+  subscription : Subscription | undefined = undefined
+  
+  currentUser:Observable<User> = this.store.select(state => {
+    return state.user
+  })
 
   _search:Get = this.request.get<Search[]>({
     cb:result => alert(JSON.stringify(result)), 
@@ -28,8 +37,8 @@ export class SearchComponent implements AfterViewInit {
         target as HTMLInputElement
       ) 
 
-      this._search(
-        `user/search/${value}`
+      alert(
+        this.authorization
       ) 
         
     }
@@ -42,9 +51,16 @@ export class SearchComponent implements AfterViewInit {
   ngAfterViewInit(){
     this.query.nativeElement.focus();
   }
+
+  ngOnInit(){
+    this.subscription = this.currentUser.subscribe(
+      this.authorization = `Bearer ${state.authorization}`
+    ) 
+  }
   
   constructor(
-    private request:RequestService
+    private request:RequestService, 
+    private store:Store<Reducers>
   ){}
   
   
