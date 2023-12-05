@@ -32,7 +32,7 @@ export class SearchComponent implements OnInit,AfterViewInit {
       ) 
 
       if(value.length > 0){
-        alert(value)
+        alert(this.authorization)
       }
         
     }
