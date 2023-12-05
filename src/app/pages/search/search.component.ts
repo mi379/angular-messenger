@@ -60,12 +60,7 @@ export class SearchComponent implements AfterViewInit {
   })
   
   onSucessSearch(result:Search[]){
-    if(result.length > 0){
-      this.result = result
-    }
-    else{
-      this.result = undefined
-    }
+    this.result = result
   }
 
   

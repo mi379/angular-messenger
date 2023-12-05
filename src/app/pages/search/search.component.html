@@ -15,9 +15,14 @@
     </div>
   </div>
   
-  <div class="border-2 black" *ngIf="result as searchResult">
-    <p>{{searchResult | json}}</p>
+  <div class="border-2 border-black v-center" *ngIf="result && result.length < 1">
+    <div class="h-center">
+      No result
+    </div>
   </div>
+  
+  
+  
   
   
 </div>
