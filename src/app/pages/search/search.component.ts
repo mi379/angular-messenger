@@ -22,7 +22,7 @@ export class SearchComponent implements AfterViewInit {
   
   currentUser:Observable<User> = this.store.select(state => {
     this.authorization = state.user.authorization
-    return state.user
+    alert(JSON.stringify(state.user)) 
   })
 
   _search:Get = this.request.get<Search[]>({
