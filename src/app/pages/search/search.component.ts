@@ -14,7 +14,7 @@ import { State,Get,RequestService } from '../../services/request/request.service
 export class SearchComponent implements OnInit,AfterViewInit {
   @ViewChild('query') query! : ElementRef
 
-  authorization : string | undefined = undefined
+  authorization:string = ''
   
   queryString: Query<Target> = new BehaviorSubject<Target>(null)
   
