@@ -17,6 +17,8 @@ export class SearchComponent implements AfterViewInit {
   authorization:string | HttpHeaders = ''
  
   @ViewChild('query') query! : ElementRef
+  
+  result : Search[] | undefined = undefined
 
   user:Observable<User>= this.store.select((state:Reducers) => {
     return state.user
