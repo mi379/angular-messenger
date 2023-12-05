@@ -1,5 +1,5 @@
 import { Store } from '@ngrx/store'
-import { BehaviorSubject,Subscription } from 'rxjs'
+import { Observable,BehaviorSubject,Subscription } from 'rxjs'
 import { User } from '../../ngrx/user/user.reducer'
 import { Reducers,IncomingMessage } from '../home/home.component'
 import { ViewChild,ElementRef,Component,OnInit,AfterViewInit } from '@angular/core';
