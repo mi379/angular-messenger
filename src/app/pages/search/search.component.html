@@ -3,12 +3,12 @@
     <input
       #query
       type="search"
-      class="focus:outline-none rounded p-2 w-full border-2 border-black"
+      class="placeholder-[20px] focus:outline-none rounded p-2 w-full border-2 border-black"
       (keyup)="queryString.next($event.target)"
       placeholder="Who are you looking for?"
     />
     
-    <div class="absolute top-[15px] left-[5px]">
+    <div class="absolute top-[20px] left-[20px]">
       <app-arrow-left>
       </app-arrow-left>
     </div>
