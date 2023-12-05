@@ -17,7 +17,7 @@ export class SearchComponent implements OnInit,AfterViewInit {
  
   @ViewChild('query') query! : ElementRef
 
-  store:Observable<User>= this.store.select((state:Reducers) => {
+  xxx:Observable<User>= this.store.select((state:Reducers) => {
     return state.user
   })
   
@@ -47,7 +47,7 @@ export class SearchComponent implements OnInit,AfterViewInit {
 
   
   ngOnInit(){
-    this.user = this.store.subscribe(u => {
+    this.user = this.xxx.subscribe(u => {
       this.authorization = u._id
     })
   }
