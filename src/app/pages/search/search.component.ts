@@ -45,7 +45,7 @@ export class SearchComponent implements OnInit,AfterViewInit {
   
   ngOnInit(){
     this.store.select(state => {
-      this.authorization = "xxx"
+      alert("test")
     })
   }
   
