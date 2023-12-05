@@ -28,8 +28,8 @@ export class SearchComponent implements AfterViewInit {
         target as HTMLInputElement
       ) 
 
-      this.search(
-        value
+      this._search(
+        `user/search/${value}`
       ) 
         
     }
