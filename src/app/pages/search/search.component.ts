@@ -17,7 +17,10 @@ export class SearchComponent implements AfterViewInit {
   
   state:State<Search[]> = this.request.createInitialState<Search[]>()
 
-  _search:Get = this.request.get<Search[]>({state:this.state}) 
+  _search:Get = this.request.get<Search[]>({
+    cb:result => alert(JSON.stringify(result)) 
+    state:this.state,
+  }) 
 
   onQueryStringChg:Subscription = this.queryString.subscribe(
     target => {
