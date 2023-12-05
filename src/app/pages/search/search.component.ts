@@ -51,6 +51,9 @@ export class SearchComponent implements AfterViewInit {
         {headers}
       )
     }
+    else{
+      this.result = undefined
+    }
   }) 
 
   search:Get = this.request.get < Search[] > ({
