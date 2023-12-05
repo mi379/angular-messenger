@@ -11,7 +11,7 @@ import { State,Get,RequestService } from '../../services/request/request.service
   styleUrls: ['./search.component.css']
 })
 
-export class SearchComponent implements AfterViewInit {
+export class SearchComponent implements OnInit,AfterViewInit {
   @ViewChild('query') query! : ElementRef
 
   authorization : string | undefined = undefined
@@ -20,11 +20,6 @@ export class SearchComponent implements AfterViewInit {
   
   state:State<Search[]> = this.request.createInitialState<Search[]>()
   
-  currentUser:Observable<User> = this.store.select(state => {
-    this.authorization = state.user._id
-
-    return state.user
-  })
 
   _search:Get = this.request.get<Search[]>({
     cb:result => alert(JSON.stringify(result)), 
@@ -46,6 +41,12 @@ export class SearchComponent implements AfterViewInit {
 
   search(keyword:string){
     alert(keyword) 
+  }
+  
+  ngOnInit(){
+    this.store.select(state => {
+      this.authorization = state.user._id
+    })
   }
   
   ngAfterViewInit(){
