@@ -21,8 +21,9 @@ export class SearchComponent implements AfterViewInit {
   state:State<Search[]> = this.request.createInitialState<Search[]>()
   
   currentUser:Observable<User> = this.store.select(state => {
-    this.authorization = state.user.authorization
-    alert(JSON.stringify(state.user)) 
+    this.authorization = state.user._id
+
+    return state.user
   })
 
   _search:Get = this.request.get<Search[]>({
