@@ -1,10 +1,8 @@
-
-
 import { BehaviorSubject,Subscription } from 'rxjs'
 import { User } from '../../ngrx/user/user.reducer'
 import { IncomingMessage } from '../home/home.component'
 import { ViewChild,ElementRef,Component, AfterViewInit } from '@angular/core';
-import { State,RequestService } from '../../services/request/request.service'
+import { State,Get,RequestService } from '../../services/request/request.service'
 
 @Component({
   selector: 'app-search',
@@ -18,6 +16,8 @@ export class SearchComponent implements AfterViewInit {
   queryString: Query<Target> = new BehaviorSubject<Target>(null)
   
   state:State<Search[]> = this.request.createInitialState<Search[]>()
+
+  _search:Get = this.request.get<Search[]>({state}) 
 
   onQueryStringChg:Subscription = this.queryString.subscribe(
     target => {
