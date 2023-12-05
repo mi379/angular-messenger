@@ -11,7 +11,7 @@ import { State,Get,RequestService } from '../../services/request/request.service
   styleUrls: ['./search.component.css']
 })
 
-export class SearchComponent implements OnInit, AfterViewInit {
+export class SearchComponent implements AfterViewInit {
   @ViewChild('query') query! : ElementRef
 
   authorization : string | undefined = undefined
@@ -19,10 +19,9 @@ export class SearchComponent implements OnInit, AfterViewInit {
   queryString: Query<Target> = new BehaviorSubject<Target>(null)
   
   state:State<Search[]> = this.request.createInitialState<Search[]>()
-
-  subscription : Subscription | undefined = undefined
   
   currentUser:Observable<User> = this.store.select(state => {
+    this.authorization = state.user.authorization
     return state.user
   })
 
@@ -50,12 +49,6 @@ export class SearchComponent implements OnInit, AfterViewInit {
   
   ngAfterViewInit(){
     this.query.nativeElement.focus();
-  }
-
-  ngOnInit(){
-    this.subscription = this.currentUser.subscribe(
-      this.authorization = `Bearer ${state.authorization}`
-    ) 
   }
   
   constructor(
