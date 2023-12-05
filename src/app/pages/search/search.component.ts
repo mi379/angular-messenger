@@ -1,4 +1,5 @@
 import { Store } from '@ngrx/store'
+import { HttpHeaders } from '@angular/common/http'
 import { Observable,BehaviorSubject,Subscription } from 'rxjs'
 import { User } from '../../ngrx/user/user.reducer'
 import { Reducers,IncomingMessage } from '../home/home.component'
@@ -13,7 +14,7 @@ import { State,Get,RequestService } from '../../services/request/request.service
 
 export class SearchComponent implements AfterViewInit {
  
-  authorization:string = ''
+  authorization:string | HttpHeaders = ''
  
   @ViewChild('query') query! : ElementRef
 
@@ -22,30 +23,45 @@ export class SearchComponent implements AfterViewInit {
   })
   
   subscription:Subscription = this.user.subscribe((u:User) => {
-    this.authorization = u.authorization
+    this.authorization = `Bearer ${u.authorization}`
+    
+    this.authorization = new HttpHeaders({
+      authorization:this.authorization
+    }) 
   })
   
   queryString: Query<Target> = new BehaviorSubject<Target>(null)
   
   state:State<Search[]> = this.request.createInitialState<Search[]>()
-
-  onQueryStringChange:Subscription = this.queryString.subscribe(
-    target => {
-      var {value}:HTMLInputElement = (
-        target as HTMLInputElement
-      ) 
-
-      if(value.length > 0){
-        alert(this.authorization)
-      }
-        
-    }
-  )
   
-  search: Get = this.request.get < Search[] > ({
-    cb: result => alert("success"),
+
+  onQueryStringChange:Subscription = this.queryString.subscribe(t => {
+    var headers:HttpHeaders = this.authorization as HttpHeaders
+    var {value}:HTMLInputElement = t as HTMLInputElement
+    
+    var search = value.length > 0
+      ? `user/search/${value}`
+      : ''
+   
+    if (value.length > 0) {
+      this.runSearch(
+        search,
+        headers
+      )
+    }
+  }) 
+
+  search:Get = this.request.get < Search[] > ({
+    cb: result => alert(result),
+    failedCb : err => alert("err"), 
     state: this.state,
   })
+  
+  runSearch(value,headers){
+    this.search(value,{
+      headers
+    })
+  }
 
   
   ngAfterViewInit(){
