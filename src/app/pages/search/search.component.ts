@@ -11,14 +11,18 @@ import { State,Get,RequestService } from '../../services/request/request.service
   styleUrls: ['./search.component.css']
 })
 
-export class SearchComponent implements OnInit,AfterViewInit {
+export class SearchComponent implements AfterViewInit {
  
   authorization:string = ''
  
   @ViewChild('query') query! : ElementRef
 
-  xxx:Observable<User>= this.store.select((state:Reducers) => {
+  user:Observable<User>= this.store.select((state:Reducers) => {
     return state.user
+  })
+  
+  subscription:Subscription = this.user.subscribe((u:User) => {
+    this.authorization = u.authorization
   })
   
   queryString: Query<Target> = new BehaviorSubject<Target>(null)
@@ -42,19 +46,10 @@ export class SearchComponent implements OnInit,AfterViewInit {
     cb: result => alert("success"),
     state: this.state,
   })
-  
-  user:Subscription | undefined = undefined
 
-  
-  ngOnInit(){
-    this.user = this.xxx.subscribe(u => {
-      this.authorization = u.authorization
-    })
-  }
   
   ngAfterViewInit(){
     this.query.nativeElement.focus();
-   
   }
   
   constructor(
