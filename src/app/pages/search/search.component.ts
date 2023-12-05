@@ -17,7 +17,7 @@ export class SearchComponent implements OnInit,AfterViewInit {
  
   @ViewChild('query') query! : ElementRef
 
-  xxx:Observable<User>= this.store.select((state:Reducers) => {
+  xxx:Observable<User>= this.store.select(state => {
     return state.user
   })
   
