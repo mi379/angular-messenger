@@ -1,7 +1,7 @@
 import { Store } from '@ngrx/store'
 import { BehaviorSubject,Subscription } from 'rxjs'
 import { User } from '../../ngrx/user/user.reducer'
-import { Reducer,IncomingMessage } from '../home/home.component'
+import { Reducers,IncomingMessage } from '../home/home.component'
 import { ViewChild,ElementRef,Component,OnInit,AfterViewInit } from '@angular/core';
 import { State,Get,RequestService } from '../../services/request/request.service'
 
