@@ -215,7 +215,7 @@ type Accept = Profile & {
   usersRef:string
 }
 
-interface Reducers{
+export interface Reducers{
   auth:Session,
   user:User
 }
