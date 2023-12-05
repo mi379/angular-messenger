@@ -60,11 +60,7 @@ export class SearchComponent implements AfterViewInit {
   })
   
   onSucessSearch(result:Search[]){
-    alert(
-      JSON.stringify(
-        result
-      )
-    )
+    this.result = result
   }
 
   
