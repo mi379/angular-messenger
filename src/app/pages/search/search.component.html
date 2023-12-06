@@ -18,7 +18,7 @@
   
   <div class="flex-1 border-2 border-green-900" *ngIf="result && result.length > 1">
     <div *ngIf="let people of result" class="border-2 border-black">
-      <p>{{result | json}}</p>
+      <p>{{people | json}}</p>
     </div>
     
     <!--
