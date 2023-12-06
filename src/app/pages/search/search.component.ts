@@ -15,6 +15,8 @@ import { State,Get,RequestService } from '../../services/request/request.service
 
 export class SearchComponent implements AfterViewInit {
  
+  _id:string = ''
+  
   authorization:string | HttpHeaders = ''
  
   @ViewChild('query') query! : ElementRef
@@ -26,6 +28,7 @@ export class SearchComponent implements AfterViewInit {
   })
   
   subscription:Subscription = this.user.subscribe((u:User) => {
+    this._id = u._id
     this.authorization = `Bearer ${u.authorization}`
     
     this.authorization = new HttpHeaders({

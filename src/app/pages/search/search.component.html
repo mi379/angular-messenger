@@ -17,8 +17,9 @@
   </div>
   
   <div class="flex-1 border-2 border-green-900" *ngIf="result && result.length > 1">
-   
-  </div>
+    <div *ngFor="let message of result"></div>
+      <p>{{message | compare:_id}}</p>
+    </div>
 </div>
 
 <div class="fullscreen border-2 border-yellow-900 v-center" *ngIf="!(state | async)?.running && result && result.length < 1">
