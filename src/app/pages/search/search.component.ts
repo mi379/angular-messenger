@@ -98,7 +98,7 @@ type Profile = Pick<User,"profile"> & {
 }
 
 type Search = Profile & {
-  messages:IncomingMessage
+  message? :IncomingMessage
 }
 
 
