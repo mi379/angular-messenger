@@ -204,7 +204,6 @@ export interface IncomingMessage{
   read:boolean, 
   contentType:string, 
   description?:string
-  
 }
 
 export type Sender = Profile & {
