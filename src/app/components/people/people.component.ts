@@ -4,5 +4,5 @@
   styleUrls: ['./people.component.css']
 })
 export class PeopleComponent {
-  
+  constructor(){}
 }
