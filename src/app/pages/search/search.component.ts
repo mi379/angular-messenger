@@ -67,7 +67,7 @@ export class SearchComponent implements AfterViewInit {
   })
   
   onSucessSearch(result:Search[]){
-    alert(JSON.sttringify(result))
+    alert(JSON.stringify(result))
   }
 
   
