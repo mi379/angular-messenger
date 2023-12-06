@@ -1,4 +1,5 @@
 import { Store } from '@ngrx/store'
+import { Router } from '@angular/router'
 import { HttpHeaders } from '@angular/common/http'
 import { Observable,BehaviorSubject,Subscription } from 'rxjs'
 import { User } from '../../ngrx/user/user.reducer'
@@ -71,9 +72,16 @@ export class SearchComponent implements AfterViewInit {
     this.query.nativeElement.focus();
   }
   
+  toHome(){
+    this.router.navigateByUrl(
+       '/'
+    )
+  }
+  
   constructor(
     private request:RequestService, 
-    private store:Store<Reducers>
+    private store:Store<Reducers>, 
+    private router:Router
   ){}
   
   
