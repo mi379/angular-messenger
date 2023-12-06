@@ -1,5 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { Profile } from '../../ngrx/user/user.reducer'
+import { IncomingMessage } from '../../pages/home/home.component'
 import { Message } from '../../pages/home/home.component'
 
 @Pipe({
@@ -7,13 +8,25 @@ import { Message } from '../../pages/home/home.component'
 })
 export class ComparePipe implements PipeTransform {
 
-  transform(value:Message,_id:_Id): Result {
-    var ref:string = value.sender.usersRef
-    
-
-    return ref === _id as string
-      ? value.accept
-      : value.sender
+  transform(value:Message|IncomingMessage,_id:_Id,onSearch): Result {
+    if(!onSearch){
+      var message:Message = value as Message
+      var ref: string = message.sender.usersRef
+      
+      
+      return ref === _id as string ?
+        value.accept :
+        value.sender
+    }
+    else{
+      var message: Message = value as IncomingMessage
+      var ref: string = message.sender.usersRef
+      
+      
+      return ref === _id as string ?
+        value.accept :
+        value.sender
+    }
   }
 
 }
