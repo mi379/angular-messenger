@@ -1,5 +1,5 @@
 import { Component,Input} from '@angular/core';
-import { Message } from '../../pages/home/home.component'
+import { Message,IncomingMessage } from '../../pages/home/home.component'
 import { Profile } from '../../ngrx/user/user.reducer'
 
 @Component({
@@ -9,7 +9,7 @@ import { Profile } from '../../ngrx/user/user.reducer'
 })
 export class CardComponent {
   @Input() user: Compare | undefined
-  @Input() message : Message | undefined
+  @Input() message : Message | IncomingMessage | undefined
   @Input() _id : string | undefined
   
   unreadCounter():boolean{
