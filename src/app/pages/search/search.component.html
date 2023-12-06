@@ -17,9 +17,16 @@
   </div>
   
   <div class="flex-1 border-2 border-green-900" *ngIf="result && result.length > 1">
-    <div *ngFor="let people of result" class="border-2 border-black">
-      <p>{{people | get | json}}</p>
-    </div>
+    <app-card
+      *ngFor="let people of result"
+      [message]="people.message"
+      [user]="people | get"
+      [id]="_id"
+    />
+    
+    <!--<div *ngFor="let people of result" class="border-2 border-black">
+      
+    </div>-->
     
     <!--
       <a [state]="{profile:user| parse, groupId:message?.groupId}" routerLink="messages/{{user?.usersRef}}" class="flex flex-row">
