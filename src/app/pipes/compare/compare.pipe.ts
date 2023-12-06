@@ -11,8 +11,8 @@ export class ComparePipe implements PipeTransform {
     var ref: string = value.sender.usersRef
       
     return ref === _id as string ?
-      message.accept :
-      message.sender
+      value.accept :
+      value.sender
   }
 
 }
