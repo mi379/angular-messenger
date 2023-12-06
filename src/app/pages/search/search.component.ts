@@ -96,7 +96,7 @@ type Query<T> = BehaviorSubject<T>
 export type Profile = Pick<User,"profile">
 
 export type Search = Profile & {
-  message? :IncomingMessage, 
+  message?:IncomingMessage, 
   unreadCounter:number
 }
 
