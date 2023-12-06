@@ -17,6 +17,10 @@
   </div>
   
   <div class="flex-1 border-2 border-green-900" *ngIf="result && result.length > 1">
+    <div *ngIf="let people of result">
+      <p>{{result | json}}</p>
+    </div>
+    
     <!--
       <a [state]="{profile:user| parse, groupId:message?.groupId}" routerLink="messages/{{user?.usersRef}}" class="flex flex-row">
       <div class="flex flex-col justify-center">
