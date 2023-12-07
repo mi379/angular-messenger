@@ -23,6 +23,8 @@ export class CardComponent {
   */
 }
 
+/*
 type Compare = Profile & {
   usersRef:string
 }
+*/
