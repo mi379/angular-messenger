@@ -1,13 +1,14 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Message,IncomingMessage } from '../../pages/home/home.component'
+import { Last } from '../../pages/search/search.component'
+import { Message } from '../../pages/home/home.component'
 
 @Pipe({
   name: 'toMessage'
 })
 export class ToMessagePipe implements PipeTransform {
 
-  transform(message:IncomingMessage):any{
-    return false
+  transform(lastMessage:Last):Message{
+    return lastMessage as Message
   }
 
 }

@@ -94,9 +94,12 @@ export class SearchComponent implements AfterViewInit {
 type Target = EventTarget | null
 type Query<T> = BehaviorSubject<T>
 
+type Last = IncomingMessage & {
+  unreadCounter:number
+}
 
 export type Search = Sender & {
-  message?:IncomingMessage, 
+  message?:Last, 
   unreadCounter:number
 }
 

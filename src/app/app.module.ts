@@ -11,7 +11,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { MagnifyingGlassComponent } from './components/icons/magnifying-glass/magnifying-glass.component'
 import { CardComponent } from './components/card/card.component';
-import { PeopleComponent } from './components/people/people.component'
 import { SearchComponent } from './pages/search/search.component'
 import { LoginComponent } from './pages/login/login.component';
 import { HomeComponent } from './pages/home/home.component';
@@ -32,7 +31,6 @@ import { MessagesComponent } from './pages/messages/messages.component';
 import { ComparePipe } from './pipes/compare/compare.pipe';
 import { ParsePipe } from './pipes/parse/parse.pipe';
 import { ToMessagePipe } from './pipes/to-message/to-message.pipe'
-import { InputPipe } from './pipes/input/input.pipe'
 import { GetPipe } from './pipes/get/get.pipe'
 import { ArrowLeftComponent } from './components/icons/arrow-left/arrow-left.component';
 import { CheckComponent } from './components/icons/check/check.component';
@@ -44,7 +42,6 @@ import { PaperAirplaneComponent } from './components/icons/paper-airplane/paper-
 @NgModule({
   declarations: [
     SearchComponent,
-    PeopleComponent, 
     CardComponent, 
     LoginComponent,
     HomeComponent,
@@ -68,7 +65,6 @@ import { PaperAirplaneComponent } from './components/icons/paper-airplane/paper-
     CheckComponent,
     ExclamationCircleComponent,
     MomentPipe,
-    InputPipe, 
     CameraComponent,
     PaperAirplaneComponent,
     MagnifyingGlassComponent

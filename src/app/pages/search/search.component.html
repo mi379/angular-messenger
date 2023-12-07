@@ -19,7 +19,9 @@
   <div class="flex-1 border-2 border-green-900" *ngIf="result && result.length > 1">
     <app-card
       *ngFor="let people of result"
+      [message]="people.message | toMessage"
       [user]="people | get"
+      [_id]="_id"
     />
     
     
