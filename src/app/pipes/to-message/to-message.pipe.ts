@@ -7,7 +7,7 @@ import { Message } from '../../pages/home/home.component'
 })
 export class ToMessagePipe implements PipeTransform {
 
-  transform(lastMessage:Last):Message{
+  transform(lastMessage:Last|undefined):Message{
     return lastMessage as Message
   }
 
