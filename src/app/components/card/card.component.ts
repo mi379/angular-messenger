@@ -11,7 +11,7 @@ export class CardComponent {
   @Input() user: Compare | undefined
   @Input() message : Message | undefined
   @Input() _id : string | undefined
-  
+  /*
   unreadCounter():boolean{
     var message:Message = this.message as Message
     var {unreadCounter,sender}:Message = message
@@ -20,6 +20,7 @@ export class CardComponent {
       ? true
       : false
   }
+  */
 }
 
 type Compare = Profile & {
