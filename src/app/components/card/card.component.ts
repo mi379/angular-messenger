@@ -8,8 +8,8 @@ import { Profile } from '../../ngrx/user/user.reducer'
   styleUrls: ['./card.component.css']
 })
 export class CardComponent {
-  @Input() user: Compare | Profile | undefined
-  @Input() message : Message | IncomingMessage | undefined
+  @Input() user: Compare | undefined
+  @Input() message : Message | undefined
   @Input() _id : string | undefined
   
   unreadCounter():boolean{
