@@ -17,15 +17,15 @@
   </div>
   
   <div class="flex-1 border-2 border-green-900" *ngIf="result && result.length > 1">
-    <!--<app-card
+    <app-card
       *ngFor="let people of result"
       [user]="people | get"
-    />-->
+    />
     
     
-    <div *ngFor="let people of result" class="border-2 border-black">
+    <!--<div *ngFor="let people of result" class="border-2 border-black">
       {{people | get | json}}
-    </div>
+    </div>-->
     
     
     <!--
