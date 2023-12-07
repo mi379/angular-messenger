@@ -1,4 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
+import { Search } from '../../pages/search/search.component'
+import { Sender } from '../../pages/home/home.component'
 
 @Pipe({
   name: 'get'
@@ -6,8 +8,8 @@ import { Pipe, PipeTransform } from '@angular/core';
 
 export class GetPipe implements PipeTransform {
 
-  transform(x:boolean):boolean{
-    return x
+  transform({message,unreadCounter,...x}:Search):Profile{
+    return x as Profile
   }
 
 }

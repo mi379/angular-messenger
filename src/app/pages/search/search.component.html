@@ -19,14 +19,12 @@
   <div class="flex-1 border-2 border-green-900" *ngIf="result && result.length > 1">
     <!--<app-card
       *ngFor="let people of result"
-      [message]="people.message"
       [user]="people | get"
-      [id]="_id"
     />-->
     
     
     <div *ngFor="let people of result" class="border-2 border-black">
-      {{people | json}}
+      {{people | get}}
     </div>
     
     
