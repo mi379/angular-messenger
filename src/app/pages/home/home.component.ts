@@ -191,7 +191,7 @@ export interface Message{
   read:boolean, 
   contentType:string, 
   description?:string, 
-  unreadCounter?:number, 
+  unreadCounter:number, 
 }
 
 export interface IncomingMessage{
