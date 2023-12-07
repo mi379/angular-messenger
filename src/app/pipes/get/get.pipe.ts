@@ -8,8 +8,8 @@ import { Sender } from '../../pages/home/home.component'
 
 export class GetPipe implements PipeTransform {
 
-  transform({message,unreadCounter,...x}:Search):Profile{
-    return x as Profile
+  transform({message,unreadCounter,...x}:Search):Sender{
+    return x as Sender
   }
 
 }
