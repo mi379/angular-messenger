@@ -1,6 +1,6 @@
 import { Component,Input} from '@angular/core';
 import { Message,IncomingMessage } from '../../pages/home/home.component'
-import { Sender } from '../..pages/home/home.component'
+import { Sender } from '../../pages/home/home.component'
 
 @Component({
   selector: 'app-card',
