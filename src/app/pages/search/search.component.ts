@@ -2,7 +2,7 @@ import { Store } from '@ngrx/store'
 import { Router } from '@angular/router'
 import { HttpHeaders } from '@angular/common/http'
 import { Observable,BehaviorSubject,Subscription } from 'rxjs'
-import { User } from '../../ngrx/user/user.reducer'
+import { Sender } from '../home/home.component'
 import { Reducers,IncomingMessage } from '../home/home.component'
 import { ViewChild,ElementRef,Component,OnInit,AfterViewInit } from '@angular/core';
 import { State,Get,RequestService } from '../../services/request/request.service'
@@ -93,9 +93,8 @@ export class SearchComponent implements AfterViewInit {
 type Target = EventTarget | null
 type Query<T> = BehaviorSubject<T>
 
-export type Profile = Pick<User,"profile">
 
-export type Search = Profile & {
+export type Search = Sender & {
   message?:IncomingMessage, 
   unreadCounter:number
 }
