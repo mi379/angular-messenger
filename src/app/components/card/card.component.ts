@@ -1,6 +1,6 @@
 import { Component,Input} from '@angular/core';
 import { Message,IncomingMessage } from '../../pages/home/home.component'
-import { Profile } from '../../ngrx/user/user.reducer'
+import { Sender } from '../..pages/home/home.component'
 
 @Component({
   selector: 'app-card',
@@ -8,7 +8,7 @@ import { Profile } from '../../ngrx/user/user.reducer'
   styleUrls: ['./card.component.css']
 })
 export class CardComponent {
-  @Input() user: Compare | undefined
+  @Input() user: Sender | undefined
   @Input() message : Message | undefined
   @Input() _id : string | undefined
   /*
