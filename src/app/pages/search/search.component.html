@@ -26,7 +26,7 @@
     
     
     <div *ngFor="let people of result" class="border-2 border-black">
-      {{people | json}}
+      {{(({firstName}) => firstName )(people)}}
     </div>
     
     
