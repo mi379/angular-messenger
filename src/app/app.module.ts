@@ -31,6 +31,7 @@ import { MessageComponent } from './components/message/message.component';
 import { MessagesComponent } from './pages/messages/messages.component';
 import { ComparePipe } from './pipes/compare/compare.pipe';
 import { ParsePipe } from './pipes/parse/parse.pipe';
+import { ToMessagePipe } from './pipes/to-message/to-message.pipe.ts'
 import { InputPipe } from './pipes/input/input.pipe'
 import { GetPipe } from './pipes/get/get.pipe'
 import { ArrowLeftComponent } from './components/icons/arrow-left/arrow-left.component';
@@ -61,6 +62,7 @@ import { PaperAirplaneComponent } from './components/icons/paper-airplane/paper-
     MessagesComponent,
     ComparePipe,
     ParsePipe,
+    ToMessagePipe, 
     GetPipe, 
     ArrowLeftComponent,
     CheckComponent,
