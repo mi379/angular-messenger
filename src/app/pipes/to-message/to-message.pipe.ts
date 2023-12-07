@@ -6,8 +6,8 @@ import { Message,IncomingMessage } from '../../pages/home/home.component'
 })
 export class ToMessagePipe implements PipeTransform {
 
-  transform(message:IncomingMessage):Message{
-    return message as Message
+  transform(message:IncomingMessage):any{
+    return false
   }
 
 }
