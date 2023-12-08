@@ -1,4 +1,4 @@
-<a [state]="{profile:user,groupId:message?.groupId}" routerLink="onSearch ? altLink : 'messages/{{user?.usersRef}}'" class="flex flex-row">
+<a [state]="{profile:user,groupId:message?.groupId}" [routerLink]="onSearch ? altLink : 'messages/{{user?.usersRef}}'" class="flex flex-row">
   <div class="flex flex-col justify-center">
     <img
       [src]="user?.profileImage"
