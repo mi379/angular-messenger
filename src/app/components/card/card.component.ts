@@ -11,6 +11,8 @@ export class CardComponent {
   @Input() user: Sender | undefined
   @Input() message : Message | undefined
   @Input() _id : string | undefined
+  @Input() onSearch : boolean | undefined
+  @Input() altLink : string | undefined
   /*
   unreadCounter():boolean{
     var message:Message = this.message as Message
