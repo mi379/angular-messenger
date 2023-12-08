@@ -19,16 +19,22 @@ export class CardComponent {
     return (new Types.ObjectId()).toString()
   }
   
-  /*
+  
   unreadCounter():boolean{
-    var message:Message = this.message as Message
-    var {unreadCounter,sender}:Message = message
+    if(message){
+      var message:Message = this.message as Message
+      var {unreadCounter,sender}:Message = message
 
-    return unreadCounter > 0 && sender.usersRef !== this._id
-      ? true
-      : false
+      return unreadCounter > 0 && sender.usersRef !== this._id
+        ? true
+        : false
+    }
+    else{
+      return false
+    }
+
   }
-  */
+  
 }
 
 /*

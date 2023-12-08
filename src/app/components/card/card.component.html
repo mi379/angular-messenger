@@ -10,13 +10,13 @@
       <span class="font-bold">
         {{user?.firstName}} {{user?.surname}}
       </span>
-      <!--
+      
       <div *ngIf="unreadCounter()" class="flex flex-row justify-center flex-none w-6 h-6 rounded-full bg-red-900 text-white ml-1">
         <span>
           {{message?.unreadCounter}}
          </span>
       </div>
-      -->
+      
     </div>
     <span *ngIf="message" class="truncate">
       {{message?.value}}
