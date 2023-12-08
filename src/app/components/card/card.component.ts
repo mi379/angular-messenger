@@ -21,7 +21,7 @@ export class CardComponent {
   
   
   unreadCounter():boolean{
-    if(message){
+    if(this.message){
       var message:Message = this.message as Message
       var {unreadCounter,sender}:Message = message
 
