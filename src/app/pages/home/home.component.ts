@@ -102,12 +102,6 @@ export class HomeComponent implements OnInit, OnDestroy {
         
       }
     }
-    else{
-      this.socket.emit(
-        'askForCompletedData'
-        incomingMessage
-      ) 
-    }
   }
   
   fetchRecentlyMessages(authorization:string){      
