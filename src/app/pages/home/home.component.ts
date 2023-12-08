@@ -58,7 +58,9 @@ export class HomeComponent implements OnInit, OnDestroy {
   )
   
   isFirstMessage(incomingMessage:Message){
-    alert(JSON.stringify(incomingMessage))
+    if(incomingMessage.accept.usersRef === this._id){
+      alert("seharusnya bisa")
+    }
   }
   
   onIncomingMessage(incomingMessage:IncomingMessage){
