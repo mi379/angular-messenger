@@ -16,7 +16,7 @@ export class CardComponent {
   @Input() altLink : string | undefined
 
   newId():string{
-    return String(new Types.ObjectId())
+    return (new Types.ObjectId()).toString()
   }
   
   /*
