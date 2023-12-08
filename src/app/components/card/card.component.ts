@@ -1,3 +1,4 @@
+import { ObjectId } from 'bson-objectid'
 import { Component,Input} from '@angular/core';
 import { Message } from '../../pages/home/home.component'
 import { Sender } from '../../pages/home/home.component'
@@ -13,6 +14,11 @@ export class CardComponent {
   @Input() _id : string | undefined
   @Input() onSearch : boolean | undefined
   @Input() altLink : string | undefined
+
+  newId():string{
+    return new ObjectId() 
+  }
+  
   /*
   unreadCounter():boolean{
     var message:Message = this.message as Message
