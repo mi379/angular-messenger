@@ -1,4 +1,3 @@
-import  ObjectID from 'bson-objectid'
 import { Component,Input} from '@angular/core';
 import { Message } from '../../pages/home/home.component'
 import { Sender } from '../../pages/home/home.component'
@@ -16,7 +15,7 @@ export class CardComponent {
   @Input() altLink : string | undefined
 
   newId():string{
-    return new ObjectID() 
+    return ''
   }
   
   /*
