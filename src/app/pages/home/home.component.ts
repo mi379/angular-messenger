@@ -69,7 +69,7 @@ export class HomeComponent implements OnInit, OnDestroy {
       )
     })
     
-    if(filter.length < 1 && incomingMessage.accept.usersRef === this._id){
+    if(filter.length < 1){
       alert(JSON.stringify(incomingMessage))
     }
   }
