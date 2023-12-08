@@ -70,6 +70,11 @@ export class HomeComponent implements OnInit, OnDestroy {
         )
       })
       
+      var newMessage:Message = {
+        ...incomingMessage, 
+        unreadCounter:1
+      }
+      
       if(filter.length < 1){
         this.recentlyMessages = [
           incomingMessage,
