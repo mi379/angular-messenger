@@ -58,7 +58,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   )
   
   isFirstMessage(incomingMessage:Message){
-    alert("seharusnya bisa")
+    alert(JSON.stringify(incomingMessage))
   }
   
   onIncomingMessage(incomingMessage:IncomingMessage){
