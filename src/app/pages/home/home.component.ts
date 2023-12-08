@@ -58,8 +58,20 @@ export class HomeComponent implements OnInit, OnDestroy {
   )
   
   isFirstMessage(incomingMessage:Message){
+    var messages:Message[] = this.recentlyMessages as Message[]
     if(incomingMessage.accept.usersRef === this._id){
-      alert("seharusnya bisa")
+      var filter = messages.filter(message => {
+        return (
+          message.sender.usersRef
+          === incomingMessage.sender.usersRef
+        ) || (
+          message.accept.usersRef
+          === incomingMessage.sender.usersRef
+        )
+      })
+      
+      alert(JSON.stringify(filter))
+    
     }
   }
   
