@@ -1,4 +1,4 @@
-import { ObjectID } from 'bson-objectid'
+import  ObjectID from 'bson-objectid'
 import { Component,Input} from '@angular/core';
 import { Message } from '../../pages/home/home.component'
 import { Sender } from '../../pages/home/home.component'
