@@ -58,8 +58,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   )
   
   isFirstMessage(incomingMessage:Message){
-    var messages:Message[] = this.recentlyMessages as Message[]
-    alert(JSON.stringify(incomingMessage))
+    alert("seharusnya bisa")
   }
   
   onIncomingMessage(incomingMessage:IncomingMessage){
