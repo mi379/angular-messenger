@@ -70,7 +70,9 @@ export class HomeComponent implements OnInit, OnDestroy {
         )
       })
       
-      alert(JSON.stringify(filter))
+      if(filter.length < 1){
+        alert("seharusnya bisa")
+      }
     
     }
   }
