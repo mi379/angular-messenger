@@ -71,7 +71,10 @@ export class HomeComponent implements OnInit, OnDestroy {
       })
       
       if(filter.length < 1){
-        alert("seharusnya bisa")
+        this.recentlyMessages = [
+          incomingMessage,
+          ...messages
+        ]
       }
     
     }
