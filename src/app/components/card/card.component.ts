@@ -1,4 +1,4 @@
-import { ObjectId } from 'bson';
+import { Types } from 'mongoose';
 import { Component,Input} from '@angular/core';
 import { Message } from '../../pages/home/home.component'
 import { Sender } from '../../pages/home/home.component'
@@ -16,7 +16,7 @@ export class CardComponent {
   @Input() altLink : string | undefined
 
   newId():string{
-    return String(new ObjectId())
+    return String(new Types.ObjectId())
   }
   
   /*
