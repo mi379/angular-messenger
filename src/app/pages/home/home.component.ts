@@ -72,7 +72,8 @@ export class HomeComponent implements OnInit, OnDestroy {
       
       var newMessage:Message = {
         ...incomingMessage, 
-        unreadCounter:1
+        unreadCounter:1, 
+        isFirstMessage:true
       }
       
       if(filter.length < 1){
@@ -99,23 +100,25 @@ export class HomeComponent implements OnInit, OnDestroy {
     
     if(filter){
       if(filter.sender.usersRef === String(incomingMessage.sender)){
-        var index = messages.indexOf(filter)
-        var unreadCounter = filter?.unreadCounter + 3
+        if(!filter.isFirstMessage){
+          var index = messages.indexOf(filter)
+          var unreadCounter = filter?.unreadCounter + 1
         
-        var {_id,...newMessage}:IncomingMessage = {
-          ...incomingMessage,
-          sender:filter.sender, 
-          accept:filter.accept
+          var {_id,...newMessage}:IncomingMessage = {
+            ...incomingMessage,
+            sender:filter.sender, 
+            accept:filter.accept
+          }
+        
+        
+          var updated:Message = {
+            ...newMessage, 
+            unreadCounter
+          } as Message
+        
+          messages[index] = updated
+          this.recentlyMessages = messages
         }
-        
-        
-        var updated:Message = {
-          ...newMessage, 
-          unreadCounter
-        } as Message
-        
-        messages[index] = updated
-        this.recentlyMessages = messages
       }
       if(filter.sender.usersRef === String(incomingMessage.accept)){
         var index = messages.indexOf(filter)
@@ -226,6 +229,7 @@ export interface Message{
   contentType:string, 
   description?:string, 
   unreadCounter:number, 
+  isFirstMessage?:boolean
 }
 
 export interface IncomingMessage{
