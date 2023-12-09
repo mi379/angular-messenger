@@ -77,7 +77,7 @@ export class HomeComponent implements OnInit, OnDestroy {
       
       if(filter.length < 1){
         this.recentlyMessages = [
-          incomingMessage,
+          newMessage,
           ...messages
         ]
       }
