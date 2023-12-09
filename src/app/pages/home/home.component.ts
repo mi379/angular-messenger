@@ -72,8 +72,7 @@ export class HomeComponent implements OnInit, OnDestroy {
       
       var newMessage:Message = {
         ...incomingMessage, 
-        unreadCounter:1, 
-        isFirstMessage:true
+        unreadCounter:1
       }
       
       if(filter.length < 1){
@@ -100,7 +99,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     
     if(filter){
       if(filter.sender.usersRef === String(incomingMessage.sender)){
-        if(!filter.isFirstMessage){
+        if(filter._id !== incomingMessage._id){
           var index = messages.indexOf(filter)
           var unreadCounter = filter?.unreadCounter + 1
         
@@ -220,6 +219,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 }
 
 export interface Message{
+  _id:string, 
   sender:Sender,
   value:string,
   accept:Accept,
@@ -229,7 +229,6 @@ export interface Message{
   contentType:string, 
   description?:string, 
   unreadCounter:number, 
-  isFirstMessage?:boolean
 }
 
 export interface IncomingMessage{
