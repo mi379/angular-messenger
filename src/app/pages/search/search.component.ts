@@ -62,18 +62,22 @@ export class SearchComponent implements AfterViewInit {
   }) 
 
   search:Get = this.request.get < Search[] > ({
-    cb: r => this.onSucessSearch(r),
+    cb: r => this.onSuccessSearch(r),
     failedCb : err => alert("err"), 
     state: this.state,
   })
   
-  onSucessSearch(result:Search[]){
+  onSuccessSearch(result:Search[]){
     var modifiedResult = result.map(r => {
-      r.message = {
+      var message:any = r.message = {
         ...r.message,
+        unreadCounter:r.unreadCounter
       }
 
-      return r
+      return {
+        message:message as unknown as Last, 
+        ...r
+      }
     }) 
     
     this.result = modifiedResult
