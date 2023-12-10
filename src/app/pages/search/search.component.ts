@@ -70,7 +70,11 @@ export class SearchComponent implements AfterViewInit {
   onSuccessSearch(result:Search[]){
     var modifiedResult = result.map(r => {
       if(r.message){
-        r.message.unreadCounter = r.unreadCounter
+        var asMessage:Message = message as Message
+        if(asMessage.sender.usersRef !== this._id){
+          asMessage.unreadCounter = r.unreadCounter
+          r.message = asMessage
+        }
       }
       
       return r
