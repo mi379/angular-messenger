@@ -69,15 +69,11 @@ export class SearchComponent implements AfterViewInit {
   
   onSuccessSearch(result:Search[]){
     var modifiedResult = result.map(r => {
-      var message:any = {
-        ...r?.message,
-        unreadCounter:r.unreadCounter
+      if(r.message){
+        r.message.unreadCounter = r.unreadCounter
       }
-
-      return {
-        message:message as unknown as Last, 
-        ...r
-      }
+      
+      return r
     }) 
     
     this.result = modifiedResult
