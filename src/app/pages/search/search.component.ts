@@ -3,7 +3,7 @@ import { Router } from '@angular/router'
 import { HttpHeaders } from '@angular/common/http'
 import { User } from '../../ngrx/user/user.reducer'
 import { Observable,BehaviorSubject,Subscription } from 'rxjs'
-import { Sender } from '../home/home.component'
+import { Sender,Message } from '../home/home.component'
 import { Reducers,IncomingMessage } from '../home/home.component'
 import { ViewChild,ElementRef,Component,OnInit,AfterViewInit } from '@angular/core';
 import { State,Get,RequestService } from '../../services/request/request.service'
