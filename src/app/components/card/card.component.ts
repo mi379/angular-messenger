@@ -27,7 +27,7 @@ export class CardComponent {
       var message:Message = this.message as Message
       var {unreadCounter,sender}:Message = message
      
-      if(message?.unreadCounter > 0 && sender.usersRef === this._id){
+      if(message?.unreadCounter > 0 && sender.usersRef === String(this._id)){
         showUnreadCounter = true
       }
     }
