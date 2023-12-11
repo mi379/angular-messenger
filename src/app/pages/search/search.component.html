@@ -20,7 +20,7 @@
     <app-card
       *ngFor="let people of result"
       [message]="people.message | toMessage"
-      [_id]="(people | get)?.usersRef"
+      [_id]="people.usersRef"
       [user]="people | get"
       [onSearch]="true"
     />
