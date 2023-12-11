@@ -25,9 +25,9 @@ export class CardComponent {
       
     
     if(this.message && this.onSearch){
-      let message:Last = this.message as unknown as Last
+      var onSearch:Last = this.message as unknown as Last
       
-      if(message.unreadCounter > 0 && String(message.sender) === this._id){
+      if(onSearch.unreadCounter > 0 && String(onSearch.sender) === this._id){
         showUnreadCounter = true
       }
     }
