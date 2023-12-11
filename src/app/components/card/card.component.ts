@@ -13,7 +13,6 @@ export class CardComponent {
   @Input() message : Message | undefined
   @Input() _id : string | undefined
   @Input() onSearch : boolean | undefined
-  @Input() altLink : string | undefined
 
   newId():string{
     return (new Types.ObjectId()).toString()
@@ -21,18 +20,27 @@ export class CardComponent {
   
   
   unreadCounter():boolean{
-    if(this.message){
+    if(this.message && this.onSearch){
       var message:Message = this.message as Message
       var {unreadCounter,sender}:Message = message
-
-      return message?.unreadCounter > 0 && sender.usersRef !== String(this._id) 
+     
+      return message?.unreadCounter > 0 && sender.usersRef === this._id
         ? true
         : false
     }
-    else{
+    
+    if(this.message && this.onSearch){
+      var message: Message = this.message as Message
+      var { unreadCounter, sender }: Message = message
+      
+      return message?.unreadCounter > 0 && sender.usersRef !== String(this._id) ?
+        true :
+        false
+    }
+    
+    if(!this.message){
       return false
     }
-
   }
   
 }
