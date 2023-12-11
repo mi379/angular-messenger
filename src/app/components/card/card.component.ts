@@ -1,5 +1,6 @@
 import { Types } from 'mongoose';
 import { Component,Input} from '@angular/core';
+import { Last } from '../../pages/search/search.component'
 import { Message } from '../../pages/home/home.component'
 import { Sender } from '../../pages/home/home.component'
 
@@ -24,18 +25,16 @@ export class CardComponent {
       
     
     if(this.message && this.onSearch){
-      var message:Message = this.message as Message
-      var {unreadCounter,sender}:Message = message
-     
-      if(message?.unreadCounter > 0 && sender.usersRef === String(this._id)){
+      var message:Last = this.message as Last
+      
+      if(message.unreadCounter > 0 && String(message.sender) === this._id){
         showUnreadCounter = true
       }
     }
     
     if(this.message && !this.onSearch){
       var message: Message = this.message as Message
-      var { unreadCounter, sender }: Message = message
-      
+     
       if(message?.unreadCounter > 0 && sender.usersRef !== String(this._id)){
         showUnreadCounter = true
       }
