@@ -72,7 +72,7 @@ export class SearchComponent implements AfterViewInit {
       if(r.message){
         r.message.unreadCounter = r.unreadCounter
         
-        alert(r.unreadCounter)
+        alert(JSON.stringify(r.message))
       }
       
       return r
