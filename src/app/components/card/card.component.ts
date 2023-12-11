@@ -20,27 +20,28 @@ export class CardComponent {
   
   
   unreadCounter():boolean{
+    var showUnreadCounter:boolean = false
+      
+    
     if(this.message && this.onSearch){
       var message:Message = this.message as Message
       var {unreadCounter,sender}:Message = message
      
-      return message?.unreadCounter > 0 && sender.usersRef === this._id
-        ? true
-        : false
+      if(message?.unreadCounter > 0 && sender.usersRef === this._id){
+        showUnreadCounter = true
+      }
     }
     
-    if(this.message && this.onSearch){
+    if(this.message && !this.onSearch){
       var message: Message = this.message as Message
       var { unreadCounter, sender }: Message = message
       
-      return message?.unreadCounter > 0 && sender.usersRef !== String(this._id) ?
-        true :
-        false
+      if(message?.unreadCounter > 0 && sender.usersRef !== this._id){
+        showUnreadCounter = true
+      }
     }
     
-    if(!this.message){
-      return false
-    }
+    return showUnreadCounter
   }
   
 }
