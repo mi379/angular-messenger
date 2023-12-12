@@ -42,6 +42,7 @@ import { PaperAirplaneComponent } from './components/icons/paper-airplane/paper-
 
 @NgModule({
   declarations: [
+    RegisterComponent, 
     SearchComponent,
     CardComponent, 
     LoginComponent,
