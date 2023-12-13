@@ -8,6 +8,15 @@ import { Component } from '@angular/core';
 })
 
 export class RegisterComponent {
-  
+  account:Account = {
+    username:'', 
+    password:'', 
+    matchPwd:''
+  }
+}
 
+interface Account{
+  username:string, 
+  password:string, 
+  matchPwd:string
 }
