@@ -8,12 +8,20 @@ import { Component } from '@angular/core';
 })
 
 export class RegisterComponent {
+  signUpStage:Ctx = 'account'
+  
   account:Account = {
     username:'', 
     password:'', 
     matchPwd:''
   }
+
+  onSubmit(){
+    this.signUpStage = 'profile'
+  }
 }
+
+type Ctx = 'account' | 'profile'
 
 interface Account{
   username:string, 
