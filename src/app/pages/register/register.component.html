@@ -1,5 +1,5 @@
 <div class="fullscreen bg-slate-100 v-center items-center">
-  <div class="bg-white p-5 rounded shadow flex flex-col gap-6">
+  <div *ngIf="signUpStage === 'account'" class="bg-white p-5 rounded shadow flex flex-col gap-6">
     <div class="flex flex-col gap-2 items-center">
       <span class="text-3xl font-bold">Sign Up</span>
       <span class="font-medium">Already a member? Log in</span>
@@ -23,9 +23,13 @@
         placeholder="confirm password"
         class="border-2 border-black rounded p-2"
       />
-      <button type="submit" class="p-2 border-2 border-black rounded-md bg-black text-white">
+      <button (submit)="onSubmit()" type="submit" class="p-2 border-2 border-black rounded-md bg-black text-white">
         Sign Up
       </button>
     </form>
+  </div>
+
+  <div *ngIf="signUpStage === 'profile'">
+    Complete profile
   </div>
 </div>
