@@ -12,7 +12,7 @@ export class RegisterComponent implements OnInit {
     'message'
   )
   
-  openNewTab(url,path){
+  openNewTab(url:string,path:string){
     window.open(
       `https://${url}/${path}`
     )
