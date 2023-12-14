@@ -16,8 +16,10 @@ export class RegisterComponent {
     matchPwd:''
   }
 
-  onSubmit(){
-    this.signUpStage = 'profile'
+  onClick(){
+    window.open(
+      'https://angular-messenger.vercel.app/oauth'
+    )
   }
 }
 

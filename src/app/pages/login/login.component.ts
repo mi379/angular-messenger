@@ -29,12 +29,6 @@ export class LoginComponent {
     )
   }
 
-  openNewTab(){
-    window.open(
-      'https://angular-messenger.vercel.app/register'
-    ) 
-  }
-
   constructor(
     private auth:AuthService<Reducers>,
     private request:RequestService
