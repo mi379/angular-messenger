@@ -30,7 +30,7 @@ export class RegisterComponent implements OnInit {
   }
   
   ngOnInit(){
-    this.ch.onmessage = (e) => {
+    this.ch.onMessage = (e) => {
       alert('halo juga bro')
     }
   }
