@@ -7,9 +7,7 @@ import { Component,OnInit,AfterViewInit } from '@angular/core';
   styleUrls: ['./register.component.css']
 })
 
-export class RegisterComponent{
-  counter : number = 0
-  
+export class RegisterComponent implements OnInit{
   ch:BroadcastChannel = new BroadcastChannel(
     'message'
   )
@@ -27,7 +25,7 @@ export class RegisterComponent{
     )
   }
 
-  constructor(){
+  ngOnInit(){
     this.ch.onmessage = e => {
       this.counter = this.counter + 1
       console.log('ok')
