@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,OnInit} from '@angular/core';
 
 
 @Component({
@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./register.component.css']
 })
 
-export class RegisterComponent {
+export class RegisterComponent implements OnInit {
   signUpStage:Ctx = 'account'
   
   account:Account = {
@@ -20,6 +20,12 @@ export class RegisterComponent {
     window.open(
       'https://angular-messenger.vercel.app/oauth'
     )
+  }
+  
+  ngOnInit(){
+    window.addEventListener('message',(e) => {
+      alert('halo bro callback')
+    })
   }
 }
 
