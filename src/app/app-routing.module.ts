@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule,Routes } from '@angular/router';
+import { CallbackComponent } from './pages/callback/callback.component'
 import { RegisterComponent } from './pages/register/register.component'
 import { SearchComponent } from './pages/search/search.component'
 import { LoginComponent } from './pages/login/login.component';
@@ -32,6 +33,10 @@ const routes:Routes = [
   {
     path:'register', 
     component:RegisterComponent
+  },
+  {
+    path:'oauth', 
+    component:CallbackComponent
   }, 
   {
     path:'**',
