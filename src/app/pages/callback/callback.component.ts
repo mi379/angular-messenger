@@ -7,5 +7,9 @@ import { Component } from '@angular/core';
 })
 
 export class CallbackComponent {
-
+  postMessage(){
+    window.opener.postMessage(
+      'halo bro register'
+    )
+  }
 }
