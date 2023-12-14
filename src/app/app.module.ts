@@ -12,6 +12,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { MagnifyingGlassComponent } from './components/icons/magnifying-glass/magnifying-glass.component'
 import { CardComponent } from './components/card/card.component';
 import { SearchComponent } from './pages/search/search.component'
+import { CallbackComponent } from './pages/callback/callback.component'
 import { RegisterComponent } from './pages/register/register.component'
 import { LoginComponent } from './pages/login/login.component';
 import { HomeComponent } from './pages/home/home.component';
@@ -42,6 +43,7 @@ import { PaperAirplaneComponent } from './components/icons/paper-airplane/paper-
 
 @NgModule({
   declarations: [
+    CallbackComponent, 
     RegisterComponent, 
     SearchComponent,
     CardComponent, 
