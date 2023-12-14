@@ -1,4 +1,4 @@
-import { Component,OnInit} from '@angular/core';
+import { Component,OnInit,AfterViewInit } from '@angular/core';
 
 
 @Component({
@@ -7,7 +7,7 @@ import { Component,OnInit} from '@angular/core';
   styleUrls: ['./register.component.css']
 })
 
-export class RegisterComponent implements OnInit {
+export class RegisterComponent implements AfterViewInit{
   counter : number = 0
   
   ch:BroadcastChannel = new BroadcastChannel(
@@ -27,7 +27,7 @@ export class RegisterComponent implements OnInit {
     )
   }
 
-  ngOnInit(){
+  ngAfterViewInit(){
     this.ch.onmessage = (e:any) => {
       this.counter = this.counter + 1
       this.ch.close()
