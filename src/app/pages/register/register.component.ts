@@ -8,24 +8,27 @@ import { Component,OnInit} from '@angular/core';
 })
 
 export class RegisterComponent implements OnInit {
-  signUpStage:Ctx = 'account'
+  ch:BroadcastChannel = new BroadcastChannel(
+    'message'
+  )
   
-  account:Account = {
-    username:'', 
-    password:'', 
-    matchPwd:''
-  }
-
-  onClick(){
+  openNewTab(url,path){
     window.open(
-      'https://angular-messenger.vercel.app/oauth'
+      `https://${url}/${path}`
+    )
+  }
+  
+  onClick(){
+    this.openNewTab(
+      'angular-messenger.vercel.app',
+      'oauth'
     )
   }
   
   ngOnInit(){
-    window.addEventListener('message',(e) => {
-      alert('halo bro callback')
-    })
+    ch.onmessage = (event) => {
+      alert('halo bro')
+    }
   }
 }
 

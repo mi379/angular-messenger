@@ -7,8 +7,12 @@ import { Component } from '@angular/core';
 })
 
 export class CallbackComponent {
+  ch:BroadcastChannel = new BroadcastChannel(
+    'message'
+  )
+  
   postMessage(){
-    window.opener.postMessage(
+    ch.postMessage(
       'halo bro register'
     )
   }
