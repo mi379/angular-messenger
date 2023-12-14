@@ -13,6 +13,10 @@ export class RegisterComponent implements AfterViewInit{
   ch:BroadcastChannel = new BroadcastChannel(
     'message'
   )
+ 
+  onMessage = this.ch.onmessage = (e: any) => {
+    this.counter = this.counter+1
+  }
   
   openNewTab(url:string,path:string){
     window.open(
@@ -28,10 +32,7 @@ export class RegisterComponent implements AfterViewInit{
   }
 
   ngAfterViewInit(){
-    this.ch.onmessage = (e:any) => {
-      this.counter = this.counter + 1
-      this.ch.close()
-    }
+    
   }
 }
 
