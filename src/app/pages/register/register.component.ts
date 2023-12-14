@@ -31,7 +31,7 @@ export class RegisterComponent implements OnInit {
   
   ngOnInit(){
     this.ch.onmessage = (e:any) => {
-      alert('halo juga bro')
+      alert('halo bro register')
     }
   }
 }
