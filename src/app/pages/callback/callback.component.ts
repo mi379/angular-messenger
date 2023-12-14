@@ -18,7 +18,7 @@ export class CallbackComponent implements OnInit{
   }
   
   ngOnInit(){
-    this.ch.onmessage = (e) => {
+    this.ch.onMessage = (e) => {
       alert('harusnya bisa')
     }
   }
