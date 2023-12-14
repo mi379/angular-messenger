@@ -27,7 +27,7 @@ export class RegisterComponent implements OnInit{
 
   ngOnInit(){
     this.ch.onmessage = e => {
-      this.counter = this.counter + 1
+      //this.counter = this.counter + 1
       console.log('ok')
     }
   }
