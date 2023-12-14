@@ -11,14 +11,6 @@ export class RegisterComponent implements OnInit {
   ch:BroadcastChannel = new BroadcastChannel(
     'message'
   )
-  .addEventListener(
-    'message', 
-    this.onMessage.bind(this)
-  )
-  
-  onMessage(message){
-    alert('hello')
-  }
   
   openNewTab(url:string,path:string){
     window.open(
@@ -34,7 +26,9 @@ export class RegisterComponent implements OnInit {
   }
   
   ngOnInit(){
-    
+    this.ch.onmessage = (e) => {
+      alert('halo juga bro')
+    }
   }
 }
 

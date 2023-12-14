@@ -13,7 +13,7 @@ export class CallbackComponent {
   
   postMessage(){
     this.ch.postMessage(
-      'halo bro register'
+      'halo bro'
     )
   }
 }
