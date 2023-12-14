@@ -26,16 +26,9 @@ export class RegisterComponent implements OnInit {
   }
   
   ngOnInit(){
-    ch.onmessage = (event) => {
+    this.ch.onmessage = (event) => {
       alert('halo bro')
     }
   }
 }
 
-type Ctx = 'account' | 'profile'
-
-interface Account{
-  username:string, 
-  password:string, 
-  matchPwd:string
-}
