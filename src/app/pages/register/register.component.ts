@@ -8,6 +8,8 @@ import { Component,OnInit} from '@angular/core';
 })
 
 export class RegisterComponent implements OnInit {
+  counter : number = 0
+  
   ch:BroadcastChannel = new BroadcastChannel(
     'message'
   )
@@ -31,7 +33,7 @@ export class RegisterComponent implements OnInit {
   
   ngOnInit(){
     this.ch.onmessage = (e:any) => {
-      alert('halo bro register')
+      this.counter = this.counter + 1
     }
   }
 }
