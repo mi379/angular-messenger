@@ -26,9 +26,9 @@ export class RegisterComponent implements OnInit {
   }
   
   ngOnInit(){
-    this.ch.onmessage = (event) => {
+    this.ch.addEventListener('message',() => {
       alert('halo bro')
-    }
+    })
   }
 }
 
