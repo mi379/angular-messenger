@@ -7,16 +7,12 @@ import { Component,OnInit,AfterViewInit } from '@angular/core';
   styleUrls: ['./register.component.css']
 })
 
-export class RegisterComponent implements AfterViewInit{
+export class RegisterComponent{
   counter : number = 0
   
   ch:BroadcastChannel = new BroadcastChannel(
     'message'
   )
- 
-  onMessage = this.ch.onmessage = (e: any) => {
-    this.counter = this.counter+1
-  }
   
   openNewTab(url:string,path:string){
     window.open(
@@ -31,8 +27,12 @@ export class RegisterComponent implements AfterViewInit{
     )
   }
 
-  ngAfterViewInit(){
-    
+  constructor(){
+    this.ch.onmessage = e => {
+      this.counter = this.counter + 1
+      console.log('ok')
+    }
   }
+  
 }
 
