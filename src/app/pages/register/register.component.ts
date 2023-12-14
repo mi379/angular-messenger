@@ -26,14 +26,11 @@ export class RegisterComponent implements OnInit {
       'oauth'
     )
   }
-  
-  postMessage(){
-    this.ch.postMessage('test')
-  }
-  
+
   ngOnInit(){
     this.ch.onmessage = (e:any) => {
       this.counter = this.counter + 1
+      this.ch.close()
     }
   }
 }
