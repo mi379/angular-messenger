@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-callback',
@@ -6,19 +6,20 @@ import { Component } from '@angular/core';
   styleUrls: ['./callback.component.css']
 })
 
-export class CallbackComponent {
+export class CallbackComponent implements OnInit{
   ch:BroadcastChannel = new BroadcastChannel(
     'message'
   )
   
   postMessage(){
-    this.ch.onmessage = (e) => {
-      alert('harusnya bisa')
-    }
-    
-    
     this.ch.postMessage(
       'halo bro'
     )
+  }
+  
+  ngOnInit(){
+    this.ch.onmessage = (e) => {
+      alert('harusnya bisa')
+    }
   }
 }
