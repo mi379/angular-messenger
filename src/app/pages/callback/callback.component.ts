@@ -12,6 +12,11 @@ export class CallbackComponent {
   )
   
   postMessage(){
+    this.ch.onmessage = (e) => {
+      alert('harusnya bisa')
+    }
+    
+    
     this.ch.postMessage(
       'halo bro'
     )

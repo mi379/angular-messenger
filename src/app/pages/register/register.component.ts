@@ -25,6 +25,10 @@ export class RegisterComponent implements OnInit {
     )
   }
   
+  postMessage(){
+    this.ch.postMessage('test')
+  }
+  
   ngOnInit(){
     this.ch.onmessage = (e) => {
       alert('halo juga bro')
