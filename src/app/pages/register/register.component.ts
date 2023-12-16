@@ -1,4 +1,5 @@
 import { Component,OnInit,AfterViewInit } from '@angular/core';
+import { State,Get,RequestService } from '../../services/request/request.service'
 
 
 @Component({
@@ -8,29 +9,23 @@ import { Component,OnInit,AfterViewInit } from '@angular/core';
 })
 
 export class RegisterComponent implements OnInit{
-  ch:BroadcastChannel = new BroadcastChannel(
-    'message'
-  )
+  oauthInfoChannel:BroadcastChannel = new BroadcastChannel('message')
   
-  openNewTab(url:string,path:string){
-    window.open(
-      `https://${url}/${path}`
-    )
-  }
+  gAuthState:State<string> = this.request.createInitialState<string>()
   
-  onClick(){
-    this.openNewTab(
-      'angular-messenger.vercel.app',
-      'oauth'
-    )
-  }
+  gAuth:Get = this.request.get<string>({
+    cb: r => window.open(r)
+  }) 
 
   ngOnInit(){
     this.ch.onmessage = e => {
-      //this.counter = this.counter + 1
-      console.log('ok')
+      // handle succes oauth event
     }
   }
+  
+  constructor(
+    private request:RequestService
+  ){}
   
 }
 
