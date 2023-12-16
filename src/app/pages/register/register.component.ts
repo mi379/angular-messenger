@@ -21,7 +21,7 @@ export class RegisterComponent implements OnInit{
   
   runGAuth(gAuthPath:string){
     this.gAuth(gAuthPath,{
-      responseType:text
+      responseType:'text'
     })
   }
 
