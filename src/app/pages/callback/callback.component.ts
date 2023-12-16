@@ -11,7 +11,7 @@ import { ActivatedRoute } from '@angular/router'
 export class CallbackComponent{
   platform:string = this.activatedRoute.snapshot.params['platform']
   
-  oauthCode:string = this.activatedRoute.snapshot.queryParamMap.get(
+  code:string | null = this.activatedRoute.snapshot.queryParamMap.get(
     'code'
   )
   
