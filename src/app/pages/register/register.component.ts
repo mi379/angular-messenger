@@ -17,7 +17,13 @@ export class RegisterComponent implements OnInit{
     state:this.gAuthState, 
     cb: r => alert(r), 
     failedCb: e => alert(e)
-  }) 
+  })
+  
+  runGauth(path){
+    this.gAuth(path,{
+      responseType:text
+    })
+  }
 
   ngOnInit(){
     this.oauthInfoChannel.onmessage = e => {
