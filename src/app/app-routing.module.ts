@@ -35,7 +35,7 @@ const routes:Routes = [
     component:RegisterComponent
   },
   {
-    path:'oauth', 
+    path:'oauth/:platform', 
     component:CallbackComponent
   }, 
   {

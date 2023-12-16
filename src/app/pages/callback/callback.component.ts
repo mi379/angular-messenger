@@ -1,4 +1,6 @@
 import { Component,OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router'
+
 
 @Component({
   selector: 'app-callback',
@@ -6,18 +8,12 @@ import { Component,OnInit } from '@angular/core';
   styleUrls: ['./callback.component.css']
 })
 
-export class CallbackComponent implements OnInit{
-  ch:BroadcastChannel = new BroadcastChannel(
-    'message'
-  )
+export class CallbackComponent{
+  platform:string = this.activatedRoute.snapshot.params[
+   'platform' 
+  ]
   
-  postMessage(){
-    this.ch.postMessage(
-      'halo bro'
-    )
-  }
+  constructor(private activatedRoute: ActivatedRoute) {}
   
-  ngOnInit(){
-    
-  }
+  
 }
