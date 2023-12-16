@@ -14,7 +14,7 @@ export class RegisterComponent implements OnInit{
   gAuthState:State<string> = this.request.createInitialState<string>()
   
   gAuth:Get = this.request.get<string>({
-    state:gAuthState, 
+    state:this.gAuthState, 
     cb: r => window.open(r)
   }) 
 
