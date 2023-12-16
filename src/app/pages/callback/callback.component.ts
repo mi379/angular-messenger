@@ -9,11 +9,19 @@ import { ActivatedRoute } from '@angular/router'
 })
 
 export class CallbackComponent{
-  platform:string = this.activatedRoute.snapshot.params[
-   'platform' 
-  ]
+  platform:string = this.activatedRoute.snapshot.params['platform']
   
-  constructor(private activatedRoute: ActivatedRoute) {}
+  oauthCode:string = this.activatedRoute.snapshot.queryParamMap.get(
+    'code'
+  )
+  
+  ch: BroadcastChannel = new BroadcastChannel(
+    'message'
+  )
+  
+  constructor(
+    private activatedRoute: ActivatedRoute
+  ){}
   
   
 }
