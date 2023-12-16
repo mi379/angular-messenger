@@ -19,7 +19,7 @@ export class RegisterComponent implements OnInit{
     failedCb: e => alert(e)
   })
   
-  runGauth(gAuthPath:string){
+  runGAuth(gAuthPath:string){
     this.gAuth(gAuthPath,{
       responseType:text
     })
