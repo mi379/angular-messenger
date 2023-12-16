@@ -16,7 +16,7 @@ export class RegisterComponent implements OnInit{
   gAuth:Get = this.request.get<string>({
     state:this.gAuthState, 
     cb: r => alert(r), 
-    failedCb: e => alert('x')
+    failedCb: e => alert(e)
   }) 
 
   ngOnInit(){
