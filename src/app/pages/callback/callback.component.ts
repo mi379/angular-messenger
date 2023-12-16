@@ -11,13 +11,15 @@ import { ActivatedRoute } from '@angular/router'
 export class CallbackComponent{
   platform:string = this.activatedRoute.snapshot.params['platform']
   
-  code:string | null = this.activatedRoute.snapshot.queryParamMap.get(
+  code:string|null = this.activatedRoute.snapshot.queryParamMap.get(
     'code'
   )
   
   ch: BroadcastChannel = new BroadcastChannel(
     'message'
   )
+  
+  
   
   constructor(
     private activatedRoute: ActivatedRoute
