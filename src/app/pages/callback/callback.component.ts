@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router'
 import { RequestService } from '../../services/request/request.service'
 import { AuthService } from '../../services/auth/auth.service'
 import { User } from '../../ngrx/user/user.reducer'
-
+import { Reducers } from '../login/login.component'
 
 @Component({
   selector: 'app-callback',
@@ -41,7 +41,7 @@ export class CallbackComponent implements OnInit{
   constructor(
     private activatedRoute: ActivatedRoute, 
     private request:RequestService, 
-    private auth:AuthService
+    private auth:AuthService<Reducers>
   ){}
   
   
