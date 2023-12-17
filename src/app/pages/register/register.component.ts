@@ -29,7 +29,7 @@ export class RegisterComponent implements OnInit{
 
   ngOnInit(){
     this.oauthInfoChannel.onmessage = e => {
-      this.login.auth(true,e.data) 
+      this.auth.login(true,e.data) 
       
       console.log(e) 
     }
