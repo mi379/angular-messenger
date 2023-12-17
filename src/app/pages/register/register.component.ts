@@ -27,7 +27,7 @@ export class RegisterComponent implements OnInit{
 
   ngOnInit(){
     this.oauthInfoChannel.onmessage = e => {
-      // handle succes oauth event
+      alert(JSON.stringify(e)) 
     }
   }
   
