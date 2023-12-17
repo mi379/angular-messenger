@@ -19,6 +19,10 @@
     </svg>
   </div>
 
+  <div *ngIf="recentlyMessages && recentlyMessages.length < 1" class="flex-1 flex flex-col v-center items-center gap-1">
+    <p>No recently message</p>
+    <p>Start using this app by looking for someone</p>
+  </div>
   
   <div class="mt-[80px] p-4" *ngIf="recentlyMessages as recently">
     <app-card 
@@ -28,6 +32,7 @@
       [_id]="_id"
     />
   </div>
+  
   
   <!--
   <div class="mt-[80px] p-4 border-2 border-black" *ngIf="recentlyMessages as recently">
