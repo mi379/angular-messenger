@@ -41,7 +41,7 @@ interface FakeUser{
   password:string
 }
 
-interface Reducers{
+export interface Reducers{
   auth:Session,
   user:User
 }
