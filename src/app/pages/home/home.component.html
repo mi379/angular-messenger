@@ -1,10 +1,5 @@
-<app-navbar (toSearchPage)="toSearch()" pages="home" [profile]="(currentUser | async)?.profile" class="navbar">
-  <!---
-  <button (click)="toSearch()" class="text-white md-hidden" navbar-search>
-    <app-magnifying-glass/>
-  </button>
-  -->
-</app-navbar>
+<app-navbar (toSearchPage)="toSearch()" pages="home" [profile]="(currentUser | async)?.profile" class="navbar"/>
+
 
 <div class="fullscreen bg-slate-100 flex flex-col">
 
