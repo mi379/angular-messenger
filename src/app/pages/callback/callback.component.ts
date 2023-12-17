@@ -18,7 +18,10 @@ export class CallbackComponent{
 
   callbackState = this.request.createInitialState<User>() 
 
-  
+  callback = this.request.get<User>({
+    state:this.callbackState, 
+    cb:r => alert(r) 
+  }) 
   
   ch: BroadcastChannel = new BroadcastChannel(
     'message'
