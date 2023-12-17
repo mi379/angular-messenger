@@ -9,7 +9,7 @@ import { User } from '../../ngrx/user/user.reducer'
   styleUrls: ['./callback.component.css']
 })
 
-export class CallbackComponent{
+export class CallbackComponent implemen{
   platform:string = this.activatedRoute.snapshot.params['platform']
   
   code:string|null = this.activatedRoute.snapshot.queryParamMap.get(
