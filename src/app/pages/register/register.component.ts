@@ -1,5 +1,7 @@
 import { Component,OnInit,AfterViewInit } from '@angular/core';
 import { State,Get,RequestService } from '../../services/request/request.service'
+import { AuthService } from '../../services/auth/auth.service'
+import { Reducers } from '../login/login.component'
 
 
 @Component({
@@ -33,6 +35,7 @@ export class RegisterComponent implements OnInit{
   
   constructor(
     private request:RequestService
+    private auth:AuthService<Reducers>
   ){}
   
 }
