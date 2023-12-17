@@ -1,4 +1,4 @@
-import { Component,OnInit } from '@angular/core';
+ximport { Component,OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router'
 import { RequestService } from '../../services/request/request.service'
 import { User } from '../../ngrx/user/user.reducer'
@@ -9,7 +9,7 @@ import { User } from '../../ngrx/user/user.reducer'
   styleUrls: ['./callback.component.css']
 })
 
-export class CallbackComponent implemen{
+export class CallbackComponent implements OnInit{
   platform:string = this.activatedRoute.snapshot.params['platform']
   
   code:string|null = this.activatedRoute.snapshot.queryParamMap.get(
@@ -27,7 +27,9 @@ export class CallbackComponent implemen{
     'message'
   )
   
-  
+  ngOnInit(){
+    
+  }
   
   constructor(
     private activatedRoute: ActivatedRoute, 
