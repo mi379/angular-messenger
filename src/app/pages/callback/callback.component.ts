@@ -1,4 +1,4 @@
-ximport { Component,OnInit } from '@angular/core';
+import { Component,OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router'
 import { RequestService } from '../../services/request/request.service'
 import { User } from '../../ngrx/user/user.reducer'
