@@ -1,6 +1,6 @@
 import { Component,OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router'
-
+import { RequestService } from '../../services/request/request.service'
 
 @Component({
   selector: 'app-callback',
