@@ -21,7 +21,7 @@ export class CallbackComponent implements OnInit{
   cbPage:string = `oauth/google/callback?code=${this.code}`
 
   callback = this.request.get<User>({
-    cb:r => alert(JSON.stringify(r)), 
+    cb:r => this.ch.postMessage(r), 
     state:this.callbackState, 
     failedCb:e => alert(e) 
   }) 
