@@ -1,6 +1,7 @@
 import { Component,OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router'
 import { RequestService } from '../../services/request/request.service'
+import { User } from '../../ngrx/user/user.reducer'
 
 @Component({
   selector: 'app-callback',
@@ -14,6 +15,10 @@ export class CallbackComponent{
   code:string|null = this.activatedRoute.snapshot.queryParamMap.get(
     'code'
   )
+
+  callbackState = this.request.createInitialState<User>() 
+
+  
   
   ch: BroadcastChannel = new BroadcastChannel(
     'message'
@@ -22,7 +27,8 @@ export class CallbackComponent{
   
   
   constructor(
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute, 
+    private request:RequestService
   ){}
   
   
