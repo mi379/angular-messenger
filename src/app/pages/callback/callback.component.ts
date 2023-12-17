@@ -23,10 +23,15 @@ export class CallbackComponent implements OnInit{
   cbPage:string = `oauth/google/callback?code=${this.code}`
 
   callback = this.request.get<User>({
-    cb:r => this.ch.postMessage(r), 
+    cb:r => this.next(r), 
     state:this.callbackState, 
     failedCb:e => alert(e) 
   }) 
+  
+   next(user:User){
+    this.ch.postMessage(user)
+    window.close()
+  }
   
   ch: BroadcastChannel = new BroadcastChannel(
     'message'
