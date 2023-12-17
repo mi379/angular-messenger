@@ -18,8 +18,11 @@ export class CallbackComponent implements OnInit{
 
   callbackState = this.request.createInitialState<User>() 
 
+  callbackPage:string = `oauth/google/callback?code=${code}`
+
   callback = this.request.get<User>({
     state:this.callbackState, 
+    failedCb:e => alert(e), 
     cb:r => alert(r) 
   }) 
   
@@ -28,7 +31,9 @@ export class CallbackComponent implements OnInit{
   )
   
   ngOnInit(){
-    
+    this.callback(
+      this.callbackPage
+    ) 
   }
   
   constructor(
