@@ -34,7 +34,7 @@ export class RegisterComponent implements OnInit{
   }
   
   constructor(
-    private request:RequestService
+    private request:RequestService, 
     private auth:AuthService<Reducers>
   ){}
   
