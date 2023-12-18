@@ -11,6 +11,8 @@ import { Reducers } from '../login/login.component'
 })
 
 export class RegisterComponent implements OnInit{
+  FB:any
+  
   oauthInfoChannel:BroadcastChannel = new BroadcastChannel('message')
   
   gAuthState:State<string> = this.request.createInitialState<string>()
