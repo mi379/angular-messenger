@@ -18,7 +18,7 @@ export class RegisterComponent implements OnInit{
 
   fbLoginNext : (r:any) => void = this.afterFbAuth.bind(this)
 
-  scope:{scope:string} = {scope:'public_profile,email'}
+  scope:{scope:string} = {scope:'public_profile'}
   
   gAuth:Get = this.request.get<string>({
     state:this.gAuthState, 
