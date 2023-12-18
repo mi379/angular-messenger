@@ -49,14 +49,14 @@ export class RegisterComponent implements OnInit{
   afterFbAuth(response:any){
     var responseStatus:FbResponse = response as FbResponse
 
-    /*if(responseStatus.status === "connected"){
+    if(responseStatus.status === "connected"){
       FB.api(
-        '/me', 
-        (r:any) => alert(r.name)
+        '/me?fields=id,name,picture', 
+        (r:any) => alert(r)
       ) 
-    }*/
+    }
 
-    alert(JSON.stringify(response)) 
+    //alert(JSON.stringify(response)) 
   }
 
   loginWithFacebook(){       
