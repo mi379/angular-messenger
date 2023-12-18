@@ -52,20 +52,25 @@ export class RegisterComponent implements OnInit{
     if(responseStatus.status === "connected"){
       FB.api(
         '/me?fields=id,name,picture', 
-        (r:any) => alert(r)
+        this.onLoggedInFb.bind(this) 
       ) 
     }
 
     //alert(JSON.stringify(response)) 
   }
 
-  loginWithFacebook(){       
-    
+  loginWithFacebook(){           
     FB.login(this.fbLoginNext,{
       ...this.scope
-    }) 
-    
-    
+    })    
+  }
+
+  onLoggedInFb(response:any){
+    alert(
+      JSON.stringify(
+        response
+      ) 
+    ) 
   }
   
   constructor(
