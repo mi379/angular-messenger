@@ -11,7 +11,6 @@ import { Reducers } from '../login/login.component'
 })
 
 export class RegisterComponent implements OnInit{
-  //FB:any
   
   oauthInfoChannel:BroadcastChannel = new BroadcastChannel('message')
   
