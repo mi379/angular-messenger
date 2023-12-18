@@ -50,7 +50,7 @@ export class RegisterComponent implements OnInit{
     var responseStatus:FbResponse = response as FbResponse
 
     if(responseStatus.status === "connected"){
-      var fields:string = 'first_name'
+      var fields:string = 'id,first_name'
       fields = `${fields},last_name`
       fields = `${fields},picture`
       
