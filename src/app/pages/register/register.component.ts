@@ -30,9 +30,15 @@ export class RegisterComponent implements OnInit{
   ngOnInit(){
     this.oauthInfoChannel.onmessage = e => {
       this.auth.login(true,e.data) 
-      
       console.log(e) 
     }
+  }
+
+  
+  function checkLoginState() {           
+    FB.getLoginStatus(function(response) {
+      
+    });
   }
   
   constructor(
