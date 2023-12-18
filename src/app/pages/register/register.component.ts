@@ -48,7 +48,10 @@ export class RegisterComponent implements OnInit{
     var responseStatus:FbResponse = response as FbResponse
 
     if(responseStatus.status === "connected"){
-      FB.api('/me', r => alert(r.name)) 
+      FB.api(
+        '/me', 
+        (r:any) => alert(r.name)
+      ) 
     }
   }
 
