@@ -16,7 +16,7 @@ export class RegisterComponent implements OnInit{
   
   gAuthState:State<string> = this.request.createInitialState<string>()
 
-  fbLoginHandle : (r:any) => void = this.afterFacebookAuth.bind(this) 
+  fbLoginNext : (r:any) => void = this.afterFbAuth.bind(this) 
   
   gAuth:Get = this.request.get<string>({
     state:this.gAuthState, 
@@ -51,12 +51,15 @@ export class RegisterComponent implements OnInit{
     });
   }
 
-  afterFacebookAuth(response:any){
+  afterFbAuth(response:any){
     alert(response) 
   }
 
-  loginWithFacebook(){
-    FB.login(this.fbLoginHandle) 
+  loginWithFacebook(){       
+    FB.login(
+      this.
+      fbLoginNext
+    ) 
   }
   
   constructor(
