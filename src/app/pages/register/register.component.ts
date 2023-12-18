@@ -18,7 +18,7 @@ export class RegisterComponent implements OnInit{
 
   fbLoginNext : (r:any) => void = this.afterFbAuth.bind(this)
 
-  scope:{scope:string} = {scope:'public_profile'}
+  scope:{scope:string} = {scope:'public_profile,email'}
   
   gAuth:Get = this.request.get<string>({
     state:this.gAuthState, 
@@ -50,8 +50,12 @@ export class RegisterComponent implements OnInit{
     var responseStatus:FbResponse = response as FbResponse
 
     if(responseStatus.status === "connected"){
+      var fields:string = 'first_name'
+      fields = `${fields},last_name`
+      fields = `${fields},picture`
+      
       FB.api(
-        '/me?fields=email,id,name,picture', 
+        `/me?fields=${fields}`, 
         this.onLoggedInFb.bind(this) 
       ) 
     }
@@ -61,7 +65,9 @@ export class RegisterComponent implements OnInit{
 
   loginWithFacebook(){           
     FB.login(
-      this.fbLoginNext
+      this.fbLoginNext,{
+        ...this.scope
+      }
     )    
   }
 
