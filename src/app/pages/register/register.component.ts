@@ -1,3 +1,4 @@
+import { StatusResponse } from "facebook-js-sdk"
 import { Component,OnInit,AfterViewInit } from '@angular/core';
 import { State,Get,RequestService } from '../../services/request/request.service'
 import { AuthService } from '../../services/auth/auth.service'
@@ -16,7 +17,7 @@ export class RegisterComponent implements OnInit{
   
   gAuthState:State<string> = this.request.createInitialState<string>()
 
-  fbLoginNext : (r:FbResponse) => void = this.afterFbAuth.bind(this) 
+  fbLoginNext : (r:any) => void = this.afterFbAuth.bind(this) 
   
   gAuth:Get = this.request.get<string>({
     state:this.gAuthState, 
@@ -44,7 +45,7 @@ export class RegisterComponent implements OnInit{
     }
   }
 
-  afterFbAuth(response:FbResponse){
+  afterFbAuth(response:any){
     alert(response) 
   }
 
