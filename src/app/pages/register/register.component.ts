@@ -15,6 +15,8 @@ export class RegisterComponent implements OnInit{
   oauthInfoChannel:BroadcastChannel = new BroadcastChannel('message')
   
   gAuthState:State<string> = this.request.createInitialState<string>()
+
+  fbLoginHandle : (r:any) => void = this.afterFacebookAuth.bind(this) 
   
   gAuth:Get = this.request.get<string>({
     state:this.gAuthState, 
@@ -49,10 +51,12 @@ export class RegisterComponent implements OnInit{
     });
   }
 
+  afterFacebookAuth(response:any){
+    alert(response) 
+  }
+
   loginWithFacebook(){
-    FB.login((response:any) => {
-       alert(JSON.stringify(response)) 
-    }) 
+    FB.login(this.fbLoginHandle) 
   }
   
   constructor(
