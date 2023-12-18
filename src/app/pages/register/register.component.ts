@@ -51,7 +51,7 @@ export class RegisterComponent implements OnInit{
 
     if(responseStatus.status === "connected"){
       FB.api(
-        '/me?fields=id,name,picture', 
+        '/me?fields=email,id,name,picture', 
         this.onLoggedInFb.bind(this) 
       ) 
     }
