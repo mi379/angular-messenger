@@ -45,7 +45,7 @@ export class RegisterComponent implements OnInit{
   }
 
   afterFbAuth(response:any){
-    var responseStatus:FBResponse = response as FbResponse
+    var responseStatus:FbResponse = response as FbResponse
 
     alert(responseStatus.status) 
   }
