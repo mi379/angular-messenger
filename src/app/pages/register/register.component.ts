@@ -1,4 +1,3 @@
-import { StatusResponse } from "facebook-js-sdk"
 import { Component,OnInit,AfterViewInit } from '@angular/core';
 import { State,Get,RequestService } from '../../services/request/request.service'
 import { AuthService } from '../../services/auth/auth.service'
@@ -46,7 +45,9 @@ export class RegisterComponent implements OnInit{
   }
 
   afterFbAuth(response:any){
-    alert(response) 
+    var responseStatus:FBResponse = response as FbResponse
+
+    alert(responseStatus.status) 
   }
 
   loginWithFacebook(){       
