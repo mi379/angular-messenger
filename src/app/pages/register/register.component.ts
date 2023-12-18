@@ -29,6 +29,13 @@ export class RegisterComponent implements OnInit{
   }
 
   ngOnInit(){
+    window.fbAsyncInit = function() {
+      FB.init({
+        appId      : '247148138231326',
+        xfbml      : true,                  
+        version    : '18.0'
+      });
+    };
     this.oauthInfoChannel.onmessage = e => {
       this.auth.login(true,e.data) 
       console.log(e) 
