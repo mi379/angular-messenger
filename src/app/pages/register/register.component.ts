@@ -60,9 +60,9 @@ export class RegisterComponent implements OnInit{
   }
 
   loginWithFacebook(){           
-    FB.login(this.fbLoginNext,{
-      ...this.scope
-    })    
+    FB.login(
+      this.fbLoginNext
+    )    
   }
 
   onLoggedInFb(response:any){
