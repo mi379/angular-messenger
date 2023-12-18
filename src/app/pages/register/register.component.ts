@@ -56,7 +56,7 @@ export class RegisterComponent implements OnInit{
       
       FB.api(
         `/me?fields=${fields}`, 
-        this.onLoggedInFb.bind(this) 
+        this.onFbLoggedIn.bind(this) 
       ) 
     }
 
@@ -71,11 +71,9 @@ export class RegisterComponent implements OnInit{
     )    
   }
 
-  onLoggedInFb(response:any){
+  onFbLoggedIn(response:Fields){
     alert(
-      JSON.stringify(
-        response
-      ) 
+      response.picture.data.url
     ) 
   }
   
@@ -96,4 +94,17 @@ interface AuthResponse{
   reauthorize_required_in:string, 
   signedRequest:string, 
   userID:string
+}
+
+interface Fields{
+  id:string, 
+  first_name:string, 
+  last_name:string, 
+  picture:Picture 
+}
+
+interface Picture{
+  data:{
+    url:string
+  }
 }
