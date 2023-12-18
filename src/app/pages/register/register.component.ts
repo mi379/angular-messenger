@@ -39,7 +39,7 @@ export class RegisterComponent implements OnInit{
   
   checkLoginState() {           
     this.FB.getLoginStatus(function(response:any) {
-      
+      alert(JSON.stringify(response) 
     });
   }
   
