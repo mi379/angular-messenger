@@ -16,7 +16,7 @@ export class RegisterComponent implements OnInit{
   
   gAuthState:State<string> = this.request.createInitialState<string>()
 
-  fbLoginNext : (r:any) => void = this.afterFbAuth.bind(this) 
+  fbLoginNext : (r:FbResponse) => void = this.afterFbAuth.bind(this) 
   
   gAuth:Get = this.request.get<string>({
     state:this.gAuthState, 
@@ -44,14 +44,7 @@ export class RegisterComponent implements OnInit{
     }
   }
 
-  
-  checkLoginState() {           
-    FB.getLoginStatus(function(response:any) {
-      alert("ok") 
-    });
-  }
-
-  afterFbAuth(response:any){
+  afterFbAuth(response:FbResponse){
     alert(response) 
   }
 
@@ -66,6 +59,18 @@ export class RegisterComponent implements OnInit{
     private request:RequestService, 
     private auth:AuthService<Reducers>
   ){}
-  
+}
+
+interface FbResponse{
+  status:string, 
+  authResponse:AuthResponse
+}
+
+interface AuthResponse{
+  accessToken:string, 
+  expiresIn:string, 
+  reauthorize_required_in:string, 
+  signedRequest:string, 
+  userID:string
 }
 
