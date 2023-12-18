@@ -51,7 +51,7 @@ export class RegisterComponent implements OnInit{
 
   loginWithFacebook(){
     FB.login((response:any) => {
-      alert("response") 
+       alert(JSON.stringify(response)) 
     }) 
   }
   
