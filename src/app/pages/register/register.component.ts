@@ -38,13 +38,13 @@ export class RegisterComponent implements OnInit{
   
   checkLoginState() {           
     FB.getLoginStatus(function(response:any) {
-      alert(JSON.stringify(response)) 
+      alert("ok") 
     });
   }
 
   loginWithFacebook(){
     FB.login((response:any) => {
-      alert(JSON.stringify(response)) 
+      alert("response") 
     }) 
   }
   
