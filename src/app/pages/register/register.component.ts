@@ -11,7 +11,7 @@ import { Reducers } from '../login/login.component'
 })
 
 export class RegisterComponent implements OnInit{
-  FB:any
+  //FB:any
   
   oauthInfoChannel:BroadcastChannel = new BroadcastChannel('message')
   
@@ -38,7 +38,7 @@ export class RegisterComponent implements OnInit{
 
   
   checkLoginState() {           
-    this.FB.getLoginStatus(function(response:any) {
+    FB.getLoginStatus(function(response:any) {
       alert(JSON.stringify(response)) 
     });
   }
