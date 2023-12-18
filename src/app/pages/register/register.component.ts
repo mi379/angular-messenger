@@ -35,7 +35,7 @@ export class RegisterComponent implements OnInit{
   }
 
   
-  function checkLoginState() {           
+  checkLoginState() {           
     FB.getLoginStatus(function(response) {
       
     });
