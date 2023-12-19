@@ -33,6 +33,7 @@ export class RegisterComponent implements OnInit{
     cb:r => alert(this.toStr<User>(r)),
     failedCb: e => alert(e), 
     state:this.fbAuthState, 
+    path:"oauth/facebook/signup"
   }) 
 
   toStr<T>(object:T):string{
@@ -88,7 +89,6 @@ export class RegisterComponent implements OnInit{
 
   createUserOrCheckIfExist(body:Create){
     this.fbAuth(
-      'oauth/facebook/signup', 
       body
     ) 
   }
