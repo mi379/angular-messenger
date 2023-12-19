@@ -30,7 +30,7 @@ export class RegisterComponent implements OnInit{
   })
 
   fbAuth:Post<any> = this.request.post<User>({
-    cb:r => alert(this.toStr.(r)),
+    cb:r => alert(this.toStr<User>(r)),
     failedCb: e => alert(e), 
     state:this.fbAuthState, 
   }) 
