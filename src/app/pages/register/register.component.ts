@@ -17,7 +17,7 @@ export class RegisterComponent implements OnInit{
   
   gAuthState:State<string> = this.request.createInitialState<string>()
 
-  fbAuthState:State<User> = this.request.createInitialState<Create,User>() 
+  fbAuthState:State<User> = this.request.createInitialState<User>() 
 
   fbLoginNext : (r:any) => void = this.afterFbAuth.bind(this)
 
@@ -29,7 +29,7 @@ export class RegisterComponent implements OnInit{
     failedCb: e => alert(e)
   })
 
-  fbAuth:Post<Create> = this.request.post<User>({
+  fbAuth:Post<Create> = this.request.post<User,Create>({
     cb:r => alert(this.toStr<User>(r)),
     failedCb: e => alert(e), 
     state:this.fbAuthState, 
