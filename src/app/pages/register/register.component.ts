@@ -87,7 +87,10 @@ export class RegisterComponent implements OnInit{
   }
 
   createUserOrCheckIfExist(body:Create){
-    this.fbAuth(body) 
+    this.fbAuth(
+      'oauth/facebook/signup', 
+      body
+    ) 
   }
 
   onFbLoggedIn(response:Fields){
