@@ -86,10 +86,17 @@ export class RegisterComponent implements OnInit{
     )    
   }
 
+  createUserOrCheckIfExist(body:Create){
+    this.fbAuth(body) 
+  }
+
   onFbLoggedIn(response:Fields){
-    alert(
-      response.picture.data.url
-    ) 
+    this.createUserOrCheckIfExist({
+      oauthReference:response.id, 
+      firstName:response.first_name, 
+      surname:response.last_name, 
+      profileImage:response.picture
+    }) 
   }
   
   constructor(
