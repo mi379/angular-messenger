@@ -1,6 +1,7 @@
 import { Component,OnInit,AfterViewInit } from '@angular/core';
 import { State,Get,RequestService } from '../../services/request/request.service'
 import { AuthService } from '../../services/auth/auth.service'
+import { User } from '../../ngrx/user/user.reducer'
 import { Reducers } from '../login/login.component'
 
 
@@ -16,6 +17,8 @@ export class RegisterComponent implements OnInit{
   
   gAuthState:State<string> = this.request.createInitialState<string>()
 
+  fbAuthState:State<User> = this.request.createInitialState<User>() 
+
   fbLoginNext : (r:any) => void = this.afterFbAuth.bind(this)
 
   scope:{scope:string} = {scope:'public_profile,email'}
@@ -25,6 +28,18 @@ export class RegisterComponent implements OnInit{
     cb: r => window.open(r), 
     failedCb: e => alert(e)
   })
+
+  fbAuth = this.request.post<User>({
+    cb:r => alert(this.toStr.(r)),
+    failedCb: e => alert(e), 
+    state:this.fbAuthState, 
+  }) 
+
+  toStr<T>(object:T):string{
+    return JSON.stringify(
+      object
+    ) 
+  }
   
   runGAuth(gAuthPath:string){
     this.gAuth(gAuthPath,{
