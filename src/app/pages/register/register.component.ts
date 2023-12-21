@@ -30,7 +30,7 @@ import { Reducers } from '../login/login.component'
         animate('0.5s')
       ]),
     ])
-   }
+  ]
 })
 
 export class RegisterComponent implements OnInit{
