@@ -11,23 +11,15 @@ import { Reducers } from '../login/login.component'
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css'], 
    animations: [
-    trigger('openClose', [
-      // ...
+    trigger('failedOauth', [
       state('open', style({
-        height: '200px',
         opacity: 1,
-        backgroundColor: 'yellow'
       })),
-      state('closed', style({
-        height: '100px',
-        opacity: 0.8,
-        backgroundColor: 'blue'
+      state('fadeOut', style({
+        opacity:0
       })),
-      transition('open => closed', [
+      transition('fadeIn <=> fadeOut', [
         animate('1s')
-      ]),
-      transition('closed => open', [
-        animate('0.5s')
       ]),
     ])
   ]
