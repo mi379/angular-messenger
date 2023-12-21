@@ -1,3 +1,4 @@
+import { trigger, state, style, transition, animate } from '@angular/animations';
 import { Component,OnInit,AfterViewInit } from '@angular/core';
 import { State,Get,RequestService,Post } from '../../services/request/request.service'
 import { AuthService } from '../../services/auth/auth.service'
@@ -8,7 +9,13 @@ import { Reducers } from '../login/login.component'
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  styleUrls: ['./register.component.css'], 
+  animations: [
+    trigger('fade', [
+      state('fadeOut', style({ opacity: 0 })
+      transition(':enter,:leave',[animate(500)]),
+    ]),
+  ]
 })
 
 export class RegisterComponent implements OnInit{
