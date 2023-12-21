@@ -12,8 +12,12 @@ import { Reducers } from '../login/login.component'
   styleUrls: ['./register.component.css'], 
   animations: [
     trigger('fade', [
-      state('fadeOut', style({ opacity: 0 }), 
-      transition(':enter,:leave',[animate(500)]),
+      state('fadeOut', 
+      style({ opacity: 0 }), 
+      transition(
+        'open => closed',
+        [animate(500)]
+      ),
     ]),
   ]
 })
