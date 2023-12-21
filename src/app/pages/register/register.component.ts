@@ -15,7 +15,7 @@ import { Reducers } from '../login/login.component'
       state('fadeOut', 
       style({ opacity: 0 }), 
       transition(
-        'open => closed',
+        'fadeOut',
         [animate(500)]
       ),
     ]),
