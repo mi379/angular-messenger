@@ -47,7 +47,7 @@ export class RegisterComponent implements OnInit{
 
       setTimeout(() => {
         this.googleLoginFailed = false
-      },1000) 
+      },2000) 
     }
   })
 
