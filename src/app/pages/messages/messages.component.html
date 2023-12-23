@@ -43,7 +43,7 @@
       </div>
 
 
-      <div *ngIf="message.sender !== _id && message.contentType === 'image'" class="xs:w-1/2 md:w-fit p-2 bg-yellow-600 rounded-md relative">
+      <div *ngIf="message.sender !== _id && message.contentType === 'image'" class="min-w-[50%] xs:max-w-[85%] p-2 bg-yellow-600 rounded-md relative">
         <img 
           [src]="message.value" 
           class="rounded-md" 
