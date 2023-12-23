@@ -13,11 +13,11 @@ import { Reducers } from '../login/login.component'
    animations: [
     trigger('failedOauth', [
       state('fadeIn', style({
-        display:block, 
+        display:'block', 
         opacity: 1,
       })),
       state('fadeOut', style({
-        display:none, 
+        display:'none', 
         opacity:0
       })),
       transition('fadeIn <=> fadeOut', [
