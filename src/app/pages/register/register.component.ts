@@ -36,11 +36,19 @@ export class RegisterComponent implements OnInit{
   fbLoginNext : (r:any) => void = this.afterFbAuth.bind(this)
 
   scope:{scope:string} = {scope:'public_profile,email'}
+
+  googleLoginFailed:boolean = false
   
   gAuth:Get = this.request.get<string>({
     state:this.gAuthState, 
     cb: r => window.open(r), 
-    failedCb: e => alert(e)
+    failedCb: e => {
+      this.googleLoginFailed = true
+
+      setTimeout(() => {
+        this.googleLoginFailed = false
+      },1000) 
+    }
   })
 
   fbAuth:Post<Create> = this.request.post<User,Create>({
