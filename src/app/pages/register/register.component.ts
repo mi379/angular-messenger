@@ -12,7 +12,7 @@ import { Reducers } from '../login/login.component'
   styleUrls: ['./register.component.css'], 
    animations: [
     trigger('failedOauth', [
-      state('open', style({
+      state('fadeIn', style({
         opacity: 1,
       })),
       state('fadeOut', style({
