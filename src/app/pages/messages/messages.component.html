@@ -15,7 +15,7 @@
 
   <div *ngIf="!uploadPreview && messages as messages" class="mt-[80px] mb-[72px] p-4">
     <div *ngFor="let message of messages; last as last" [@isLast]="last ? ''  : 'last'">
-			<div *ngIf="message.sender !== _id && message.contentType === 'text'" class="min-w-[50%] xs:max-w-[85%] bg-green-500 p-4 rounded-md flex flex-row">
+			<div *ngIf="message.sender !== _id && message.contentType === 'text'" class="bg-green-500 p-4 rounded-md flex flex-row">
         <div class="flex-1">
           <span>
             {{message.value}}
@@ -41,63 +41,12 @@
         </div>
 
       </div>
-
-
-      <div *ngIf="message.sender !== _id && message.contentType === 'image'" class="min-w-[50%] xs:max-w-[85%] p-2 bg-yellow-600 rounded-md relative">
-        <img 
-          [src]="message.value" 
-          class="rounded-md" 
-        />
-
-        <div class="absolute bottom-0 right-0" *ngIf="!message.send && !failedSendList.includes(message.sendAt)">
-          <app-check class="text-gray-900"/>
-        </div>
-
-        <div class="absolute bottom-0 right-0" *ngIf="failedSendList.includes(message.sendAt)">
-          <app-exclamation-circle class="text-red-900"/>
-        </div>
-
-        <!-- success send (has not been read yet) -->
-        <div class="absolute bottom-0 right-0" *ngIf="message.send && !message.read">
-          <app-check class="text-blue-900"/>
-        </div>
-
-
-        <!-- success send (has been read) -->
-        <div class="absolute bottom-0 right-0" *ngIf="message.read">
-          <div class="flex flex-row">
-            <app-check class="text-blue-900"/>
-            <app-check class="text-blue-900"/>
-          </div>
-        </div>
-      </div>
-      
 			
 			<div *ngIf="message.sender === _id && message.contentType === 'text'" class="flex flex-row justify-end">
-				<div class="bg-white min-w-[50%] xs:max-w-[85%] p-4 rounded-md">
+				<div class="bg-white p-4 rounded-md">
           {{message.value}}
 				</div>
       </div>
-
-      <div *ngIf="message.sender === _id && message.contentType === 'image'" class="flex flex-row bg-red-900 p-4 justify-end">
-        <img 
-          [src]="message.value" 
-          class="rounded-md" 
-        />
-      </div>
-
-      <div *ngIf="failedSendList.includes(message.sendAt) && (message.sender !== _id && message.contentType === 'text')" class="flex flex-col w-1/2" (click)="resend(message.sendAt)">
-        <p class="self-end text-red-900 underline hover:cursor-pointer">
-          failed to send, click to retry
-        </p>
-      </div>
-
-      <div *ngIf="failedSendList.includes(message.sendAt) && (message.sender !== _id && message.contentType === 'image')" class="flex flex-col w-1/2" (click)="resendImage(message.sendAt)">
-        <p class="self-end text-red-900 underline hover:cursor-pointer">
-          failed to send, click to retry
-        </p>
-      </div>
-    </div>
   </div>
 </div>
 
