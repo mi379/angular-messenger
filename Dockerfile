@@ -1,5 +1,5 @@
 FROM node:18
 WORKDIR /app
-RUN npm install -g @angular/cli@13
 COPY . .
+RUN npm install
 CMD ["npm", "run", "docker"]
