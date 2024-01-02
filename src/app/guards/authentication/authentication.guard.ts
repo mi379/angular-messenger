@@ -3,14 +3,14 @@ import { Session } from '../../ngrx/auth/auth.reducer'
 import { Observable,BehaviorSubject } from 'rxjs'
 import { Router,ActivatedRouteSnapshot,RouterStateSnapshot } from '@angular/router';
 import { Injectable } from '@angular/core';
-import { CanActivate, UrlTree } from '@angular/router';
+import { UrlTree } from '@angular/router';
 import { take } from 'rxjs/operators';
 
 
 @Injectable({
   providedIn:'root'
 })
-export class AuthenticationGuard implements CanActivate {
+export class AuthenticationGuard  {
   constructor(private router:Router,private store:Store<{auth:Session}>){}
 
   authReducer:Observable<Session> = this.store.select((state) => state.auth)
