@@ -85,7 +85,7 @@ import { PaperAirplaneComponent } from './components/icons/paper-airplane/paper-
     }),
     StoreDevtoolsModule.instrument({
       maxAge:25
-    })
+    , connectInZone: true})
   ],
   providers: [
     AuthService,
