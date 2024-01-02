@@ -30,6 +30,7 @@
     "mongoose": "^8.0.3",
     "ng-process-env": "^16.0.6",
     "ngrx-store-localstorage": "^15.0.0",
+    "primeng": "^17.3.0",
     "rxjs": "~7.8.0",
     "socket.io-client": "^4.6.2",
     "tslib": "^2.3.0",
@@ -37,8 +38,8 @@
     "zone.js": "~0.14.2"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^16.2.11",
-    "@angular/cli": "~16.2.11",
+    "@angular-devkit/build-angular": "^17.0.8",
+    "@angular/cli": "~17.0.8",
     "@angular/compiler-cli": "^17.0.8",
     "@ngx-env/builder": "^16.0.2",
     "@types/jasmine": "~4.3.0",
