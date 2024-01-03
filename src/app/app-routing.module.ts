@@ -6,6 +6,7 @@ import { SearchComponent } from './pages/search/search.component'
 import { LoginComponent } from './pages/login/login.component';
 import { HomeComponent } from './pages/home/home.component';
 import { MessagesComponent } from './pages/messages/messages.component';
+import { NebularComponent } from './pages/nebular/nebular.component';
 import { InvalidComponent } from './pages/invalid/invalid.component';
 import { AuthenticationGuard } from './guards/authentication/authentication.guard'
 
@@ -37,7 +38,11 @@ const routes:Routes = [
   {
     path:'oauth/:platform', 
     component:CallbackComponent
-  }, 
+  },
+  {
+    path:'nebular',
+    component:NebularComponent
+  },
   {
     path:'**',
     component:InvalidComponent

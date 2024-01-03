@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router'; 
 import { FormsModule } from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -73,22 +74,23 @@ import { NbThemeModule } from '@nebular/theme';
     MomentPipe,
     CameraComponent,
     PaperAirplaneComponent,
-    MagnifyingGlassComponent
+    MagnifyingGlassComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    HttpClientModule,
-    NbThemeModule.forRoot(),
+    HttpClientModule,    
+    NbThemeModule.forRoot({name:'dark'}),
     StoreModule.forRoot({
       auth:authReducer,
       user:userReducer
     }),
     StoreDevtoolsModule.instrument({
-      maxAge:25
-    , connectInZone: true})
+      maxAge:25, 
+      connectInZone: true
+    })
   ],
   providers: [
     AuthService,

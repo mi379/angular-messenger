@@ -4,10 +4,11 @@ import { Session } from '../../ngrx/auth/auth.reducer'
 import { User,Profile } from '../../ngrx/user/user.reducer'
 import { Component,HostListener } from '@angular/core';
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './root.component.html',
-  styleUrls: ['./root.component.css']
+  styleUrls: ['./root.component.css'],
 })
 
 export class RootComponent {
