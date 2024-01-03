@@ -40,6 +40,8 @@ import { ExclamationCircleComponent } from './components/icons/exclamation-circl
 import { MomentPipe } from './pipes/moment/moment.pipe';
 import { CameraComponent } from './components/icons/camera/camera.component';
 import { PaperAirplaneComponent } from './components/icons/paper-airplane/paper-airplane.component';
+import { NbThemeModule } from '@nebular/theme';
+
 
 @NgModule({
   declarations: [
@@ -79,6 +81,7 @@ import { PaperAirplaneComponent } from './components/icons/paper-airplane/paper-
     BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
+    NbThemeModule.forRoot(),
     StoreModule.forRoot({
       auth:authReducer,
       user:userReducer
